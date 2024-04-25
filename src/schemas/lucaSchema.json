@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/luca-schema.json",
+  "title": "Luca Schema",
+  "description": "Schema for the luca ledger",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "$ref": "./schema.json"
+    },
+    "categories": {
+      "type": "array",
+      "description": "List of categories",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./category.json"
+      }
+    },
+    "entities": {
+      "type": "array",
+      "description": "List of entities",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./entity.json"
+      }
+    },
+    "recurringTransactions": {
+      "type": "array",
+      "description": "List of recurring transactions",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./recurringTransaction.json"
+      }
+    },
+    "recurringTransactionEvents": {
+      "type": "array",
+      "description": "List of recurring transaction events",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./recurringTransactionEvent.json"
+      }
+    },
+    "transactions": {
+      "type": "array",
+      "description": "List of transactions",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./transaction.json"
+      }
+    }
+  },
+  "required": ["schema", "entities", "transactions"],
+  "additionalProperties": false
+}

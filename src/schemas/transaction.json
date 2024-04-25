@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/transaction.json",
+  "title": "Transaction",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "A unique identifier for the transaction."
+    },
+    "payorId": {
+      "type": "string",
+      "description": "The identifier for the entity making the payment."
+    },
+    "payeeId": {
+      "type": "string",
+      "description": "The identifier for the entity receiving the payment."
+    },
+    "categoryId": {
+      "type": ["string", "null"],
+      "description": "The identifier for the category this transaction is associated with. Can be null if not categorized."
+    },
+    "amount": {
+      "type": "number",
+      "description": "The monetary value of the transaction."
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "The date the transaction took place."
+    },
+    "description": {
+      "type": "string",
+      "description": "A textual description of the transaction."
+    },
+    "transactionState": {
+      "type": "string",
+      "enum": [
+        "PLANNED",
+        "SCHEDULED",
+        "PENDING",
+        "COMPLETED",
+        "CANCELLED",
+        "FAILED",
+        "DISPUTED",
+        "REFUNDED",
+        "TENTATIVE",
+        "UPCOMING",
+        "DELETED"
+      ],
+      "description": "The current state of the transaction."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the transaction was created."
+    },
+    "updatedAt": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "The timestamp when the transaction was last updated. Nullable to accommodate transactions that have not been updated."
+    }
+  },
+  "required": [
+    "id",
+    "payorId",
+    "payeeId",
+    "categoryId",
+    "amount",
+    "date",
+    "description",
+    "transactionState",
+    "createdAt",
+    "updatedAt"
+  ],
+  "additionalProperties": false
+}

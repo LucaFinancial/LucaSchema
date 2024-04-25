@@ -1,0 +1,92 @@
+[
+  {
+    "id": "rte-001",
+    "transactionId": null,
+    "recurringTransactionId": "rtx-001",
+    "expectedDate": "2024-02-01",
+    "status": "MODIFIED",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-15T00:00:00Z"
+  },
+  {
+    "id": "rte-002",
+    "transactionId": "tx-002",
+    "recurringTransactionId": "rtx-002",
+    "expectedDate": "2024-02-15",
+    "status": "DELETED",
+    "createdAt": "2024-01-10T00:00:00Z",
+    "updatedAt": "2024-01-20T00:00:00Z"
+  },
+  {
+    "id": "rte-003",
+    "transactionId": null,
+    "recurringTransactionId": "rtx-003",
+    "expectedDate": "2024-03-01",
+    "status": "MODIFIED",
+    "createdAt": "2024-01-05T00:00:00Z",
+    "updatedAt": "2024-01-25T00:00:00Z"
+  },
+  {
+    "id": "rte-004",
+    "transactionId": null,
+    "recurringTransactionId": "rtx-004",
+    "expectedDate": "2024-03-15",
+    "status": "MODIFIED",
+    "createdAt": "2024-01-15T00:00:00Z",
+    "updatedAt": "2024-01-30T00:00:00Z"
+  },
+  {
+    "id": "rte-005",
+    "transactionId": "tx-005",
+    "recurringTransactionId": "rtx-005",
+    "expectedDate": "2024-04-01",
+    "status": "DELETED",
+    "createdAt": "2024-01-20T00:00:00Z",
+    "updatedAt": "2024-02-10T00:00:00Z"
+  },
+  {
+    "id": "rte-006",
+    "transactionId": null,
+    "recurringTransactionId": "rtx-006",
+    "expectedDate": "2024-04-15",
+    "status": "MODIFIED",
+    "createdAt": "2024-02-01T00:00:00Z",
+    "updatedAt": "2024-02-15T00:00:00Z"
+  },
+  {
+    "id": "rte-007",
+    "transactionId": null,
+    "recurringTransactionId": "rtx-007",
+    "expectedDate": "2024-05-01",
+    "status": "MODIFIED",
+    "createdAt": "2024-02-05T00:00:00Z",
+    "updatedAt": "2024-02-20T00:00:00Z"
+  },
+  {
+    "id": "rte-008",
+    "transactionId": "tx-008",
+    "recurringTransactionId": "rtx-008",
+    "expectedDate": "2024-05-15",
+    "status": "DELETED",
+    "createdAt": "2024-02-10T00:00:00Z",
+    "updatedAt": "2024-02-25T00:00:00Z"
+  },
+  {
+    "id": "rte-009",
+    "transactionId": null,
+    "recurringTransactionId": "rtx-009",
+    "expectedDate": "2024-06-01",
+    "status": "MODIFIED",
+    "createdAt": "2024-02-15T00:00:00Z",
+    "updatedAt": "2024-03-01T00:00:00Z"
+  },
+  {
+    "id": "rte-010",
+    "transactionId": "tx-010",
+    "recurringTransactionId": "rtx-010",
+    "expectedDate": "2024-06-15",
+    "status": "DELETED",
+    "createdAt": "2024-02-20T00:00:00Z",
+    "updatedAt": "2024-03-05T00:00:00Z"
+  }
+]

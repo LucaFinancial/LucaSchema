@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/recurringTransactionEvent.json",
+  "title": "Recurring Transaction Event",
+  "description": "Manages occurrences of recurring transactions, including tracking their modifications or logical deletions. 'transactionId' is required when an occurrence is modified to link it to an actual transaction.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the occurrence record."
+    },
+    "transactionId": {
+      "type": ["string", "null"],
+      "description": "Identifier of the actual transaction, required if the occurrence is modified."
+    },
+    "recurringTransactionId": {
+      "type": "string",
+      "description": "Identifier of the associated recurring transaction."
+    },
+    "expectedDate": {
+      "type": "string",
+      "format": "date",
+      "description": "The date when the occurrence is expected."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["MODIFIED", "DELETED"],
+      "description": "Status of the occurrence, indicating if it has been modified or logically deleted."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of when the occurrence was created."
+    },
+    "updatedAt": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp of the last update to the occurrence. Nullable to accommodate occurrences that have not been updated."
+    }
+  },
+  "required": [
+    "id",
+    "transactionId",
+    "recurringTransactionId",
+    "expectedDate",
+    "status",
+    "createdAt",
+    "updatedAt"
+  ],
+  "additionalProperties": false,
+  "if": {
+    "properties": { "status": { "const": "modified" } }
+  },
+  "then": {
+    "required": ["transactionId"]
+  }
+}

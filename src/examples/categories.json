@@ -1,0 +1,472 @@
+[
+  {
+    "id": "cat-001",
+    "name": "Housing",
+    "description": "Expenses related to housing, such as mortgage, rent, repairs, and furniture.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-002",
+    "name": "Mortgage/Rent",
+    "description": "Payments for mortgage or rental of living space.",
+    "parentId": "cat-001",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-003",
+    "name": "Home Maintenance",
+    "description": "Costs for maintaining and repairing the home.",
+    "parentId": "cat-001",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-004",
+    "name": "Furniture & Appliances",
+    "description": "Purchasing furniture and appliances for the home.",
+    "parentId": "cat-001",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-005",
+    "name": "Utilities",
+    "description": "Monthly bills for essential services like electricity, water, and internet.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-006",
+    "name": "Electricity",
+    "description": "Electricity bill payments.",
+    "parentId": "cat-005",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-007",
+    "name": "Water",
+    "description": "Water bill payments.",
+    "parentId": "cat-005",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-008",
+    "name": "Gas",
+    "description": "Gas bill payments.",
+    "parentId": "cat-005",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-009",
+    "name": "Internet",
+    "description": "Monthly payments for internet services.",
+    "parentId": "cat-005",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-010",
+    "name": "Transportation",
+    "description": "Expenses for personal and public transport, including fuel, maintenance, and insurance.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-011",
+    "name": "Fuel",
+    "description": "Expenses for car fuel or charging.",
+    "parentId": "cat-010",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-012",
+    "name": "Vehicle Maintenance",
+    "description": "Costs for vehicle repairs and regular maintenance.",
+    "parentId": "cat-010",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-013",
+    "name": "Insurance - Transportation",
+    "description": "Insurance payments for vehicles.",
+    "parentId": "cat-010",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-014",
+    "name": "Food",
+    "description": "Money spent on groceries, dining out, and fast food.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-015",
+    "name": "Groceries",
+    "description": "Expenses for purchasing groceries.",
+    "parentId": "cat-014",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-016",
+    "name": "Dining Out",
+    "description": "Expenses for eating at restaurants and cafes.",
+    "parentId": "cat-014",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-017",
+    "name": "Fast Food",
+    "description": "Expenses for quick-service and fast-food dining.",
+    "parentId": "cat-014",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-018",
+    "name": "Healthcare",
+    "description": "Medical expenses including doctor visits, medications, and health insurance.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-019",
+    "name": "Doctor Visits",
+    "description": "Expenses for medical appointments and check-ups.",
+    "parentId": "cat-018",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-020",
+    "name": "Medications",
+    "description": "Costs for prescription and over-the-counter drugs.",
+    "parentId": "cat-018",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-021",
+    "name": "Insurance - Healthcare",
+    "description": "Health insurance payments.",
+    "parentId": "cat-018",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-022",
+    "name": "Entertainment",
+    "description": "Costs for leisure activities, hobbies, movies, and events.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-023",
+    "name": "Movies & Shows",
+    "description": "Expenses for watching movies, theater, and shows.",
+    "parentId": "cat-022",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-024",
+    "name": "Hobbies",
+    "description": "Costs for hobbies and recreational activities.",
+    "parentId": "cat-022",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-025",
+    "name": "Sports & Recreation",
+    "description": "Expenses for participating in or attending sports and recreational activities.",
+    "parentId": "cat-022",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-026",
+    "name": "Education",
+    "description": "Expenses for education, including tuition, books, and supplies.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-027",
+    "name": "Tuition & Fees",
+    "description": "Payments for educational tuition and related fees.",
+    "parentId": "cat-026",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-028",
+    "name": "Books & Supplies",
+    "description": "Costs for educational books, supplies, and materials.",
+    "parentId": "cat-026",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-029",
+    "name": "Online Courses",
+    "description": "Expenses for online educational courses and training.",
+    "parentId": "cat-026",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-030",
+    "name": "Personal Care",
+    "description": "Expenses for personal grooming, wellness, and fitness.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-031",
+    "name": "Grooming & Cosmetics",
+    "description": "Costs for personal grooming products and services.",
+    "parentId": "cat-030",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-032",
+    "name": "Wellness & Fitness",
+    "description": "Expenses for fitness classes, gym memberships, and wellness activities.",
+    "parentId": "cat-030",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-033",
+    "name": "Clothing & Accessories",
+    "description": "Purchasing clothes and related accessories.",
+    "parentId": "cat-030",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-034",
+    "name": "Transfer",
+    "description": "Transfers between user's own accounts, including credit card payments.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-035",
+    "name": "Income",
+    "description": "All forms of income, including salary, wages, and investment returns.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-036",
+    "name": "Travel",
+    "description": "Expenses related to travel, including accommodations, transport, and activities.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-037",
+    "name": "Accommodations",
+    "description": "Expenses for hotels, lodgings, and other forms of accommodation during travel.",
+    "parentId": "cat-036",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-038",
+    "name": "Travel Fares",
+    "description": "Costs for tickets and fares for various modes of travel such as flights, trains, and buses.",
+    "parentId": "cat-036",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-039",
+    "name": "Travel Insurance",
+    "description": "Insurance for travel-related incidents and emergencies.",
+    "parentId": "cat-036",
+    "defaultCategoryId": null,
+    "categoryType": "DEFAULT",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-040",
+    "name": "Pet Care",
+    "description": "Expenses related to the care of pets, including food, vet visits, and grooming.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "CUSTOM",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-041",
+    "name": "Gym Membership",
+    "description": "Monthly fees for gym or fitness club membership.",
+    "parentId": "cat-032",
+    "defaultCategoryId": "cat-032",
+    "categoryType": "MODIFIED",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-042",
+    "name": "Gardening",
+    "description": "Costs for garden maintenance and landscaping services.",
+    "parentId": "cat-001",
+    "defaultCategoryId": "cat-003",
+    "categoryType": "CUSTOM",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-043",
+    "name": "Home Office Supplies",
+    "description": "Purchases of supplies and equipment for a home office.",
+    "parentId": "cat-001",
+    "defaultCategoryId": "cat-004",
+    "categoryType": "MODIFIED",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-044",
+    "name": "Professional Development",
+    "description": "Expenses for career-related training, courses, and workshops.",
+    "parentId": "cat-026",
+    "defaultCategoryId": "cat-029",
+    "categoryType": "MODIFIED",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-045",
+    "name": "Technology Gadgets",
+    "description": "Purchases of new tech gadgets and devices.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "CUSTOM",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-046",
+    "name": "Holiday Gifts",
+    "description": "Expenses for buying gifts during holiday seasons.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "CUSTOM",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "cat-047",
+    "name": "Charity Donations",
+    "description": "Money given to charities or non-profit organizations.",
+    "parentId": null,
+    "defaultCategoryId": null,
+    "categoryType": "CUSTOM",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  }
+]

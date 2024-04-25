@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/schema.json",
+  "title": "Schema",
+  "description": "Schema object for the Luca Schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The id of the schema",
+      "type": "string",
+      "const": "luca-schema"
+    },
+    "name": {
+      "description": "The name of the schema",
+      "type": "string",
+      "const": "Luca Schema"
+    },
+    "version": {
+      "description": "The version of the schema",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    }
+  }
+}

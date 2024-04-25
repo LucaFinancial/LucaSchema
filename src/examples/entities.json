@@ -1,0 +1,92 @@
+[
+  {
+    "id": "ent-001",
+    "name": "Main Street Bank",
+    "description": "A local banking institution offering a range of financial services.",
+    "entityType": "ACCOUNT",
+    "entityStatus": "ACTIVE",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "ent-002",
+    "name": "John Doe",
+    "description": "An individual customer with personal banking and loan services.",
+    "entityType": "INDIVIDUAL",
+    "entityStatus": "ACTIVE",
+    "createdAt": "2024-01-02T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "ent-003",
+    "name": "City Water Department",
+    "description": "Provides water utility services to the local area.",
+    "entityType": "UTILITY",
+    "entityStatus": "ACTIVE",
+    "createdAt": "2024-01-03T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "ent-004",
+    "name": "Gadget World",
+    "description": "Retailer specializing in electronic devices and accessories.",
+    "entityType": "RETAILER",
+    "entityStatus": "ACTIVE",
+    "createdAt": "2024-01-04T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "ent-005",
+    "name": "FastFix Plumbing",
+    "description": "A service company providing plumbing repair and maintenance.",
+    "entityType": "SERVICE",
+    "entityStatus": "ACTIVE",
+    "createdAt": "2024-01-05T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "ent-006",
+    "name": "Municipal Government",
+    "description": "Local government office managing city services and administration.",
+    "entityType": "GOVERNMENT",
+    "entityStatus": "ACTIVE",
+    "createdAt": "2024-01-06T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "ent-007",
+    "name": "Sunny Savings & Loan",
+    "description": "Financial institution offering savings accounts, mortgages, and loans.",
+    "entityType": "ACCOUNT",
+    "entityStatus": "ACTIVE",
+    "createdAt": "2024-01-07T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "ent-008",
+    "name": "Jane Smith",
+    "description": "Freelance graphic designer offering creative services.",
+    "entityType": "INDIVIDUAL",
+    "entityStatus": "ACTIVE",
+    "createdAt": "2024-01-08T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "ent-009",
+    "name": "Tech Solutions Ltd.",
+    "description": "A service company specializing in IT support and consulting.",
+    "entityType": "SERVICE",
+    "entityStatus": "ACTIVE",
+    "createdAt": "2024-01-09T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "ent-010",
+    "name": "Green Energy Co.",
+    "description": "Utility company providing renewable energy solutions.",
+    "entityType": "UTILITY",
+    "entityStatus": "ACTIVE",
+    "createdAt": "2024-01-10T00:00:00Z",
+    "updatedAt": null
+  }
+]

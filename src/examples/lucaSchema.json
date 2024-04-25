@@ -1,0 +1,74 @@
+{
+  "schema": {
+    "id": "luca-schema",
+    "name": "Luca Schema",
+    "version": "1.2.4"
+  },
+  "entities": [
+    {
+      "id": "ent-001",
+      "name": "Main Street Bank",
+      "description": "A local banking institution offering a range of financial services.",
+      "entityType": "ACCOUNT",
+      "entityStatus": "ACTIVE",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": null
+    },
+    {
+      "id": "ent-002",
+      "name": "John Doe",
+      "description": "An individual customer with personal banking and loan services.",
+      "entityType": "INDIVIDUAL",
+      "entityStatus": "ACTIVE",
+      "createdAt": "2024-01-02T00:00:00Z",
+      "updatedAt": null
+    },
+    {
+      "id": "ent-003",
+      "name": "City Water Department",
+      "description": "Provides water utility services to the local area.",
+      "entityType": "UTILITY",
+      "entityStatus": "ACTIVE",
+      "createdAt": "2024-01-03T00:00:00Z",
+      "updatedAt": null
+    }
+  ],
+  "transactions": [
+    {
+      "id": "tx-001",
+      "payorId": "ent-001",
+      "payeeId": "ent-002",
+      "categoryId": "cat-003",
+      "amount": 1200.0,
+      "date": "2024-01-15",
+      "description": "Monthly rent payment",
+      "transactionState": "COMPLETED",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-15T00:00:00Z"
+    },
+    {
+      "id": "tx-002",
+      "payorId": "ent-003",
+      "payeeId": "ent-004",
+      "categoryId": "cat-005",
+      "amount": 60.0,
+      "date": "2024-01-10",
+      "description": "Internet bill payment",
+      "transactionState": "PENDING",
+      "createdAt": "2024-01-05T00:00:00Z",
+      "updatedAt": "2024-01-10T00:00:00Z"
+    },
+    {
+      "id": "tx-003",
+      "payorId": "ent-005",
+      "payeeId": "ent-006",
+      "categoryId": "cat-007",
+      "amount": 150.0,
+      "date": "2024-01-20",
+      "description": "Electricity bill payment",
+      "transactionState": "SCHEDULED",
+      "createdAt": "2024-01-10T00:00:00Z",
+      "updatedAt": "2024-01-15T00:00:00Z"
+    }
+  ]
+}
