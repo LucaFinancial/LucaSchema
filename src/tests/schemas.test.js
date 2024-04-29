@@ -1,7 +1,7 @@
 import exampleData from '../examples/schemas.json';
-import validators from '../validators';
+import { lucaValidator } from '../';
 
-const { validateSchema } = validators;
+const validateSchema = lucaValidator.getSchema('schema');
 
 test('examples are valid schema objects', () => {
   exampleData.forEach(example => {
