@@ -1,3 +1,13 @@
+const SchemasEnum = Object.freeze({
+  CATEGORY: 'category',
+  ENTITY: 'entity',
+  LUCASCHEMA: 'lucaSchema',
+  RECURRING_TRANSACTION: 'recurringTransaction',
+  RECURRING_TRANSACTION_EVENT: 'recurringTransactionEvent',
+  SCHEMA: 'schema',
+  TRANSACTION: 'transaction'
+});
+
 const TransactionStateEnum = Object.freeze({
   PLANNED: 'PLANNED',
   SCHEDULED: 'SCHEDULED',
@@ -35,33 +45,33 @@ const EntityStatusEnum = Object.freeze({
   CLOSED: 'CLOSED'
 });
 
-const RepeatedTransactionFrequencyEnum = Object.freeze({
+const RecurringTransactionFrequencyEnum = Object.freeze({
   DAY: 'DAY',
   WEEK: 'WEEK',
   MONTH: 'MONTH',
   YEAR: 'YEAR'
 });
 
-const RepeatedTransactionStateEnum = Object.freeze({
+const RecurringTransactionStateEnum = Object.freeze({
   ACTIVE: 'ACTIVE',
   PAUSED: 'PAUSED',
   COMPLETED: 'COMPLETED',
   CANCELLED: 'CANCELLED'
 });
 
-const RepeatedTransactionOccurrenceStatusEnum = Object.freeze({
+const RecurringTransactionEventStatusEnum = Object.freeze({
   MODIFIED: 'MODIFIED',
   DELETED: 'DELETED'
 });
 
-const constants = {
+const enums = {
   TransactionStateEnum,
   CategoryTypeEnum,
   EntityTypeEnum,
   EntityStatusEnum,
-  RepeatedTransactionFrequencyEnum,
-  RepeatedTransactionStateEnum,
-  RepeatedTransactionOccurrenceStatusEnum
+  RecurringTransactionFrequencyEnum,
+  RecurringTransactionStateEnum,
+  RecurringTransactionEventStatusEnum
 };
 
-export default constants;
+export default enums;
