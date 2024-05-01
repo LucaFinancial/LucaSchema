@@ -4,21 +4,21 @@ const config = require('./config.cjs');
 
 const {
   schemasSrc,
-  constantsSrc,
+  enumsSrc,
   indexSrc,
   validatorSrc,
-  esmConstantsDst,
+  esmEnumsDst,
   esmIndexDst,
   esmValidatorDst,
   esmSchemasDst
 } = config;
 
-const copyConstants = async () => {
+const copyEnums = async () => {
   return fs
-    .copy(constantsSrc, esmConstantsDst)
-    .then(() => console.log('Copy constants.js completed!'))
+    .copy(enumsSrc, esmEnumsDst)
+    .then(() => console.log('Copy enums.js completed!'))
     .catch(err =>
-      console.error('An error occurred while copying constants.js', err)
+      console.error('An error occurred while copying enums.js', err)
     );
 };
 
@@ -50,7 +50,7 @@ const copySchemas = async () => {
 };
 
 const buildEsm = async () => {
-  await copyConstants();
+  await copyEnums();
   await copyIndex();
   await copyValidator();
   await copySchemas();
