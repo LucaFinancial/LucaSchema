@@ -1,7 +1,7 @@
 import exampleData from '../examples/transactions.json';
-import validators from '../validators';
+import { lucaValidator } from '../';
 
-const { validateTransaction } = validators;
+const validateTransaction = lucaValidator.getSchema('transaction');
 
 test('examples are valid transactions', () => {
   exampleData.forEach(example => {
