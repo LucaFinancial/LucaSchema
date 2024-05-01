@@ -1,7 +1,7 @@
 import exampleData from '../examples/recurringTransactions.json';
-import validators from '../validators';
+import { lucaValidator } from '../';
 
-const { validateRecurringTransaction } = validators;
+const validateRecurringTransaction = lucaValidator.getSchema('recurringTransaction');
 
 test('examples are valid recurringTransactions', () => {
   exampleData.forEach(example => {
