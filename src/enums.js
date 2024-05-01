@@ -65,13 +65,14 @@ const RecurringTransactionEventStatusEnum = Object.freeze({
 });
 
 const enums = {
-  TransactionStateEnum,
   CategoryTypeEnum,
   EntityTypeEnum,
   EntityStatusEnum,
   RecurringTransactionFrequencyEnum,
   RecurringTransactionStateEnum,
-  RecurringTransactionEventStatusEnum
+  RecurringTransactionEventStatusEnum,
+  SchemasEnum,
+  TransactionStateEnum
 };
 
 export default enums;
