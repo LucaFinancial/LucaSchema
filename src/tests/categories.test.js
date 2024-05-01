@@ -1,7 +1,7 @@
 import exampleData from '../examples/categories.json';
-import validators from '../validators';
+import { lucaValidator } from '../';
 
-const { validateCategory } = validators;
+const  validateCategory  = lucaValidator.getSchema('category');
 
 test('examples are valid categories', () => {
   exampleData.forEach(example => {
