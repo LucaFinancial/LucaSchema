@@ -4,87 +4,61 @@
   "title": "Recurring Transaction",
   "description": "Defines recurring financial transactions within the application, including their scheduling, frequency, interval, and optional constraints like total occurrences or an end date.",
   "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "description": "Unique identifier for the transaction."
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "$ref": "./common.json"
     },
-    "payorId": {
-      "type": "string",
-      "description": "Identifier for the payor in the transaction."
+    {
+      "$ref": "./transaction-common.json"
     },
-    "payeeId": {
-      "type": "string",
-      "description": "Identifier for the payee in the transaction."
-    },
-    "categoryId": {
-      "type": ["string", "null"],
-      "description": "Category identifier for organizing the transaction. Can be null if not categorized."
-    },
-    "amount": {
-      "type": "number",
-      "description": "The monetary value of the transaction."
-    },
-    "frequency": {
-      "type": "string",
-      "enum": ["DAY", "WEEK", "MONTH", "YEAR"],
-      "description": "Defines the base unit of time for the repetition."
-    },
-    "interval": {
-      "type": "integer",
-      "minimum": 1,
-      "description": "Specifies the number of frequency units between each occurrence (e.g., every 2 weeks)."
-    },
-    "occurrences": {
-      "type": ["integer", "null"],
-      "minimum": 1,
-      "description": "The total number of times the transaction should occur. Can be null if not specified."
-    },
-    "startOn": {
-      "type": "string",
-      "format": "date",
-      "description": "The date on which the recurring transaction series should begin."
-    },
-    "endOn": {
-      "type": ["string", "null"],
-      "format": "date",
-      "description": "The date on which the recurring transaction series should end. Can be null."
-    },
-    "description": {
-      "type": "string",
-      "description": "A detailed description of the transaction."
-    },
-    "recurringTransactionState": {
-      "type": "string",
-      "enum": ["ACTIVE", "PAUSED", "COMPLETED", "CANCELLED"],
-      "description": "Current state of the recurring transaction series."
-    },
-    "createdAt": {
-      "type": "string",
-      "format": "date-time",
-      "description": "Timestamp of when the transaction was created."
-    },
-    "updatedAt": {
-      "type": ["string", "null"],
-      "format": "date-time",
-      "description": "Timestamp of the last update to the transaction. Can be null if not updated."
+    {
+      "properties": {
+        "frequency": {
+          "type": "string",
+          "title": "Transaction Frequency",
+          "enum": ["DAY", "WEEK", "MONTH", "YEAR"],
+          "description": "Defines the base unit of time for the repetition."
+        },
+        "interval": {
+          "type": "integer",
+          "title": "Frequency Interval",
+          "minimum": 1,
+          "description": "Specifies the number of frequency units between each occurrence (e.g., every 2 weeks)."
+        },
+        "occurrences": {
+          "type": ["integer", "null"],
+          "title": "Total Occurrences",
+          "minimum": 1,
+          "description": "The total number of times the transaction should occur. Can be null if not specified."
+        },
+        "startOn": {
+          "type": "string",
+          "title": "Start Date",
+          "format": "date",
+          "description": "The date on which the recurring transaction series should begin."
+        },
+        "endOn": {
+          "type": ["string", "null"],
+          "title": "End Date",
+          "format": "date",
+          "description": "The date on which the recurring transaction series should end. Can be null."
+        },
+        "recurringTransactionState": {
+          "type": "string",
+          "title": "Recurring Transaction State",
+          "enum": ["ACTIVE", "PAUSED", "COMPLETED", "CANCELLED"],
+          "description": "Current state of the recurring transaction series."
+        }
+      }
     }
-  },
+  ],
   "required": [
-    "id",
-    "payorId",
-    "payeeId",
-    "categoryId",
-    "amount",
     "frequency",
     "interval",
     "occurrences",
     "startOn",
     "endOn",
-    "description",
-    "recurringTransactionState",
-    "createdAt",
-    "updatedAt"
-  ],
-  "additionalProperties": false
+    "recurringTransactionState"
+  ]
 }

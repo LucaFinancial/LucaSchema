@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/common.json",
+  "title": "Common",
+  "description": "Common properties for all schemas",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "ID",
+      "format": "uuid",
+      "readOnly": true,
+      "description": "UUID for the item"
+    },
+    "description": {
+      "type": "string",
+      "title": "Description",
+      "description": "A description of the item"
+    },
+    "createdAt": {
+      "type": "string",
+      "title": "Date Created",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "The timestamp of the creation of the item"
+    },
+    "updatedAt": {
+      "type": ["string", "null"],
+      "title": "Last Updated",
+      "format": "date-time",
+      "description": "The timestamp of the last update or null if the item has not been updated yet"
+    }
+  },
+  "required": ["id", "createdAt", "updatedAt"],
+  "additionalProperties": false
+}
