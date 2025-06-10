@@ -1,10 +1,3 @@
-// Core validator interface
-export interface LucaValidator {
-  getSchema(schemaName: string): (data: any) => boolean;
-  validateSchema(schema: object): boolean;
-  errors: any[];
-}
-
 export interface Transaction {
   id: string;
   payorId: string;
@@ -90,6 +83,13 @@ export interface LucaSchema {
 }
 
 // Main exports
-export declare const lucaValidator: LucaValidator;
 export declare const schemas: Record<string, object>;
 export declare const enums: Record<string, Record<string, string>>;
+
+// The following types are exported from this file:
+// Transaction
+// Entity
+// Category
+// RecurringTransaction
+// RecurringTransactionEvent
+// LucaSchema

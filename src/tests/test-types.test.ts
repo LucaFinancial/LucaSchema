@@ -1,4 +1,5 @@
-import { Transaction, LucaValidator } from './dist/cjs/index.d.ts';
+import type { Transaction } from '../types/index.d.ts';
+import lucaValidator from '../lucaValidator.js';
 
 test('Transaction validation', () => {
   const transaction: Transaction = {
@@ -14,9 +15,13 @@ test('Transaction validation', () => {
     updatedAt: null
   };
 
-  const validateTransaction = LucaValidator.getSchema('transaction');
-  const isValid = validateTransaction(transaction);
-  console.log(`Transaction is valid: ${isValid}`);
-  expect(isValid).toBe(true);
-  expect(LucaValidator.errors.length).toBe(0);
+  const validateTransaction = lucaValidator.getSchema('transaction');
+  if (validateTransaction) {
+    const isValid = validateTransaction(transaction);
+    console.log(`Transaction is valid: ${isValid}`);
+    expect(isValid).toBe(true);
+    expect(lucaValidator.errors?.length ?? 0).toBe(0);
+  } else {
+    throw new Error('Transaction schema not found in lucaValidator.');
+  }
 });
