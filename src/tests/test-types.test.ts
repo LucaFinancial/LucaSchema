@@ -26,8 +26,13 @@ test('Transaction validation', () => {
   if (validateTransaction) {
     const isValid = validateTransaction(transaction);
     console.log(`Transaction is valid: ${isValid}`);
-    expect(isValid).toBe(true);
-    expect(lucaValidator.errors?.length ?? 0).toBe(0);
+    if (!isValid) {
+      console.error(
+        'Transaction validation failed:',
+        validateTransaction.errors
+      );
+    }
+    expect(validateTransaction.errors?.length ?? 0).toBe(0);
   } else {
     throw new Error('Transaction schema not found in lucaValidator.');
   }
@@ -47,9 +52,11 @@ test('Entity validation', () => {
   const validateEntity = lucaValidator.getSchema('entity');
   if (validateEntity) {
     const isValid = validateEntity(entity);
-    console.log(`Entity is valid: ${isValid}`);
+    if (!isValid) {
+      console.error('Entity validation failed:', validateEntity.errors);
+    }
     expect(isValid).toBe(true);
-    expect(lucaValidator.errors?.length ?? 0).toBe(0);
+    expect(validateEntity.errors?.length ?? 0).toBe(0);
   } else {
     throw new Error('Entity schema not found in lucaValidator.');
   }
@@ -70,9 +77,11 @@ test('Category validation', () => {
   const validateCategory = lucaValidator.getSchema('category');
   if (validateCategory) {
     const isValid = validateCategory(category);
-    console.log(`Category is valid: ${isValid}`);
+    if (!isValid) {
+      console.error('Category validation failed:', validateCategory.errors);
+    }
     expect(isValid).toBe(true);
-    expect(lucaValidator.errors?.length ?? 0).toBe(0);
+    expect(validateCategory.errors?.length ?? 0).toBe(0);
   } else {
     throw new Error('Category schema not found in lucaValidator.');
   }
@@ -101,9 +110,14 @@ test('RecurringTransaction validation', () => {
   );
   if (validateRecurringTransaction) {
     const isValid = validateRecurringTransaction(recurringTransaction);
-    console.log(`Recurring Transaction is valid: ${isValid}`);
+    if (!isValid) {
+      console.error(
+        'Recurring Transaction validation failed:',
+        validateRecurringTransaction.errors
+      );
+    }
     expect(isValid).toBe(true);
-    expect(lucaValidator.errors?.length ?? 0).toBe(0);
+    expect(validateRecurringTransaction.errors?.length ?? 0).toBe(0);
   } else {
     throw new Error('Recurring Transaction schema not found in lucaValidator.');
   }
@@ -127,9 +141,14 @@ test('RecurringTransactionEvent validation', () => {
     const isValid = validateRecurringTransactionEvent(
       recurringTransactionEvent
     );
-    console.log(`Recurring Transaction Event is valid: ${isValid}`);
+    if (!isValid) {
+      console.error(
+        'Recurring Transaction Event validation failed:',
+        validateRecurringTransactionEvent.errors
+      );
+    }
     expect(isValid).toBe(true);
-    expect(lucaValidator.errors?.length ?? 0).toBe(0);
+    expect(validateRecurringTransactionEvent.errors?.length ?? 0).toBe(0);
   } else {
     throw new Error(
       'Recurring Transaction Event schema not found in lucaValidator.'
@@ -150,9 +169,14 @@ test('LucaSchema validation', () => {
   const validateLucaSchema = lucaValidator.getSchema('lucaSchema');
   if (validateLucaSchema) {
     const isValid = validateLucaSchema(lucaSchema);
-    console.log(`Luca Schema is valid: ${isValid}`);
+    if (!isValid) {
+      console.error(
+        'Luca Schema validation failed:',
+        validateLucaSchema.errors
+      );
+    }
     expect(isValid).toBe(true);
-    expect(lucaValidator.errors?.length ?? 0).toBe(0);
+    expect(validateLucaSchema.errors?.length ?? 0).toBe(0);
   } else {
     throw new Error('Luca Schema not found in lucaValidator.');
   }
