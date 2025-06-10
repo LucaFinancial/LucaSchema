@@ -16,7 +16,7 @@
       "^.+\\.[t|j]sx?$": "babel-jest"
     },
     "testMatch": [
-      "**/dist/cjs/tests/**/*.test.js"
+      "**/src/tests/**/*.test.js"
     ],
     "moduleFileExtensions": [
       "js",
@@ -25,7 +25,7 @@
     ]
   },
   "scripts": {
-    "build": "yarn && yarn clean && node scripts/build.mjs && babel src --out-dir dist/cjs --source-maps",
+    "build": "yarn && yarn clean && node scripts/build.mjs && babel src --out-dir dist/cjs --source-maps --ignore 'src/examples/**'",
     "clean": "rimraf dist",
     "lint": "prettier --check . && eslint .",
     "publish-beta": "yarn && yarn build && yarn publish --tag beta --access public",
