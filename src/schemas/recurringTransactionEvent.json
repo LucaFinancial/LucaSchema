@@ -40,7 +40,6 @@
   },
   "required": [
     "id",
-    "transactionId",
     "recurringTransactionId",
     "expectedDate",
     "status",
