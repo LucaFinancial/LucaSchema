@@ -19,10 +19,6 @@ async function build() {
       recursive: true
     });
 
-    await cp(join(root, 'src/examples'), join(root, 'dist/cjs/examples'), {
-      recursive: true
-    });
-
     await copyFile(
       join(root, 'src/lucaValidator.js'),
       join(root, 'dist/cjs/lucaValidator.js')
