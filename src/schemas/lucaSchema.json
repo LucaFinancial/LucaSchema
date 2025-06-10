@@ -5,8 +5,9 @@
   "description": "Schema for the luca ledger",
   "type": "object",
   "properties": {
-    "schema": {
-      "$ref": "./schema.json"
+    "schemaVersion": {
+      "type": "string",
+      "description": "Schema version of the luca ledger"
     },
     "categories": {
       "type": "array",
@@ -49,6 +50,6 @@
       }
     }
   },
-  "required": ["schema", "entities", "transactions"],
+  "required": ["schemaVersion", "entities", "transactions"],
   "additionalProperties": false
 }
