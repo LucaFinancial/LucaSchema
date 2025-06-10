@@ -35,10 +35,6 @@
     ".": {
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
-    },
-    "./schemas": {
-      "import": "./dist/esm/schemas/*.json",
-      "require": "./dist/cjs/schemas/*.json"
     }
   },
   "files": [
