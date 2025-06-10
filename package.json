@@ -44,9 +44,7 @@
   ],
   "dependencies": {
     "ajv": "^8.12.0",
-    "ajv-formats": "^2.1.1",
-    "ajv-errors": "^1.0.1",
-    "ajv-keywords": "^3.5.2"
+    "ajv-formats": "^2.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
