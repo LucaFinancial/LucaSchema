@@ -4,7 +4,6 @@ const SchemasEnum = Object.freeze({
   LUCASCHEMA: 'lucaSchema',
   RECURRING_TRANSACTION: 'recurringTransaction',
   RECURRING_TRANSACTION_EVENT: 'recurringTransactionEvent',
-  SCHEMA: 'schema',
   TRANSACTION: 'transaction'
 });
 
