@@ -8,9 +8,7 @@
     {
       "$ref": "./common.json"
     },
-    {
-      "$ref": "./transaction-common.json"
-    },
+
     {
       "properties": {
         "date": {
@@ -18,6 +16,30 @@
           "title": "Transaction Date",
           "format": "date",
           "description": "The date the transaction took place."
+        },
+        "payorId": {
+          "type": "string",
+          "title": "Payor ID",
+          "format": "uuid",
+          "description": "Identifier for the payor in the transaction."
+        },
+        "payeeId": {
+          "type": "string",
+          "title": "Payee ID",
+          "format": "uuid",
+          "description": "Identifier for the payee in the transaction."
+        },
+        "categoryId": {
+          "type": ["string", "null"],
+          "title": "Category ID",
+          "format": "uuid",
+          "description": "Category identifier for organizing the transaction. Can be null if not categorized."
+        },
+        "amount": {
+          "type": "number",
+          "title": "Amount",
+          "format": "currency",
+          "description": "The monetary value of the transaction."
         },
         "transactionState": {
           "type": "string",
@@ -40,5 +62,12 @@
       }
     }
   ],
-  "required": ["date", "transactionState"]
+  "required": [
+    "date",
+    "payorId",
+    "payeeId",
+    "amount",
+    "description",
+    "transactionState"
+  ]
 }

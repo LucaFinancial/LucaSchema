@@ -10,10 +10,31 @@
       "$ref": "./common.json"
     },
     {
-      "$ref": "./transaction-common.json"
-    },
-    {
       "properties": {
+        "payorId": {
+          "type": "string",
+          "title": "Payor ID",
+          "format": "uuid",
+          "description": "Identifier for the payor in the transaction."
+        },
+        "payeeId": {
+          "type": "string",
+          "title": "Payee ID",
+          "format": "uuid",
+          "description": "Identifier for the payee in the transaction."
+        },
+        "categoryId": {
+          "type": ["string", "null"],
+          "title": "Category ID",
+          "format": "uuid",
+          "description": "Category identifier for organizing the transaction. Can be null if not categorized."
+        },
+        "amount": {
+          "type": "number",
+          "title": "Amount",
+          "format": "currency",
+          "description": "The monetary value of the transaction."
+        },
         "frequency": {
           "type": "string",
           "title": "Transaction Frequency",
@@ -54,6 +75,9 @@
     }
   ],
   "required": [
+    "payorId",
+    "payeeId",
+    "amount",
     "frequency",
     "interval",
     "occurrences",
