@@ -8,40 +8,38 @@
   "allOf": [
     {
       "$ref": "./common.json"
-    },
-    {
-      "properties": {
-        "name": {
-          "type": "string",
-          "title": "Category Name",
-          "description": "The name of the category."
-        },
-        "description": {
-          "type": ["string", "null"],
-          "title": "Description",
-          "description": "A description of the category, providing additional context. Can be null if not specified."
-        },
-        "parentId": {
-          "type": ["string", "null"],
-          "title": "Parent Category ID",
-          "format": "uuid",
-          "description": "The identifier of the parent category, if any. Null if the category is top-level."
-        },
-        "defaultCategoryId": {
-          "type": ["string", "null"],
-          "title": "Default Category ID",
-          "format": "uuid",
-          "description": "For custom categories, this indicates the default category from which this was derived. Required if categoryType is MODIFIED."
-        },
-        "categoryType": {
-          "type": "string",
-          "title": "Category Type",
-          "enum": ["DEFAULT", "MODIFIED", "CUSTOM"],
-          "description": "The type of the category, indicating whether it is a default, modified, or custom category."
-        }
-      }
     }
   ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Category Name",
+      "description": "The name of the category."
+    },
+    "description": {
+      "type": ["string", "null"],
+      "title": "Description",
+      "description": "A description of the category, providing additional context. Can be null if not specified."
+    },
+    "parentId": {
+      "type": ["string", "null"],
+      "title": "Parent Category ID",
+      "format": "uuid",
+      "description": "The identifier of the parent category, if any. Null if the category is top-level."
+    },
+    "defaultCategoryId": {
+      "type": ["string", "null"],
+      "title": "Default Category ID",
+      "format": "uuid",
+      "description": "For custom categories, this indicates the default category from which this was derived. Required if categoryType is MODIFIED."
+    },
+    "categoryType": {
+      "type": "string",
+      "title": "Category Type",
+      "enum": ["DEFAULT", "MODIFIED", "CUSTOM"],
+      "description": "The type of the category, indicating whether it is a default, modified, or custom category."
+    }
+  },
   "required": [
     "name",
     "description",

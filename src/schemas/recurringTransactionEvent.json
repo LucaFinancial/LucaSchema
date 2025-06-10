@@ -8,36 +8,34 @@
   "allOf": [
     {
       "$ref": "./common.json"
-    },
-    {
-      "properties": {
-        "transactionId": {
-          "type": ["string", "null"],
-          "title": "Associated Transaction ID",
-          "format": "uuid",
-          "description": "Identifier of the actual transaction, required if the occurrence is modified."
-        },
-        "recurringTransactionId": {
-          "type": "string",
-          "title": "Recurring Transaction ID",
-          "format": "uuid",
-          "description": "Identifier of the associated recurring transaction."
-        },
-        "expectedDate": {
-          "type": "string",
-          "title": "Expected Date",
-          "format": "date",
-          "description": "The date when the occurrence is expected."
-        },
-        "status": {
-          "type": "string",
-          "title": "Event Status",
-          "enum": ["MODIFIED", "DELETED"],
-          "description": "Status of the occurrence, indicating if it has been modified or logically deleted."
-        }
-      }
     }
   ],
+  "properties": {
+    "transactionId": {
+      "type": ["string", "null"],
+      "title": "Associated Transaction ID",
+      "format": "uuid",
+      "description": "Identifier of the actual transaction, required if the occurrence is modified."
+    },
+    "recurringTransactionId": {
+      "type": "string",
+      "title": "Recurring Transaction ID",
+      "format": "uuid",
+      "description": "Identifier of the associated recurring transaction."
+    },
+    "expectedDate": {
+      "type": "string",
+      "title": "Expected Date",
+      "format": "date",
+      "description": "The date when the occurrence is expected."
+    },
+    "status": {
+      "type": "string",
+      "title": "Event Status",
+      "enum": ["MODIFIED", "DELETED"],
+      "description": "Status of the occurrence, indicating if it has been modified or logically deleted."
+    }
+  },
   "required": [
     "transactionId",
     "recurringTransactionId",

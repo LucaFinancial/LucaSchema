@@ -4,6 +4,15 @@
   "title": "Luca Schema",
   "description": "Schema for the luca ledger",
   "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "categories",
+    "entities",
+    "recurringTransactions",
+    "recurringTransactionEvents",
+    "transactions"
+  ],
   "properties": {
     "schemaVersion": {
       "type": "string",
@@ -49,7 +58,5 @@
         "$ref": "./transaction.json"
       }
     }
-  },
-  "required": ["schemaVersion", "entities", "transactions"],
-  "additionalProperties": false
+  }
 }
