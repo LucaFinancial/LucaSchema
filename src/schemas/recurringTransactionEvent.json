@@ -49,7 +49,7 @@
   ],
   "additionalProperties": false,
   "if": {
-    "properties": { "status": { "const": "modified" } }
+    "properties": { "status": { "const": "MODIFIED" } }
   },
   "then": {
     "required": ["transactionId"]
