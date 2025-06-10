@@ -21,22 +21,21 @@ async function build() {
 
     await copyFile(
       join(root, 'src/lucaValidator.js'),
-      join(root, 'dist/cjs/lucaValidator.js')
-    );
-    await copyFile(
-      join(root, 'src/lucaValidator.js'),
       join(root, 'dist/esm/lucaValidator.js')
     );
 
-    await copyFile(join(root, 'src/enums.js'), join(root, 'dist/cjs/enums.js'));
     await copyFile(join(root, 'src/enums.js'), join(root, 'dist/esm/enums.js'));
 
-    await copyFile(join(root, 'src/index.js'), join(root, 'dist/cjs/index.js'));
     await copyFile(join(root, 'src/index.js'), join(root, 'dist/esm/index.js'));
 
     await writeFile(
       join(root, 'dist/cjs/package.json'),
       JSON.stringify({ type: 'commonjs' }, null, 2)
+    );
+
+    await writeFile(
+      join(root, 'dist/esm/package.json'),
+      JSON.stringify({ type: 'module' }, null, 2)
     );
 
     console.log('✅ Build completed successfully!');
