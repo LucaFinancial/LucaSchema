@@ -25,7 +25,7 @@ export interface Transaction {
 export interface Entity {
   id: string;
   name: string;
-  description: string;
+  description: string | null;
   entityType:
     | 'ACCOUNT'
     | 'RETAILER'
@@ -41,9 +41,9 @@ export interface Entity {
 export interface Category {
   id: string;
   name: string;
-  description: string;
+  description: string | null;
   parentId: string | null;
-  defaultCategoryId?: string | null;
+  defaultCategoryId: string | null;
   categoryType: 'DEFAULT' | 'MODIFIED' | 'CUSTOM';
   createdAt: string;
   updatedAt: string | null;

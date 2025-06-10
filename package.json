@@ -13,6 +13,7 @@
     "url": "https://github.com/LucaFinancial/LucaSchema"
   },
   "jest": {
+    "preset": "ts-jest",
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
     },
