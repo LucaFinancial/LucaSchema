@@ -3,7 +3,6 @@ import entity from './entity.json';
 import lucaSchema from './lucaSchema.json';
 import recurringTransaction from './recurringTransaction.json';
 import recurringTransactionEvent from './recurringTransactionEvent.json';
-import schema from './schema.json';
 import transaction from './transaction.json';
 
 const schemas = {
@@ -12,7 +11,6 @@ const schemas = {
   lucaSchema,
   recurringTransaction,
   recurringTransactionEvent,
-  schema,
   transaction
 };
 
