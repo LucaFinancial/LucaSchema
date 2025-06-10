@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Schemas for the Luca Ledger application",
   "author": "Johnathan Aspinwall",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
   "license": "MIT",
   "type": "module",
   "homepage": "https://lucaledger.app",
@@ -46,13 +46,17 @@
     "LICENSE",
     "README.md"
   ],
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
+    "ajv-errors": "^1.0.1",
+    "ajv-keywords": "^3.5.2",
+  },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.4",
     "@babel/preset-env": "^7.24.4",
     "@eslint/js": "^9.1.1",
-    "ajv": "^8.12.0",
-    "ajv-formats": "^2.1.1",
     "babel-jest": "^29.7.0",
     "eslint": "^9.1.1",
     "eslint-config-prettier": "^9.1.0",
