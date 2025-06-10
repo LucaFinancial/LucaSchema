@@ -46,7 +46,6 @@
     "name",
     "description",
     "parentId",
-    "defaultCategoryId",
     "categoryType",
     "createdAt",
     "updatedAt"
