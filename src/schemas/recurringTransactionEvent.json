@@ -33,14 +33,6 @@
       "title": "Event Status",
       "enum": ["MODIFIED", "DELETED"],
       "description": "Status of the occurrence, indicating if it has been modified or logically deleted."
-    },
-    "if": {
-      "properties": { "status": { "const": "MODIFIED" } }
-    },
-    "then": {
-      "properties": {
-        "transactionId": { "type": "string" }
-      }
     }
   },
   "required": [
@@ -48,5 +40,19 @@
     "recurringTransactionId",
     "expectedDate",
     "status"
-  ]
+  ],
+  "if": {
+    "properties": {
+      "status": {
+        "const": "MODIFIED"
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "transactionId": {
+        "type": "string"
+      }
+    }
+  }
 }
