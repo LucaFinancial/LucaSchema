@@ -40,7 +40,6 @@
   },
   "required": [
     "id",
-    "transactionId",
     "recurringTransactionId",
     "expectedDate",
     "status",
@@ -48,10 +47,31 @@
     "updatedAt"
   ],
   "additionalProperties": false,
-  "if": {
-    "properties": { "status": { "const": "modified" } }
-  },
-  "then": {
-    "required": ["transactionId"]
-  }
+  "allOf": [
+    {
+      "if": {
+        "properties": { "status": { "const": "MODIFIED" } }
+      },
+      "then": {
+        "required": ["transactionId"],
+        "properties": {
+          "transactionId": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "status": { "const": "DELETED" } }
+      },
+      "then": {
+        "properties": {
+          "transactionId": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
 }

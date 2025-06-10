@@ -4,7 +4,6 @@ const SchemasEnum = Object.freeze({
   LUCASCHEMA: 'lucaSchema',
   RECURRING_TRANSACTION: 'recurringTransaction',
   RECURRING_TRANSACTION_EVENT: 'recurringTransactionEvent',
-  SCHEMA: 'schema',
   TRANSACTION: 'transaction'
 });
 
@@ -31,7 +30,7 @@ const CategoryTypeEnum = Object.freeze({
 const EntityTypeEnum = Object.freeze({
   ACCOUNT: 'ACCOUNT',
   RETAILER: 'RETAILER',
-  BUSINESS: 'BUSINESS',
+  SERVICE: 'SERVICE',
   INDIVIDUAL: 'INDIVIDUAL',
   UTILITY: 'UTILITY',
   GOVERNMENT: 'GOVERNMENT'
