@@ -4,7 +4,6 @@
   "title": "Common",
   "description": "Common properties for all schemas",
   "type": "object",
-  "additionalProperties": false,
   "required": ["id", "createdAt", "updatedAt"],
   "properties": {
     "id": {
