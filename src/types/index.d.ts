@@ -68,12 +68,12 @@ export interface RecurringTransaction {
 
 export interface RecurringTransactionEvent {
   id: string;
-  transactionId?: string | null;
+  createdAt: string;
+  updatedAt: string | null;
+  transactionId: string | null;
   recurringTransactionId: string;
   expectedDate: string;
   status: 'MODIFIED' | 'DELETED';
-  createdAt: string;
-  updatedAt: string | null;
 }
 
 export interface LucaSchema {

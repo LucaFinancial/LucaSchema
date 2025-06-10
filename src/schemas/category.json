@@ -4,74 +4,60 @@
   "title": "Category",
   "description": "Defines the schema for categories used to organize transactions within a ledger application. Categories can be default, modified, or custom, providing flexibility in categorization.",
   "type": "object",
+  "allOf": [
+    {
+      "$ref": "./common.json"
+    }
+  ],
   "properties": {
-    "id": {
-      "type": "string",
-      "description": "A unique identifier for the category."
-    },
     "name": {
       "type": "string",
+      "title": "Category Name",
       "description": "The name of the category."
     },
     "description": {
       "type": ["string", "null"],
+      "title": "Description",
       "description": "A description of the category, providing additional context. Can be null if not specified."
     },
     "parentId": {
       "type": ["string", "null"],
+      "title": "Parent Category ID",
+      "format": "uuid",
       "description": "The identifier of the parent category, if any. Null if the category is top-level."
     },
     "defaultCategoryId": {
       "type": ["string", "null"],
+      "title": "Default Category ID",
+      "format": "uuid",
       "description": "For custom categories, this indicates the default category from which this was derived. Required if categoryType is MODIFIED."
     },
     "categoryType": {
       "type": "string",
+      "title": "Category Type",
       "enum": ["DEFAULT", "MODIFIED", "CUSTOM"],
       "description": "The type of the category, indicating whether it is a default, modified, or custom category."
-    },
-    "createdAt": {
-      "type": "string",
-      "format": "date-time",
-      "description": "The date and time when the category was created, in ISO 8601 format."
-    },
-    "updatedAt": {
-      "type": ["string", "null"],
-      "format": "date-time",
-      "description": "The date and time when the category was last updated, in ISO 8601 format. Can be null if the category has never been updated."
     }
   },
   "required": [
-    "id",
     "name",
     "description",
     "parentId",
-    "categoryType",
-    "createdAt",
-    "updatedAt"
+    "defaultCategoryId",
+    "categoryType"
   ],
-  "additionalProperties": false,
-  "allOf": [
-    {
-      "if": {
-        "properties": { "categoryType": { "const": "MODIFIED" } }
-      },
-      "then": {
-        "required": ["defaultCategoryId"],
-        "properties": {
-          "defaultCategoryId": { "type": "string" }
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": { "categoryType": { "const": "CUSTOM" } }
-      },
-      "then": {
-        "properties": {
-          "defaultCategoryId": { "type": ["string", "null"] }
-        }
+  "if": {
+    "properties": {
+      "categoryType": {
+        "const": "MODIFIED"
       }
     }
-  ]
+  },
+  "then": {
+    "properties": {
+      "defaultCategoryId": {
+        "type": "string"
+      }
+    }
+  }
 }

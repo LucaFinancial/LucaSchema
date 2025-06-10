@@ -4,16 +4,16 @@
   "title": "Entity",
   "description": "Defines the schema for entities within the application, categorizing them into specific, predefined types such as account, retailer, business, individual, utility, and government. This schema includes basic details and timestamps for creation and updates.",
   "type": "object",
-  "additionalProperties": false,
+  "required": ["name", "description", "entityType", "entityStatus"],
+  "allOf": [
+    {
+      "$ref": "./common.json"
+    }
+  ],
   "properties": {
-    "id": {
-      "type": "string",
-      "title": "ID",
-      "description": "A unique identifier for the entity."
-    },
     "name": {
       "type": "string",
-      "title": "Name",
+      "title": "Entity Name",
       "description": "The name of the entity."
     },
     "description": {
@@ -23,7 +23,7 @@
     },
     "entityType": {
       "type": "string",
-      "title": "Type",
+      "title": "Entity Type",
       "enum": [
         "ACCOUNT",
         "RETAILER",
@@ -36,30 +36,9 @@
     },
     "entityStatus": {
       "type": "string",
-      "title": "Status",
+      "title": "Entity Status",
       "enum": ["ACTIVE", "INACTIVE", "SUSPENDED", "DELETED", "CLOSED"],
       "description": "The status of the entity, indicating whether it is active, inactive, suspended, or deleted. Controlled to specific predefined options for consistency and integrity."
-    },
-    "createdAt": {
-      "type": "string",
-      "title": "Created At",
-      "format": "date-time",
-      "description": "The date and time when the entity was created, in ISO 8601 format."
-    },
-    "updatedAt": {
-      "type": ["string", "null"],
-      "title": "Updated At",
-      "format": "date-time",
-      "description": "The date and time when the entity was last updated, in ISO 8601 format. This can be null if the entity has not been updated since creation."
     }
-  },
-  "required": [
-    "id",
-    "name",
-    "description",
-    "entityType",
-    "entityStatus",
-    "createdAt",
-    "updatedAt"
-  ]
+  }
 }

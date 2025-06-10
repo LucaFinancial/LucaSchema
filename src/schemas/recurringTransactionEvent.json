@@ -4,74 +4,55 @@
   "title": "Recurring Transaction Event",
   "description": "Manages occurrences of recurring transactions, including tracking their modifications or logical deletions. 'transactionId' is required when an occurrence is modified to link it to an actual transaction.",
   "type": "object",
+  "allOf": [
+    {
+      "$ref": "./common.json"
+    }
+  ],
   "properties": {
-    "id": {
-      "type": "string",
-      "description": "Unique identifier for the occurrence record."
-    },
     "transactionId": {
       "type": ["string", "null"],
+      "title": "Associated Transaction ID",
+      "format": "uuid",
       "description": "Identifier of the actual transaction, required if the occurrence is modified."
     },
     "recurringTransactionId": {
       "type": "string",
+      "title": "Recurring Transaction ID",
+      "format": "uuid",
       "description": "Identifier of the associated recurring transaction."
     },
     "expectedDate": {
       "type": "string",
+      "title": "Expected Date",
       "format": "date",
       "description": "The date when the occurrence is expected."
     },
     "status": {
       "type": "string",
+      "title": "Event Status",
       "enum": ["MODIFIED", "DELETED"],
       "description": "Status of the occurrence, indicating if it has been modified or logically deleted."
-    },
-    "createdAt": {
-      "type": "string",
-      "format": "date-time",
-      "description": "Timestamp of when the occurrence was created."
-    },
-    "updatedAt": {
-      "type": ["string", "null"],
-      "format": "date-time",
-      "description": "Timestamp of the last update to the occurrence. Nullable to accommodate occurrences that have not been updated."
     }
   },
   "required": [
-    "id",
+    "transactionId",
     "recurringTransactionId",
     "expectedDate",
-    "status",
-    "createdAt",
-    "updatedAt"
+    "status"
   ],
-  "additionalProperties": false,
-  "allOf": [
-    {
-      "if": {
-        "properties": { "status": { "const": "MODIFIED" } }
-      },
-      "then": {
-        "required": ["transactionId"],
-        "properties": {
-          "transactionId": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": { "status": { "const": "DELETED" } }
-      },
-      "then": {
-        "properties": {
-          "transactionId": {
-            "type": "null"
-          }
-        }
+  "if": {
+    "properties": {
+      "status": {
+        "const": "MODIFIED"
       }
     }
-  ]
+  },
+  "then": {
+    "properties": {
+      "transactionId": {
+        "type": "string"
+      }
+    }
+  }
 }
