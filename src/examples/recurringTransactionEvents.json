@@ -1,7 +1,7 @@
 [
   {
     "id": "rte-001",
-    "transactionId": null,
+    "transactionId": "tx-001",
     "recurringTransactionId": "rtx-001",
     "expectedDate": "2024-02-01",
     "status": "MODIFIED",
@@ -10,7 +10,7 @@
   },
   {
     "id": "rte-002",
-    "transactionId": "tx-002",
+    "transactionId": null,
     "recurringTransactionId": "rtx-002",
     "expectedDate": "2024-02-15",
     "status": "DELETED",
@@ -19,7 +19,7 @@
   },
   {
     "id": "rte-003",
-    "transactionId": null,
+    "transactionId": "tx-003",
     "recurringTransactionId": "rtx-003",
     "expectedDate": "2024-03-01",
     "status": "MODIFIED",
@@ -28,7 +28,7 @@
   },
   {
     "id": "rte-004",
-    "transactionId": null,
+    "transactionId": "tx-004",
     "recurringTransactionId": "rtx-004",
     "expectedDate": "2024-03-15",
     "status": "MODIFIED",
@@ -37,7 +37,7 @@
   },
   {
     "id": "rte-005",
-    "transactionId": "tx-005",
+    "transactionId": null,
     "recurringTransactionId": "rtx-005",
     "expectedDate": "2024-04-01",
     "status": "DELETED",
@@ -46,7 +46,7 @@
   },
   {
     "id": "rte-006",
-    "transactionId": null,
+    "transactionId": "tx-006",
     "recurringTransactionId": "rtx-006",
     "expectedDate": "2024-04-15",
     "status": "MODIFIED",
@@ -55,7 +55,7 @@
   },
   {
     "id": "rte-007",
-    "transactionId": null,
+    "transactionId": "tx-007",
     "recurringTransactionId": "rtx-007",
     "expectedDate": "2024-05-01",
     "status": "MODIFIED",
@@ -64,7 +64,7 @@
   },
   {
     "id": "rte-008",
-    "transactionId": "tx-008",
+    "transactionId": null,
     "recurringTransactionId": "rtx-008",
     "expectedDate": "2024-05-15",
     "status": "DELETED",
@@ -73,7 +73,7 @@
   },
   {
     "id": "rte-009",
-    "transactionId": null,
+    "transactionId": "tx-009",
     "recurringTransactionId": "rtx-009",
     "expectedDate": "2024-06-01",
     "status": "MODIFIED",
@@ -82,7 +82,7 @@
   },
   {
     "id": "rte-010",
-    "transactionId": "tx-010",
+    "transactionId": null,
     "recurringTransactionId": "rtx-010",
     "expectedDate": "2024-06-15",
     "status": "DELETED",

@@ -31,7 +31,7 @@
           "type": ["string", "null"],
           "title": "Default Category ID",
           "format": "uuid",
-          "description": "For custom categories, this indicates the default category from which this was derived. Required if categoryType is CUSTOM."
+          "description": "For custom categories, this indicates the default category from which this was derived. Required if categoryType is MODIFIED."
         },
         "categoryType": {
           "type": "string",

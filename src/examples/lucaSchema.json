@@ -1,9 +1,5 @@
 {
-  "schema": {
-    "id": "luca-schema",
-    "name": "Luca Schema",
-    "version": "1.2.4"
-  },
+  "schemaVersion": "2.0.0",
   "entities": [
     {
       "id": "ent-001",
