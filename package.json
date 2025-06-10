@@ -6,6 +6,7 @@
   "main": "dist/cjs/index.js",
   "license": "MIT",
   "type": "module",
+  "types": "./dist/cjs/index.d.ts",
   "homepage": "https://lucaledger.app",
   "repository": {
     "type": "git",
