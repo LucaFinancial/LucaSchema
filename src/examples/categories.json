@@ -1,6 +1,6 @@
 [
   {
-    "id": "cat-001",
+    "id": "00000000-0000-0000-0000-000000000001",
     "name": "Housing",
     "description": "Expenses related to housing, such as mortgage, rent, repairs, and furniture.",
     "parentId": null,
@@ -10,37 +10,37 @@
     "updatedAt": null
   },
   {
-    "id": "cat-002",
+    "id": "00000000-0000-0000-0000-000000000002",
     "name": "Mortgage/Rent",
     "description": "Payments for mortgage or rental of living space.",
-    "parentId": "cat-001",
+    "parentId": "00000000-0000-0000-0000-000000000001",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-003",
+    "id": "00000000-0000-0000-0000-000000000003",
     "name": "Home Maintenance",
     "description": "Costs for maintaining and repairing the home.",
-    "parentId": "cat-001",
+    "parentId": "00000000-0000-0000-0000-000000000001",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-004",
+    "id": "00000000-0000-0000-0000-000000000004",
     "name": "Furniture & Appliances",
     "description": "Purchasing furniture and appliances for the home.",
-    "parentId": "cat-001",
+    "parentId": "00000000-0000-0000-0000-000000000001",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-005",
+    "id": "00000000-0000-0000-0000-000000000005",
     "name": "Utilities",
     "description": "Monthly bills for essential services like electricity, water, and internet.",
     "parentId": null,
@@ -50,47 +50,47 @@
     "updatedAt": null
   },
   {
-    "id": "cat-006",
+    "id": "00000000-0000-0000-0000-000000000006",
     "name": "Electricity",
     "description": "Electricity bill payments.",
-    "parentId": "cat-005",
+    "parentId": "00000000-0000-0000-0000-000000000005",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-007",
+    "id": "00000000-0000-0000-0000-000000000007",
     "name": "Water",
     "description": "Water bill payments.",
-    "parentId": "cat-005",
+    "parentId": "00000000-0000-0000-0000-000000000005",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-008",
+    "id": "00000000-0000-0000-0000-000000000008",
     "name": "Gas",
     "description": "Gas bill payments.",
-    "parentId": "cat-005",
+    "parentId": "00000000-0000-0000-0000-000000000005",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-009",
+    "id": "00000000-0000-0000-0000-000000000009",
     "name": "Internet",
     "description": "Monthly payments for internet services.",
-    "parentId": "cat-005",
+    "parentId": "00000000-0000-0000-0000-000000000005",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-010",
+    "id": "00000000-0000-0000-0000-00000000000a",
     "name": "Transportation",
     "description": "Expenses for personal and public transport, including fuel, maintenance, and insurance.",
     "parentId": null,
@@ -100,37 +100,37 @@
     "updatedAt": null
   },
   {
-    "id": "cat-011",
+    "id": "00000000-0000-0000-0000-00000000000b",
     "name": "Fuel",
     "description": "Expenses for car fuel or charging.",
-    "parentId": "cat-010",
+    "parentId": "00000000-0000-0000-0000-00000000000a",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-012",
+    "id": "00000000-0000-0000-0000-00000000000c",
     "name": "Vehicle Maintenance",
     "description": "Costs for vehicle repairs and regular maintenance.",
-    "parentId": "cat-010",
+    "parentId": "00000000-0000-0000-0000-00000000000a",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-013",
+    "id": "00000000-0000-0000-0000-00000000000d",
     "name": "Insurance - Transportation",
     "description": "Insurance payments for vehicles.",
-    "parentId": "cat-010",
+    "parentId": "00000000-0000-0000-0000-00000000000a",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-014",
+    "id": "00000000-0000-0000-0000-00000000000e",
     "name": "Food",
     "description": "Money spent on groceries, dining out, and fast food.",
     "parentId": null,
@@ -140,37 +140,37 @@
     "updatedAt": null
   },
   {
-    "id": "cat-015",
+    "id": "00000000-0000-0000-0000-00000000000f",
     "name": "Groceries",
     "description": "Expenses for purchasing groceries.",
-    "parentId": "cat-014",
+    "parentId": "00000000-0000-0000-0000-00000000000e",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-016",
+    "id": "00000000-0000-0000-0000-000000000010",
     "name": "Dining Out",
     "description": "Expenses for eating at restaurants and cafes.",
-    "parentId": "cat-014",
+    "parentId": "00000000-0000-0000-0000-00000000000e",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-017",
+    "id": "00000000-0000-0000-0000-000000000011",
     "name": "Fast Food",
     "description": "Expenses for quick-service and fast-food dining.",
-    "parentId": "cat-014",
+    "parentId": "00000000-0000-0000-0000-00000000000e",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-018",
+    "id": "00000000-0000-0000-0000-000000000012",
     "name": "Healthcare",
     "description": "Medical expenses including doctor visits, medications, and health insurance.",
     "parentId": null,
@@ -180,37 +180,37 @@
     "updatedAt": null
   },
   {
-    "id": "cat-019",
+    "id": "00000000-0000-0000-0000-000000000013",
     "name": "Doctor Visits",
     "description": "Expenses for medical appointments and check-ups.",
-    "parentId": "cat-018",
+    "parentId": "00000000-0000-0000-0000-000000000012",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-020",
+    "id": "00000000-0000-0000-0000-000000000014",
     "name": "Medications",
     "description": "Costs for prescription and over-the-counter drugs.",
-    "parentId": "cat-018",
+    "parentId": "00000000-0000-0000-0000-000000000012",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-021",
+    "id": "00000000-0000-0000-0000-000000000015",
     "name": "Insurance - Healthcare",
     "description": "Health insurance payments.",
-    "parentId": "cat-018",
+    "parentId": "00000000-0000-0000-0000-000000000012",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-022",
+    "id": "00000000-0000-0000-0000-000000000016",
     "name": "Entertainment",
     "description": "Costs for leisure activities, hobbies, movies, and events.",
     "parentId": null,
@@ -220,37 +220,37 @@
     "updatedAt": null
   },
   {
-    "id": "cat-023",
+    "id": "00000000-0000-0000-0000-000000000017",
     "name": "Movies & Shows",
     "description": "Expenses for watching movies, theater, and shows.",
-    "parentId": "cat-022",
+    "parentId": "00000000-0000-0000-0000-000000000016",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-024",
+    "id": "00000000-0000-0000-0000-000000000018",
     "name": "Hobbies",
     "description": "Costs for hobbies and recreational activities.",
-    "parentId": "cat-022",
+    "parentId": "00000000-0000-0000-0000-000000000016",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-025",
+    "id": "00000000-0000-0000-0000-000000000019",
     "name": "Sports & Recreation",
     "description": "Expenses for participating in or attending sports and recreational activities.",
-    "parentId": "cat-022",
+    "parentId": "00000000-0000-0000-0000-000000000016",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-026",
+    "id": "00000000-0000-0000-0000-00000000001a",
     "name": "Education",
     "description": "Expenses for education, including tuition, books, and supplies.",
     "parentId": null,
@@ -260,37 +260,37 @@
     "updatedAt": null
   },
   {
-    "id": "cat-027",
+    "id": "00000000-0000-0000-0000-00000000001b",
     "name": "Tuition & Fees",
     "description": "Payments for educational tuition and related fees.",
-    "parentId": "cat-026",
+    "parentId": "00000000-0000-0000-0000-00000000001a",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-028",
+    "id": "00000000-0000-0000-0000-00000000001c",
     "name": "Books & Supplies",
     "description": "Costs for educational books, supplies, and materials.",
-    "parentId": "cat-026",
+    "parentId": "00000000-0000-0000-0000-00000000001a",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-029",
+    "id": "00000000-0000-0000-0000-00000000001d",
     "name": "Online Courses",
     "description": "Expenses for online educational courses and training.",
-    "parentId": "cat-026",
+    "parentId": "00000000-0000-0000-0000-00000000001a",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-030",
+    "id": "00000000-0000-0000-0000-00000000001e",
     "name": "Personal Care",
     "description": "Expenses for personal grooming, wellness, and fitness.",
     "parentId": null,
@@ -300,37 +300,37 @@
     "updatedAt": null
   },
   {
-    "id": "cat-031",
+    "id": "00000000-0000-0000-0000-00000000001f",
     "name": "Grooming & Cosmetics",
     "description": "Costs for personal grooming products and services.",
-    "parentId": "cat-030",
+    "parentId": "00000000-0000-0000-0000-00000000001e",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-032",
+    "id": "00000000-0000-0000-0000-000000000020",
     "name": "Wellness & Fitness",
     "description": "Expenses for fitness classes, gym memberships, and wellness activities.",
-    "parentId": "cat-030",
+    "parentId": "00000000-0000-0000-0000-00000000001e",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-033",
+    "id": "00000000-0000-0000-0000-000000000021",
     "name": "Clothing & Accessories",
     "description": "Purchasing clothes and related accessories.",
-    "parentId": "cat-030",
+    "parentId": "00000000-0000-0000-0000-00000000001e",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-034",
+    "id": "00000000-0000-0000-0000-000000000022",
     "name": "Transfer",
     "description": "Transfers between user's own accounts, including credit card payments.",
     "parentId": null,
@@ -340,7 +340,7 @@
     "updatedAt": null
   },
   {
-    "id": "cat-035",
+    "id": "00000000-0000-0000-0000-000000000023",
     "name": "Income",
     "description": "All forms of income, including salary, wages, and investment returns.",
     "parentId": null,
@@ -350,7 +350,7 @@
     "updatedAt": null
   },
   {
-    "id": "cat-036",
+    "id": "00000000-0000-0000-0000-000000000024",
     "name": "Travel",
     "description": "Expenses related to travel, including accommodations, transport, and activities.",
     "parentId": null,
@@ -360,37 +360,37 @@
     "updatedAt": null
   },
   {
-    "id": "cat-037",
+    "id": "00000000-0000-0000-0000-000000000025",
     "name": "Accommodations",
     "description": "Expenses for hotels, lodgings, and other forms of accommodation during travel.",
-    "parentId": "cat-036",
+    "parentId": "00000000-0000-0000-0000-000000000024",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-038",
+    "id": "00000000-0000-0000-0000-000000000026",
     "name": "Travel Fares",
     "description": "Costs for tickets and fares for various modes of travel such as flights, trains, and buses.",
-    "parentId": "cat-036",
+    "parentId": "00000000-0000-0000-0000-000000000024",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-039",
+    "id": "00000000-0000-0000-0000-000000000027",
     "name": "Travel Insurance",
     "description": "Insurance for travel-related incidents and emergencies.",
-    "parentId": "cat-036",
+    "parentId": "00000000-0000-0000-0000-000000000024",
     "defaultCategoryId": null,
     "categoryType": "DEFAULT",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-040",
+    "id": "00000000-0000-0000-0000-000000000028",
     "name": "Pet Care",
     "description": "Expenses related to the care of pets, including food, vet visits, and grooming.",
     "parentId": null,
@@ -400,47 +400,47 @@
     "updatedAt": null
   },
   {
-    "id": "cat-041",
+    "id": "00000000-0000-0000-0000-000000000029",
     "name": "Gym Membership",
     "description": "Monthly fees for gym or fitness club membership.",
-    "parentId": "cat-032",
-    "defaultCategoryId": "cat-032",
+    "parentId": "00000000-0000-0000-0000-000000000020",
+    "defaultCategoryId": "00000000-0000-0000-0000-000000000020",
     "categoryType": "MODIFIED",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-042",
+    "id": "00000000-0000-0000-0000-00000000002a",
     "name": "Gardening",
     "description": "Costs for garden maintenance and landscaping services.",
-    "parentId": "cat-001",
-    "defaultCategoryId": "cat-003",
+    "parentId": "00000000-0000-0000-0000-000000000001",
+    "defaultCategoryId": "00000000-0000-0000-0000-000000000003",
     "categoryType": "CUSTOM",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-043",
+    "id": "00000000-0000-0000-0000-00000000002b",
     "name": "Home Office Supplies",
     "description": "Purchases of supplies and equipment for a home office.",
-    "parentId": "cat-001",
-    "defaultCategoryId": "cat-004",
+    "parentId": "00000000-0000-0000-0000-000000000001",
+    "defaultCategoryId": "00000000-0000-0000-0000-000000000004",
     "categoryType": "MODIFIED",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-044",
+    "id": "00000000-0000-0000-0000-00000000002c",
     "name": "Professional Development",
     "description": "Expenses for career-related training, courses, and workshops.",
-    "parentId": "cat-026",
-    "defaultCategoryId": "cat-029",
+    "parentId": "00000000-0000-0000-0000-00000000001a",
+    "defaultCategoryId": "00000000-0000-0000-0000-00000000001d",
     "categoryType": "MODIFIED",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": null
   },
   {
-    "id": "cat-045",
+    "id": "00000000-0000-0000-0000-00000000002d",
     "name": "Technology Gadgets",
     "description": "Purchases of new tech gadgets and devices.",
     "parentId": null,
@@ -450,7 +450,7 @@
     "updatedAt": null
   },
   {
-    "id": "cat-046",
+    "id": "00000000-0000-0000-0000-00000000002e",
     "name": "Holiday Gifts",
     "description": "Expenses for buying gifts during holiday seasons.",
     "parentId": null,
@@ -460,7 +460,7 @@
     "updatedAt": null
   },
   {
-    "id": "cat-047",
+    "id": "00000000-0000-0000-0000-00000000002f",
     "name": "Charity Donations",
     "description": "Money given to charities or non-profit organizations.",
     "parentId": null,
