@@ -33,6 +33,7 @@ export interface Entity {
     | 'INDIVIDUAL'
     | 'UTILITY'
     | 'GOVERNMENT';
+  entityStatus: 'ACTIVE' | 'INACTIVE' | 'SUSPENDED' | 'DELETED' | 'CLOSED';
   createdAt: string;
   updatedAt: string | null;
 }
@@ -55,10 +56,12 @@ export interface RecurringTransaction {
   categoryId: string | null;
   amount: number;
   description: string;
-  frequency: 'DAILY' | 'WEEKLY' | 'MONTHLY' | 'QUARTERLY' | 'YEARLY';
-  startDate: string;
-  endDate: string | null;
-  isActive: boolean;
+  frequency: 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
+  interval: number;
+  occurrences: number | null;
+  startOn: string;
+  endOn: string | null;
+  recurringTransactionState: 'ACTIVE' | 'PAUSED' | 'COMPLETED' | 'CANCELLED';
   createdAt: string;
   updatedAt: string | null;
 }

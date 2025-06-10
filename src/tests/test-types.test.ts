@@ -39,6 +39,7 @@ test('Entity validation', () => {
     name: 'Test Entity',
     description: 'This is a test entity',
     entityType: 'INDIVIDUAL',
+    entityStatus: 'ACTIVE',
     createdAt: '2024-01-01T00:00:00Z',
     updatedAt: null
   };
@@ -53,6 +54,7 @@ test('Entity validation', () => {
     throw new Error('Entity schema not found in lucaValidator.');
   }
 });
+
 test('Category validation', () => {
   const category: Category = {
     id: 'cat-001',
@@ -84,12 +86,14 @@ test('RecurringTransaction validation', () => {
     categoryId: 'cat-001',
     amount: 50.0,
     description: 'Monthly subscription',
-    frequency: 'MONTHLY',
-    startDate: '2024-01-01',
-    endDate: null,
+    frequency: 'MONTH',
+    interval: 1,
+    occurrences: null,
+    startOn: '2024-01-01',
+    endOn: null,
+    recurringTransactionState: 'ACTIVE',
     createdAt: '2024-01-01T00:00:00Z',
-    updatedAt: null,
-    isActive: true
+    updatedAt: null
   };
 
   const validateRecurringTransaction = lucaValidator.getSchema(
@@ -104,10 +108,11 @@ test('RecurringTransaction validation', () => {
     throw new Error('Recurring Transaction schema not found in lucaValidator.');
   }
 });
+
 test('RecurringTransactionEvent validation', () => {
   const recurringTransactionEvent: RecurringTransactionEvent = {
     id: 'event-001',
-    transactionId: null,
+    transactionId: 'tx-001',
     recurringTransactionId: 'rec-001',
     expectedDate: '2024-01-15',
     status: 'MODIFIED',
@@ -131,9 +136,10 @@ test('RecurringTransactionEvent validation', () => {
     );
   }
 });
+
 test('LucaSchema validation', () => {
   const lucaSchema: LucaSchema = {
-    schemaVersion: '1.0.0',
+    schemaVersion: '2.0.0',
     entities: [],
     categories: [],
     transactions: [],
