@@ -10,10 +10,10 @@ import lucaValidator from '../lucaValidator.js';
 
 test('Transaction validation', () => {
   const transaction: Transaction = {
-    id: 'tx-001',
-    payorId: 'ent-001',
-    payeeId: 'ent-002',
-    categoryId: 'cat-001',
+    id: '123e4567-e89b-12d3-a456-426614174000',
+    payorId: '123e4567-e89b-12d3-a456-426614174001',
+    payeeId: '123e4567-e89b-12d3-a456-426614174002',
+    categoryId: '123e4567-e89b-12d3-a456-426614174003',
     amount: 100.5,
     date: '2024-01-01',
     description: 'Test transaction',
@@ -40,7 +40,7 @@ test('Transaction validation', () => {
 
 test('Entity validation', () => {
   const entity: Entity = {
-    id: 'ent-001',
+    id: '123e4567-e89b-12d3-a456-426614174001',
     name: 'Test Entity',
     description: 'This is a test entity',
     entityType: 'INDIVIDUAL',
@@ -64,7 +64,7 @@ test('Entity validation', () => {
 
 test('Category validation', () => {
   const category: Category = {
-    id: 'cat-001',
+    id: '123e4567-e89b-12d3-a456-426614174003',
     name: 'Test Category',
     description: 'This is a test category',
     parentId: null,
@@ -89,10 +89,10 @@ test('Category validation', () => {
 
 test('RecurringTransaction validation', () => {
   const recurringTransaction: RecurringTransaction = {
-    id: 'rec-001',
-    payorId: 'ent-001',
-    payeeId: 'ent-002',
-    categoryId: 'cat-001',
+    id: '123e4567-e89b-12d3-a456-426614174004',
+    payorId: '123e4567-e89b-12d3-a456-426614174001',
+    payeeId: '123e4567-e89b-12d3-a456-426614174002',
+    categoryId: '123e4567-e89b-12d3-a456-426614174003',
     amount: 50.0,
     description: 'Monthly subscription',
     frequency: 'MONTH',
@@ -125,9 +125,9 @@ test('RecurringTransaction validation', () => {
 
 test('RecurringTransactionEvent validation', () => {
   const recurringTransactionEvent: RecurringTransactionEvent = {
-    id: 'event-001',
-    transactionId: 'tx-001',
-    recurringTransactionId: 'rec-001',
+    id: '123e4567-e89b-12d3-a456-426614174005',
+    transactionId: '123e4567-e89b-12d3-a456-426614174000',
+    recurringTransactionId: '123e4567-e89b-12d3-a456-426614174004',
     expectedDate: '2024-01-15',
     status: 'MODIFIED',
     createdAt: '2024-01-01T00:00:00Z',

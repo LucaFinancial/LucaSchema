@@ -4,7 +4,6 @@
   "title": "Entity",
   "description": "Defines the schema for entities within the application, categorizing them into specific, predefined types such as account, retailer, business, individual, utility, and government. This schema includes basic details and timestamps for creation and updates.",
   "type": "object",
-  "additionalProperties": false,
   "required": ["name", "description", "entityType", "entityStatus"],
   "allOf": [
     {

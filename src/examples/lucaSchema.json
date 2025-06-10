@@ -2,7 +2,7 @@
   "schemaVersion": "2.0.0",
   "entities": [
     {
-      "id": "ent-001",
+      "id": "00000000-0000-0000-0000-000000000001",
       "name": "Main Street Bank",
       "description": "A local banking institution offering a range of financial services.",
       "entityType": "ACCOUNT",
@@ -11,7 +11,7 @@
       "updatedAt": null
     },
     {
-      "id": "ent-002",
+      "id": "00000000-0000-0000-0000-000000000002",
       "name": "John Doe",
       "description": "An individual customer with personal banking and loan services.",
       "entityType": "INDIVIDUAL",
@@ -20,7 +20,7 @@
       "updatedAt": null
     },
     {
-      "id": "ent-003",
+      "id": "00000000-0000-0000-0000-000000000003",
       "name": "City Water Department",
       "description": "Provides water utility services to the local area.",
       "entityType": "UTILITY",
@@ -31,10 +31,10 @@
   ],
   "transactions": [
     {
-      "id": "tx-001",
-      "payorId": "ent-001",
-      "payeeId": "ent-002",
-      "categoryId": "cat-003",
+      "id": "10000000-0000-0000-0000-000000000001",
+      "payorId": "00000000-0000-0000-0000-000000000001",
+      "payeeId": "00000000-0000-0000-0000-000000000002",
+      "categoryId": "20000000-0000-0000-0000-000000000003",
       "amount": 1200.0,
       "date": "2024-01-15",
       "description": "Monthly rent payment",
@@ -43,10 +43,10 @@
       "updatedAt": "2024-01-15T00:00:00Z"
     },
     {
-      "id": "tx-002",
-      "payorId": "ent-003",
-      "payeeId": "ent-004",
-      "categoryId": "cat-005",
+      "id": "10000000-0000-0000-0000-000000000002",
+      "payorId": "00000000-0000-0000-0000-000000000003",
+      "payeeId": "00000000-0000-0000-0000-000000000004",
+      "categoryId": "20000000-0000-0000-0000-000000000005",
       "amount": 60.0,
       "date": "2024-01-10",
       "description": "Internet bill payment",
@@ -55,10 +55,10 @@
       "updatedAt": "2024-01-10T00:00:00Z"
     },
     {
-      "id": "tx-003",
-      "payorId": "ent-005",
-      "payeeId": "ent-006",
-      "categoryId": "cat-007",
+      "id": "10000000-0000-0000-0000-000000000003",
+      "payorId": "00000000-0000-0000-0000-000000000005",
+      "payeeId": "00000000-0000-0000-0000-000000000006",
+      "categoryId": "20000000-0000-0000-0000-000000000007",
       "amount": 150.0,
       "date": "2024-01-20",
       "description": "Electricity bill payment",

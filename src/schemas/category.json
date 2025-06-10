@@ -4,7 +4,6 @@
   "title": "Category",
   "description": "Defines the schema for categories used to organize transactions within a ledger application. Categories can be default, modified, or custom, providing flexibility in categorization.",
   "type": "object",
-  "additionalProperties": false,
   "allOf": [
     {
       "$ref": "./common.json"

@@ -3,7 +3,6 @@
   "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/transaction.json",
   "title": "Transaction",
   "type": "object",
-  "additionalProperties": false,
   "allOf": [
     {
       "$ref": "./common.json"

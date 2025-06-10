@@ -4,7 +4,6 @@
   "title": "Recurring Transaction Event",
   "description": "Manages occurrences of recurring transactions, including tracking their modifications or logical deletions. 'transactionId' is required when an occurrence is modified to link it to an actual transaction.",
   "type": "object",
-  "additionalProperties": false,
   "allOf": [
     {
       "$ref": "./common.json"
@@ -46,6 +45,7 @@
     "properties": { "status": { "const": "MODIFIED" } }
   },
   "then": {
-    "transactionId": { "type": "string" }
+    "transactionId": { "type": "string" },
+    "required": ["transactionId"]
   }
 }

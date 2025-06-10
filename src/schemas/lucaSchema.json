@@ -4,7 +4,6 @@
   "title": "Luca Schema",
   "description": "Schema for the luca ledger",
   "type": "object",
-  "additionalProperties": false,
   "required": [
     "schemaVersion",
     "categories",

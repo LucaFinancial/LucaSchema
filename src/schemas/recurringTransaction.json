@@ -4,7 +4,6 @@
   "title": "Recurring Transaction",
   "description": "Defines recurring financial transactions within the application, including their scheduling, frequency, interval, and optional constraints like total occurrences or an end date.",
   "type": "object",
-  "additionalProperties": false,
   "allOf": [
     {
       "$ref": "./common.json"
