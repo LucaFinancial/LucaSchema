@@ -1,5 +1,6 @@
 {
   "schemaVersion": "2.0.0",
+  "categories": [],
   "entities": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
@@ -29,6 +30,8 @@
       "updatedAt": null
     }
   ],
+  "recurringTransactions": [],
+  "recurringTransactionEvents": [],
   "transactions": [
     {
       "id": "10000000-0000-0000-0000-000000000001",
