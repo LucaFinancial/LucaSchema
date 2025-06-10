@@ -31,7 +31,7 @@ const CategoryTypeEnum = Object.freeze({
 const EntityTypeEnum = Object.freeze({
   ACCOUNT: 'ACCOUNT',
   RETAILER: 'RETAILER',
-  BUSINESS: 'BUSINESS',
+  SERVICE: 'SERVICE',
   INDIVIDUAL: 'INDIVIDUAL',
   UTILITY: 'UTILITY',
   GOVERNMENT: 'GOVERNMENT'
