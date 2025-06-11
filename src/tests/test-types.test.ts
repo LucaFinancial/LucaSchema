@@ -6,7 +6,7 @@ import type {
   RecurringTransactionEvent,
   LucaSchema
 } from '../types/index.d.ts';
-import lucaValidator from '../lucaValidator.js';
+import lucaValidator from '../lucaValidator';
 
 test('Transaction validation', () => {
   const transaction: Transaction = {
