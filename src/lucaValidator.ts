@@ -16,7 +16,10 @@ Object.entries(schemas).forEach(([key, schema]) => {
   }
 });
 
-export type ValidateFunction<T> = (data: unknown) => data is T;
+export interface ValidateFunction<T> {
+  (data: unknown): data is T;
+  errors: any[] | null;
+}
 
 export interface LucaValidator {
   getSchema<T>(key: string): ValidateFunction<T> | undefined;
