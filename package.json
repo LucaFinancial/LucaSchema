@@ -28,15 +28,17 @@
     ]
   },
   "scripts": {
-    "build": "yarn && yarn clean && node scripts/build.mjs && babel src --out-dir dist/cjs --source-maps --ignore 'src/examples/**','src/tests/**'",
+    "build": "yarn && yarn clean && tsc && node scripts/build.mjs && babel src --out-dir dist/cjs --source-maps --ignore 'src/examples/**','src/tests/**'",
     "clean": "rimraf dist",
     "lint": "prettier --check . && eslint .",
-    "test": "jest"
+    "test": "jest",
+    "type-check": "tsc --noEmit"
   },
   "exports": {
     ".": {
       "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/cjs/index.d.ts"
     }
   },
   "files": [

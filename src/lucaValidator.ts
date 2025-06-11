@@ -1,5 +1,6 @@
 import Ajv2020 from 'ajv/dist/2020';
 import addFormats from 'ajv-formats';
+import { JSONSchemaType } from 'ajv';
 
 import schemas from './schemas';
 
@@ -15,4 +16,12 @@ Object.entries(schemas).forEach(([key, schema]) => {
   }
 });
 
-export default lucaValidator;
+export type ValidateFunction<T> = (data: unknown) => data is T;
+
+export interface LucaValidator {
+  getSchema<T>(key: string): ValidateFunction<T> | undefined;
+  validate<T>(schema: JSONSchemaType<T>, data: unknown): data is T;
+  errors: any[] | null;
+}
+
+export default lucaValidator as LucaValidator; 

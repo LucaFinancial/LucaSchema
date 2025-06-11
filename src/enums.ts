@@ -1,4 +1,15 @@
-const SchemasEnum = Object.freeze({
+import {
+  SchemaType,
+  TransactionState,
+  CategoryType,
+  EntityType,
+  EntityStatus,
+  RecurringTransactionFrequency,
+  RecurringTransactionState,
+  RecurringTransactionEventStatus
+} from './types/enums';
+
+const SchemasEnum: Record<string, SchemaType> = Object.freeze({
   CATEGORY: 'category',
   ENTITY: 'entity',
   LUCASCHEMA: 'lucaSchema',
@@ -7,7 +18,7 @@ const SchemasEnum = Object.freeze({
   TRANSACTION: 'transaction'
 });
 
-const TransactionStateEnum = Object.freeze({
+const TransactionStateEnum: Record<string, TransactionState> = Object.freeze({
   PLANNED: 'PLANNED',
   SCHEDULED: 'SCHEDULED',
   PENDING: 'PENDING',
@@ -21,13 +32,13 @@ const TransactionStateEnum = Object.freeze({
   DELETED: 'DELETED'
 });
 
-const CategoryTypeEnum = Object.freeze({
+const CategoryTypeEnum: Record<string, CategoryType> = Object.freeze({
   DEFAULT: 'DEFAULT',
   MODIFIED: 'MODIFIED',
   CUSTOM: 'CUSTOM'
 });
 
-const EntityTypeEnum = Object.freeze({
+const EntityTypeEnum: Record<string, EntityType> = Object.freeze({
   ACCOUNT: 'ACCOUNT',
   RETAILER: 'RETAILER',
   SERVICE: 'SERVICE',
@@ -36,7 +47,7 @@ const EntityTypeEnum = Object.freeze({
   GOVERNMENT: 'GOVERNMENT'
 });
 
-const EntityStatusEnum = Object.freeze({
+const EntityStatusEnum: Record<string, EntityStatus> = Object.freeze({
   ACTIVE: 'ACTIVE',
   INACTIVE: 'INACTIVE',
   SUSPENDED: 'SUSPENDED',
@@ -44,21 +55,21 @@ const EntityStatusEnum = Object.freeze({
   CLOSED: 'CLOSED'
 });
 
-const RecurringTransactionFrequencyEnum = Object.freeze({
+const RecurringTransactionFrequencyEnum: Record<string, RecurringTransactionFrequency> = Object.freeze({
   DAY: 'DAY',
   WEEK: 'WEEK',
   MONTH: 'MONTH',
   YEAR: 'YEAR'
 });
 
-const RecurringTransactionStateEnum = Object.freeze({
+const RecurringTransactionStateEnum: Record<string, RecurringTransactionState> = Object.freeze({
   ACTIVE: 'ACTIVE',
   PAUSED: 'PAUSED',
   COMPLETED: 'COMPLETED',
   CANCELLED: 'CANCELLED'
 });
 
-const RecurringTransactionEventStatusEnum = Object.freeze({
+const RecurringTransactionEventStatusEnum: Record<string, RecurringTransactionEventStatus> = Object.freeze({
   MODIFIED: 'MODIFIED',
   DELETED: 'DELETED'
 });
@@ -72,6 +83,6 @@ const enums = {
   RecurringTransactionEventStatusEnum,
   SchemasEnum,
   TransactionStateEnum
-};
+} as const;
 
-export default enums;
+export default enums; 
