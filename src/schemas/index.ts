@@ -1,3 +1,4 @@
+import { AnySchema } from 'ajv';
 import category from './category.json';
 import common from './common.json';
 import entity from './entity.json';
@@ -6,7 +7,17 @@ import recurringTransaction from './recurringTransaction.json';
 import recurringTransactionEvent from './recurringTransactionEvent.json';
 import transaction from './transaction.json';
 
-const schemas = {
+export interface Schemas {
+  category: AnySchema;
+  common: AnySchema;
+  entity: AnySchema;
+  lucaSchema: AnySchema;
+  recurringTransaction: AnySchema;
+  recurringTransactionEvent: AnySchema;
+  transaction: AnySchema;
+}
+
+const schemas: Schemas = {
   category,
   common,
   entity,
@@ -16,4 +27,4 @@ const schemas = {
   transaction
 };
 
-export default schemas;
+export default schemas; 
