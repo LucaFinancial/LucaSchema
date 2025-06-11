@@ -28,22 +28,22 @@
       "format": "date",
       "description": "The date when the occurrence is expected."
     },
-    "status": {
+    "eventState": {
       "type": "string",
-      "title": "Event Status",
+      "title": "Event State",
       "enum": ["MODIFIED", "DELETED"],
-      "description": "Status of the occurrence, indicating if it has been modified or logically deleted."
+      "description": "State of the occurrence, indicating if it has been modified or logically deleted."
     }
   },
   "required": [
     "transactionId",
     "recurringTransactionId",
     "expectedDate",
-    "status"
+    "eventState"
   ],
   "if": {
     "properties": {
-      "status": {
+      "eventState": {
         "const": "MODIFIED"
       }
     }
