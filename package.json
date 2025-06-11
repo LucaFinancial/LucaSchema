@@ -1,6 +1,6 @@
 {
   "name": "@luca-financial/luca-schema",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Schemas for the Luca Ledger application",
   "author": "Johnathan Aspinwall",
   "main": "dist/cjs/index.js",
@@ -31,8 +31,7 @@
     "build": "yarn && yarn clean && node scripts/build.mjs && babel src --out-dir dist/cjs --source-maps --ignore 'src/examples/**','src/tests/**'",
     "clean": "rimraf dist",
     "lint": "prettier --check . && eslint .",
-    "publish-beta": "yarn && yarn build && yarn publish --tag beta --access public",
-    "test": "yarn build && jest"
+    "test": "jest"
   },
   "exports": {
     ".": {
