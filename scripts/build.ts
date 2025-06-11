@@ -1,11 +1,11 @@
-import { mkdir, cp, writeFile, copyFile } from 'fs/promises';
-import { fileURLToPath } from 'url';
+import { mkdir, cp, writeFile } from 'fs/promises';
 import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 
-async function build() {
+async function build(): Promise<void> {
   console.log('🏗️  Building LucaSchema...');
 
   try {
@@ -20,23 +20,11 @@ async function build() {
       recursive: true
     });
 
-    // Copy TypeScript definitions to both
-    await copyFile(
-      join(root, 'src/types/index.d.ts'),
-      join(root, 'dist/cjs/index.d.ts')
-    );
-    await copyFile(
-      join(root, 'src/types/index.d.ts'),
-      join(root, 'dist/esm/index.d.ts')
-    );
-
-    // Copy source files to ESM
-    await copyFile(
-      join(root, 'src/lucaValidator.js'),
-      join(root, 'dist/esm/lucaValidator.js')
-    );
-    await copyFile(join(root, 'src/enums.js'), join(root, 'dist/esm/enums.js'));
-    await copyFile(join(root, 'src/index.js'), join(root, 'dist/esm/index.js'));
+    // Copy TypeScript definitions
+    await cp(join(root, 'dist/cjs'), join(root, 'dist/esm'), {
+      recursive: true,
+      filter: (src: string) => src.endsWith('.d.ts')
+    });
 
     // Create package.json files
     await writeFile(
@@ -56,4 +44,4 @@ async function build() {
   }
 }
 
-build();
+build(); 
