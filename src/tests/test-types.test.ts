@@ -129,7 +129,7 @@ test('RecurringTransactionEvent validation', () => {
     transactionId: '123e4567-e89b-12d3-a456-426614174000',
     recurringTransactionId: '123e4567-e89b-12d3-a456-426614174004',
     expectedDate: '2024-01-15',
-    status: 'MODIFIED',
+    eventState: 'MODIFIED',
     createdAt: '2024-01-01T00:00:00Z',
     updatedAt: null
   };

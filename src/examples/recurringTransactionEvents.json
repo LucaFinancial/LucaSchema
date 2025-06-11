@@ -4,7 +4,7 @@
     "transactionId": "10000000-0000-0000-0000-000000000001",
     "recurringTransactionId": "40000000-0000-0000-0000-000000000001",
     "expectedDate": "2024-02-01",
-    "status": "MODIFIED",
+    "eventState": "MODIFIED",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": "2024-01-15T00:00:00Z"
   },
@@ -13,7 +13,7 @@
     "transactionId": null,
     "recurringTransactionId": "40000000-0000-0000-0000-000000000002",
     "expectedDate": "2024-02-15",
-    "status": "DELETED",
+    "eventState": "DELETED",
     "createdAt": "2024-01-10T00:00:00Z",
     "updatedAt": "2024-01-20T00:00:00Z"
   },
@@ -22,7 +22,7 @@
     "transactionId": "10000000-0000-0000-0000-000000000003",
     "recurringTransactionId": "40000000-0000-0000-0000-000000000003",
     "expectedDate": "2024-03-01",
-    "status": "MODIFIED",
+    "eventState": "MODIFIED",
     "createdAt": "2024-01-05T00:00:00Z",
     "updatedAt": "2024-01-25T00:00:00Z"
   },
@@ -31,7 +31,7 @@
     "transactionId": "10000000-0000-0000-0000-000000000004",
     "recurringTransactionId": "40000000-0000-0000-0000-000000000004",
     "expectedDate": "2024-03-15",
-    "status": "MODIFIED",
+    "eventState": "MODIFIED",
     "createdAt": "2024-01-15T00:00:00Z",
     "updatedAt": "2024-01-30T00:00:00Z"
   },
@@ -40,7 +40,7 @@
     "transactionId": null,
     "recurringTransactionId": "40000000-0000-0000-0000-000000000005",
     "expectedDate": "2024-04-01",
-    "status": "DELETED",
+    "eventState": "DELETED",
     "createdAt": "2024-01-20T00:00:00Z",
     "updatedAt": "2024-02-10T00:00:00Z"
   },
@@ -49,7 +49,7 @@
     "transactionId": "10000000-0000-0000-0000-000000000006",
     "recurringTransactionId": "40000000-0000-0000-0000-000000000006",
     "expectedDate": "2024-04-15",
-    "status": "MODIFIED",
+    "eventState": "MODIFIED",
     "createdAt": "2024-02-01T00:00:00Z",
     "updatedAt": "2024-02-15T00:00:00Z"
   },
@@ -58,7 +58,7 @@
     "transactionId": "10000000-0000-0000-0000-000000000007",
     "recurringTransactionId": "40000000-0000-0000-0000-000000000007",
     "expectedDate": "2024-05-01",
-    "status": "MODIFIED",
+    "eventState": "MODIFIED",
     "createdAt": "2024-02-05T00:00:00Z",
     "updatedAt": "2024-02-20T00:00:00Z"
   },
@@ -67,7 +67,7 @@
     "transactionId": null,
     "recurringTransactionId": "40000000-0000-0000-0000-000000000008",
     "expectedDate": "2024-05-15",
-    "status": "DELETED",
+    "eventState": "DELETED",
     "createdAt": "2024-02-10T00:00:00Z",
     "updatedAt": "2024-02-25T00:00:00Z"
   },
@@ -76,7 +76,7 @@
     "transactionId": "10000000-0000-0000-0000-000000000009",
     "recurringTransactionId": "40000000-0000-0000-0000-000000000009",
     "expectedDate": "2024-06-01",
-    "status": "MODIFIED",
+    "eventState": "MODIFIED",
     "createdAt": "2024-02-15T00:00:00Z",
     "updatedAt": "2024-03-01T00:00:00Z"
   },
@@ -85,7 +85,7 @@
     "transactionId": null,
     "recurringTransactionId": "40000000-0000-0000-0000-000000000010",
     "expectedDate": "2024-06-15",
-    "status": "DELETED",
+    "eventState": "DELETED",
     "createdAt": "2024-02-20T00:00:00Z",
     "updatedAt": "2024-03-05T00:00:00Z"
   }

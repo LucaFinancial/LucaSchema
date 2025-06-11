@@ -73,7 +73,7 @@ export interface RecurringTransactionEvent {
   transactionId: string | null;
   recurringTransactionId: string;
   expectedDate: string;
-  status: 'MODIFIED' | 'DELETED';
+  eventState: 'MODIFIED' | 'DELETED';
 }
 
 export interface LucaSchema {
