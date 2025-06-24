@@ -1,0 +1,34 @@
+# Source files
+src/
+scripts/
+
+# Test files
+tests/
+coverage/
+*.test.ts
+*.spec.ts
+
+# Development files
+.github/
+.husky/
+.git/
+.gitignore
+.DS_Store
+.editorconfig
+.eslintrc*
+.prettierrc*
+.babelrc
+jest.config.js
+tsconfig.json
+
+# Build files
+dist/cjs/
+dist/esm/
+
+# Documentation
+CHANGELOG.md
+
+# Dependencies
+node_modules/
+yarn.lock
+package-lock.json 
