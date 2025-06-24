@@ -37,6 +37,11 @@ const transactionState = enums.TransactionStateEnum.COMPLETED;
 - `entity` - Financial entities
 - `lucaSchema` - Complete schema structure
 
+### More to come
+
+- `account` (derives from entity)
+- `savingsAccount` (derives from account)
+
 ## Development
 
 ```bash
