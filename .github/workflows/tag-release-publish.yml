@@ -33,7 +33,7 @@ jobs:
       - name: Check if tag already exists
         run: |
           if git rev-parse ${{ steps.get_version.outputs.version }} >/dev/null 2>&1; then
-            echo "Tag ${{ steps.get_version.outputs.version }} already exists. Did you forget to bump the version in package.json?"
+            echo "::error::Tag ${{ steps.get_version.outputs.version }} already exists. Did you forget to bump the version in package.json?"
             exit 1
           fi
 
@@ -58,6 +58,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to npm
-        run: yarn npm publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
