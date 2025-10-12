@@ -26,7 +26,7 @@ const transactionData = {
   payorId: '123e4567-e89b-12d3-a456-426614174001',
   payeeId: '123e4567-e89b-12d3-a456-426614174002',
   categoryId: '123e4567-e89b-12d3-a456-426614174003',
-  amount: 10050,
+  amount: dollarsToMinorUnits(100.5), // 10050 cents
   date: '2024-01-01',
   description: 'Test transaction',
   transactionState: enums.TransactionStateEnum.COMPLETED,
@@ -64,7 +64,7 @@ const transaction = {
   payorId: string;
   payeeId: string;
   categoryId: string | null;
-  amount: number;
+  amount: number; // Amount in cents (e.g., 10050 for $100.50)
   date: string;
   description: string;
   transactionState: TransactionState;
@@ -83,7 +83,7 @@ const recurringTransaction = {
   payorId: string;
   payeeId: string;
   categoryId: string | null;
-  amount: number;
+  amount: number; // Amount in cents (e.g., 5000 for $50.00)
   description: string;
   frequency: 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
   interval: number;
