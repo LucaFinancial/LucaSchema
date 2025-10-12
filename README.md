@@ -115,11 +115,6 @@ const category = {
 };
 ```
 
-### More to come
-
-- `account` (derives from entity)
-- `savingsAccount` (derives from account)
-
 ## Development
 
 ```bash
