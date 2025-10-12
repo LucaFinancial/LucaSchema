@@ -1,4 +1,4 @@
-import { lucaValidator, enums, schemas } from '../';
+import { lucaValidator, enums, schemas } from '../index';
 
 test('exports lucaValidator', () => {
   expect(lucaValidator).toBeDefined();
