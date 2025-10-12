@@ -74,7 +74,7 @@ export const createTestTransaction = (overrides = {}): Transaction => ({
   payorId: 'test-payor',
   payeeId: 'test-payee',
   categoryId: null,
-  amount: 100,
+  amount: 10000,
   date: '2024-01-01',
   description: 'Test transaction',
   transactionState: 'COMPLETED',
