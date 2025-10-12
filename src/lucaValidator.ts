@@ -61,11 +61,9 @@ addFormats(lucaValidator);
 // Validate and add schemas
 Object.entries(schemas).forEach(([key, schema]) => {
   if (!lucaValidator.validateSchema(schema as AnySchema)) {
-    console.error(`Invalid schema: ${key}`);
-    console.error(lucaValidator.errors);
-  } else {
-    lucaValidator.addSchema(schema as AnySchema, key);
+    throw new Error(`Invalid schema: ${key}`);
   }
+  lucaValidator.addSchema(schema as AnySchema, key);
 });
 
 export default lucaValidator as LucaValidator;
