@@ -55,18 +55,48 @@ export interface LucaValidator {
   errors: ValidationError[] | null;
 }
 
-const lucaValidator = new Ajv2020();
-addFormats(lucaValidator);
+const ajvInstance = new Ajv2020();
+addFormats(ajvInstance);
 
 // Validate and add schemas
 Object.entries(schemas).forEach(([key, schema]) => {
-  if (!lucaValidator.validateSchema(schema as AnySchema)) {
+  if (!ajvInstance.validateSchema(schema as AnySchema)) {
     throw new Error(`Invalid schema: ${key}`);
   }
-  lucaValidator.addSchema(schema as AnySchema, key);
+  ajvInstance.addSchema(schema as AnySchema, key);
 });
 
-export default lucaValidator as LucaValidator;
+// Create the LucaValidator implementation
+const lucaValidator: LucaValidator = {
+  getSchema<T>(key: keyof typeof schemas): ValidateFunction<T> | undefined {
+    const validate = ajvInstance.getSchema(key);
+    if (!validate) return undefined;
+
+    // Wrap AJV validator to match our interface
+    const wrappedValidator = (data: unknown): data is T => {
+      const result = validate(data);
+      const isValid = typeof result === 'boolean' ? result : true; // Handle sync validation
+      (wrappedValidator as any).errors = validate.errors as
+        | ValidationError[]
+        | null;
+      return isValid;
+    };
+
+    (wrappedValidator as any).errors = null;
+    return wrappedValidator as ValidateFunction<T>;
+  },
+
+  validate<T>(schema: AnySchema, data: unknown): data is T {
+    const result = ajvInstance.validate(schema, data);
+    const isValid = typeof result === 'boolean' ? result : true; // Handle sync validation
+    this.errors = ajvInstance.errors as ValidationError[] | null;
+    return isValid;
+  },
+
+  errors: null
+};
+
+export default lucaValidator;
 
 // Add test utilities
 export const createTestTransaction = (overrides = {}): Transaction => ({
