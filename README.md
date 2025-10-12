@@ -1,6 +1,6 @@
 # LucaSchema
 
-Schema validation library for the Luca Ledger application. Provides type-safe validation for financial transactions, entities, and related data structures.
+Schema validation library for the Luca Ledger application. Provides type-safe validation for financial transactions, entities, and related data structures. Supports TypeScript.
 
 ## Installation
 
@@ -11,7 +11,7 @@ npm install @luca-financial/luca-schema
 ## Usage
 
 ```typescript
-import { lucaValidator, enums } from '@luca-financial/luca-schema';
+import { lucaValidator, enums, schemas } from '@luca-financial/luca-schema';
 
 // Validate a transaction
 const validateTransaction = lucaValidator.getSchema('transaction');
@@ -34,8 +34,11 @@ if (!isValid) {
   console.error('Validation errors:', validateTransaction.errors);
 }
 
-// Validate against a specific schema
-const isValid = lucaValidator.validate(schema, data);
+// Alternative: Use schemas directly with the validate method
+const isValidDirect = lucaValidator.validate(
+  schemas.transaction,
+  transactionData
+);
 ```
 
 ## Available Schemas
@@ -110,6 +113,22 @@ const category = {
   parentId: string | null;
   defaultCategoryId: string | null;
   categoryType: 'DEFAULT' | 'MODIFIED' | 'CUSTOM';
+  createdAt: string;
+  updatedAt: string | null;
+};
+```
+
+### RecurringTransactionEvent
+
+Validates events that track changes to recurring transactions.
+
+```typescript
+const recurringTransactionEvent = {
+  id: string;
+  transactionId: string;
+  recurringTransactionId: string;
+  expectedDate: string;
+  eventState: 'MODIFIED' | 'DELETED';
   createdAt: string;
   updatedAt: string | null;
 };
