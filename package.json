@@ -88,8 +88,7 @@
     "dist/",
     "LICENSE",
     "README.md",
-    "CHANGELOG.md",
-    "SECURITY.md"
+    "CHANGELOG.md"
   ],
   "dependencies": {
     "ajv": "^8.12.0",
