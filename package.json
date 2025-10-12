@@ -56,7 +56,7 @@
     }
   },
   "scripts": {
-    "build": "yarn && yarn clean && tsc && node --loader ts-node/esm scripts/build.ts && babel src --out-dir dist/cjs --source-maps --ignore 'src/examples/**','src/tests/**'",
+    "build": "yarn && yarn clean && tsc && node scripts/build.js && babel src --out-dir dist/cjs --source-maps --ignore 'src/examples/**','src/tests/**'",
     "clean": "rimraf dist coverage",
     "lint": "prettier --check . && eslint .",
     "lint:fix": "prettier --write . && eslint . --fix",
@@ -64,7 +64,6 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "type-check": "tsc --noEmit",
-    "prepare": "husky install",
     "precommit": "lint-staged",
     "validate": "yarn type-check && yarn lint && yarn test",
     "prepublishOnly": "yarn validate && yarn build"
