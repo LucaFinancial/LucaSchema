@@ -14,4 +14,4 @@ test('examples are valid categories', () => {
     if (!valid) console.log(validateCategory.errors);
     expect(valid).toBe(true);
   }
-}); 
+});

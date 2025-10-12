@@ -41,6 +41,7 @@ const isValid = lucaValidator.validate(schema, data);
 ## Available Schemas
 
 ### Transaction
+
 Validates financial transactions with properties like amount, date, and state.
 
 ```typescript
@@ -59,6 +60,7 @@ const transaction = {
 ```
 
 ### RecurringTransaction
+
 Validates recurring transaction templates with frequency and interval settings.
 
 ```typescript
@@ -81,6 +83,7 @@ const recurringTransaction = {
 ```
 
 ### Entity
+
 Validates financial entities like accounts, retailers, or individuals.
 
 ```typescript
@@ -96,6 +99,7 @@ const entity = {
 ```
 
 ### Category
+
 Validates transaction categories with optional parent relationships.
 
 ```typescript

@@ -10,7 +10,7 @@ test('validate returns false for invalid data', () => {
   const transaction = createTestTransaction();
   const invalidTransaction = { ...transaction, amount: 'invalid' };
   const schema = lucaValidator.getSchema('transaction');
-  
+
   if (!schema) {
     throw new Error('Transaction schema not found');
   }
@@ -24,7 +24,7 @@ test('validate returns false for invalid data', () => {
 test('validate returns true for valid data', () => {
   const transaction = createTestTransaction();
   const schema = lucaValidator.getSchema('transaction');
-  
+
   if (!schema) {
     throw new Error('Transaction schema not found');
   }
@@ -38,7 +38,7 @@ test('validate handles missing required fields', () => {
   const transaction = createTestTransaction();
   const invalidTransaction = { ...transaction };
   delete (invalidTransaction as any).amount;
-  
+
   const schema = lucaValidator.getSchema('transaction');
   if (!schema) {
     throw new Error('Transaction schema not found');
@@ -52,11 +52,11 @@ test('validate handles missing required fields', () => {
 
 test('validate handles invalid enum values', () => {
   const transaction = createTestTransaction();
-  const invalidTransaction = { 
-    ...transaction, 
-    transactionState: 'INVALID_STATE' 
+  const invalidTransaction = {
+    ...transaction,
+    transactionState: 'INVALID_STATE'
   };
-  
+
   const schema = lucaValidator.getSchema('transaction');
   if (!schema) {
     throw new Error('Transaction schema not found');
@@ -70,11 +70,11 @@ test('validate handles invalid enum values', () => {
 
 test('validate handles invalid date format', () => {
   const transaction = createTestTransaction();
-  const invalidTransaction = { 
-    ...transaction, 
-    date: 'invalid-date' 
+  const invalidTransaction = {
+    ...transaction,
+    date: 'invalid-date'
   };
-  
+
   const schema = lucaValidator.getSchema('transaction');
   if (!schema) {
     throw new Error('Transaction schema not found');
@@ -88,11 +88,11 @@ test('validate handles invalid date format', () => {
 
 test('validate handles invalid UUID format', () => {
   const transaction = createTestTransaction();
-  const invalidTransaction = { 
-    ...transaction, 
-    id: 'invalid-uuid' 
+  const invalidTransaction = {
+    ...transaction,
+    id: 'invalid-uuid'
   };
-  
+
   const schema = lucaValidator.getSchema('transaction');
   if (!schema) {
     throw new Error('Transaction schema not found');
@@ -102,4 +102,4 @@ test('validate handles invalid UUID format', () => {
   expect(isValid).toBe(false);
   expect(schema.errors).toBeDefined();
   expect(schema.errors?.some(error => error.keyword === 'format')).toBe(true);
-}); 
+});

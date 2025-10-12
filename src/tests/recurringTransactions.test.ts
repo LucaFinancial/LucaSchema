@@ -2,7 +2,8 @@ import exampleData from '../examples/recurringTransactions.json';
 import { lucaValidator } from '../';
 import type { RecurringTransaction } from '../types';
 
-const validateRecurringTransaction = lucaValidator.getSchema<RecurringTransaction>('recurringTransaction');
+const validateRecurringTransaction =
+  lucaValidator.getSchema<RecurringTransaction>('recurringTransaction');
 
 test('examples are valid recurring transactions', () => {
   if (!validateRecurringTransaction) {
@@ -14,4 +15,4 @@ test('examples are valid recurring transactions', () => {
     if (!valid) console.log(validateRecurringTransaction.errors);
     expect(valid).toBe(true);
   }
-}); 
+});

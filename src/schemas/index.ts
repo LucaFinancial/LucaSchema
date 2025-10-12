@@ -27,4 +27,4 @@ const schemas: Schemas = {
   transaction
 };
 
-export default schemas; 
+export default schemas;

@@ -44,4 +44,4 @@ async function build(): Promise<void> {
   }
 }
 
-build(); 
+build();

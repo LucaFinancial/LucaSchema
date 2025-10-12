@@ -117,4 +117,4 @@ test('createTestCategories creates array of categories', () => {
       name: expect.any(String)
     });
   });
-}); 
+});
