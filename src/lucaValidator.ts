@@ -3,7 +3,7 @@ import addFormats from 'ajv-formats';
 import { AnySchema, ErrorObject } from 'ajv';
 
 import schemas from './schemas';
-import type { Transaction } from './types/index.d.ts';
+import type { Transaction } from './types';
 
 /**
  * Schema validation errors

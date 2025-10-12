@@ -1,24 +1,45 @@
-import {
-  SchemaType,
-  TransactionState,
-  CategoryType,
+// Runtime enums for backward compatibility
+import type {
   EntityType,
   EntityStatus,
+  TransactionState,
+  CategoryType,
   RecurringTransactionFrequency,
   RecurringTransactionState,
-  RecurringTransactionEventStatus
-} from './types/enums';
+  RecurringTransactionEventStatus,
+  SchemaType
+} from './types';
 
-const SchemasEnum: Record<string, SchemaType> = Object.freeze({
-  CATEGORY: 'category',
-  ENTITY: 'entity',
-  LUCASCHEMA: 'lucaSchema',
-  RECURRING_TRANSACTION: 'recurringTransaction',
-  RECURRING_TRANSACTION_EVENT: 'recurringTransactionEvent',
-  TRANSACTION: 'transaction'
-});
+/**
+ * @deprecated Use EntityType string literals directly instead of EntityTypeEnum
+ * @example
+ * // Instead of: enums.EntityTypeEnum.ACCOUNT
+ * // Use: 'ACCOUNT' or import { EntityType } from '@luca-financial/luca-schema/types'
+ */
+export const EntityTypeEnum = {
+  ACCOUNT: 'ACCOUNT',
+  RETAILER: 'RETAILER',
+  SERVICE: 'SERVICE',
+  INDIVIDUAL: 'INDIVIDUAL',
+  UTILITY: 'UTILITY',
+  GOVERNMENT: 'GOVERNMENT'
+} as const satisfies Record<string, EntityType>;
 
-const TransactionStateEnum: Record<string, TransactionState> = Object.freeze({
+/**
+ * @deprecated Use EntityStatus string literals directly instead of EntityStatusEnum
+ */
+export const EntityStatusEnum = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  SUSPENDED: 'SUSPENDED',
+  DELETED: 'DELETED',
+  CLOSED: 'CLOSED'
+} as const satisfies Record<string, EntityStatus>;
+
+/**
+ * @deprecated Use TransactionState string literals directly instead of TransactionStateEnum
+ */
+export const TransactionStateEnum = {
   PLANNED: 'PLANNED',
   SCHEDULED: 'SCHEDULED',
   PENDING: 'PENDING',
@@ -30,56 +51,56 @@ const TransactionStateEnum: Record<string, TransactionState> = Object.freeze({
   TENTATIVE: 'TENTATIVE',
   UPCOMING: 'UPCOMING',
   DELETED: 'DELETED'
-});
+} as const satisfies Record<string, TransactionState>;
 
-const CategoryTypeEnum: Record<string, CategoryType> = Object.freeze({
+/**
+ * @deprecated Use CategoryType string literals directly instead of CategoryTypeEnum
+ */
+export const CategoryTypeEnum = {
   DEFAULT: 'DEFAULT',
   MODIFIED: 'MODIFIED',
   CUSTOM: 'CUSTOM'
-});
+} as const satisfies Record<string, CategoryType>;
 
-const EntityTypeEnum: Record<string, EntityType> = Object.freeze({
-  ACCOUNT: 'ACCOUNT',
-  RETAILER: 'RETAILER',
-  SERVICE: 'SERVICE',
-  INDIVIDUAL: 'INDIVIDUAL',
-  UTILITY: 'UTILITY',
-  GOVERNMENT: 'GOVERNMENT'
-});
-
-const EntityStatusEnum: Record<string, EntityStatus> = Object.freeze({
-  ACTIVE: 'ACTIVE',
-  INACTIVE: 'INACTIVE',
-  SUSPENDED: 'SUSPENDED',
-  DELETED: 'DELETED',
-  CLOSED: 'CLOSED'
-});
-
-const RecurringTransactionFrequencyEnum: Record<
-  string,
-  RecurringTransactionFrequency
-> = Object.freeze({
+/**
+ * @deprecated Use RecurringTransactionFrequency string literals directly instead of RecurringTransactionFrequencyEnum
+ */
+export const RecurringTransactionFrequencyEnum = {
   DAY: 'DAY',
   WEEK: 'WEEK',
   MONTH: 'MONTH',
   YEAR: 'YEAR'
-});
+} as const satisfies Record<string, RecurringTransactionFrequency>;
 
-const RecurringTransactionStateEnum: Record<string, RecurringTransactionState> =
-  Object.freeze({
-    ACTIVE: 'ACTIVE',
-    PAUSED: 'PAUSED',
-    COMPLETED: 'COMPLETED',
-    CANCELLED: 'CANCELLED'
-  });
+/**
+ * @deprecated Use RecurringTransactionState string literals directly instead of RecurringTransactionStateEnum
+ */
+export const RecurringTransactionStateEnum = {
+  ACTIVE: 'ACTIVE',
+  PAUSED: 'PAUSED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const satisfies Record<string, RecurringTransactionState>;
 
-const RecurringTransactionEventStatusEnum: Record<
-  string,
-  RecurringTransactionEventStatus
-> = Object.freeze({
+/**
+ * @deprecated Use RecurringTransactionEventStatus string literals directly instead of RecurringTransactionEventStatusEnum
+ */
+export const RecurringTransactionEventStatusEnum = {
   MODIFIED: 'MODIFIED',
   DELETED: 'DELETED'
-});
+} as const satisfies Record<string, RecurringTransactionEventStatus>;
+
+/**
+ * @deprecated Use SchemaType string literals directly instead of SchemasEnum
+ */
+export const SchemasEnum = {
+  CATEGORY: 'category',
+  ENTITY: 'entity',
+  LUCASCHEMA: 'lucaSchema',
+  RECURRING_TRANSACTION: 'recurringTransaction',
+  RECURRING_TRANSACTION_EVENT: 'recurringTransactionEvent',
+  TRANSACTION: 'transaction'
+} as const satisfies Record<string, SchemaType>;
 
 const enums = {
   CategoryTypeEnum,
