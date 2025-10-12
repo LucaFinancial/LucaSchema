@@ -1,6 +1,6 @@
 {
   "name": "@luca-financial/luca-schema",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Schemas for the Luca Ledger application",
   "author": "Johnathan Aspinwall",
   "main": "dist/cjs/index.js",
@@ -40,9 +40,7 @@
     }
   },
   "files": [
-    "dist/",
-    "LICENSE",
-    "README.md"
+    "dist/"
   ],
   "dependencies": {
     "ajv": "^8.12.0",
