@@ -14,4 +14,4 @@ test('examples are valid entities', () => {
     if (!valid) console.log(validateEntity.errors);
     expect(valid).toBe(true);
   }
-}); 
+});

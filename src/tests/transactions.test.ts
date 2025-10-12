@@ -40,4 +40,4 @@ test('validates transaction with custom overrides', () => {
   const valid = validateTransaction(transaction);
   if (!valid) console.log(validateTransaction.errors);
   expect(valid).toBe(true);
-}); 
+});

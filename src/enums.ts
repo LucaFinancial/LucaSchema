@@ -55,21 +55,28 @@ const EntityStatusEnum: Record<string, EntityStatus> = Object.freeze({
   CLOSED: 'CLOSED'
 });
 
-const RecurringTransactionFrequencyEnum: Record<string, RecurringTransactionFrequency> = Object.freeze({
+const RecurringTransactionFrequencyEnum: Record<
+  string,
+  RecurringTransactionFrequency
+> = Object.freeze({
   DAY: 'DAY',
   WEEK: 'WEEK',
   MONTH: 'MONTH',
   YEAR: 'YEAR'
 });
 
-const RecurringTransactionStateEnum: Record<string, RecurringTransactionState> = Object.freeze({
-  ACTIVE: 'ACTIVE',
-  PAUSED: 'PAUSED',
-  COMPLETED: 'COMPLETED',
-  CANCELLED: 'CANCELLED'
-});
+const RecurringTransactionStateEnum: Record<string, RecurringTransactionState> =
+  Object.freeze({
+    ACTIVE: 'ACTIVE',
+    PAUSED: 'PAUSED',
+    COMPLETED: 'COMPLETED',
+    CANCELLED: 'CANCELLED'
+  });
 
-const RecurringTransactionEventStatusEnum: Record<string, RecurringTransactionEventStatus> = Object.freeze({
+const RecurringTransactionEventStatusEnum: Record<
+  string,
+  RecurringTransactionEventStatus
+> = Object.freeze({
   MODIFIED: 'MODIFIED',
   DELETED: 'DELETED'
 });
@@ -85,4 +92,4 @@ const enums = {
   TransactionStateEnum
 } as const;
 
-export default enums; 
+export default enums;

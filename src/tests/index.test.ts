@@ -25,4 +25,4 @@ test('exports schemas', () => {
   expect(schemas.recurringTransaction).toBeDefined();
   expect(schemas.recurringTransactionEvent).toBeDefined();
   expect(schemas.lucaSchema).toBeDefined();
-}); 
+});

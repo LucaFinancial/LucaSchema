@@ -3,6 +3,7 @@ import addFormats from 'ajv-formats';
 import { AnySchema, ErrorObject } from 'ajv';
 
 import schemas from './schemas';
+import type { Transaction } from './types/index.d.ts';
 
 /**
  * Schema validation errors
@@ -74,8 +75,13 @@ export const createTestTransaction = (overrides = {}): Transaction => ({
   id: 'test-id',
   payorId: 'test-payor',
   payeeId: 'test-payee',
+  categoryId: null,
   amount: 100,
-  // ... other defaults
+  date: '2024-01-01',
+  description: 'Test transaction',
+  transactionState: 'COMPLETED',
+  createdAt: '2024-01-01T00:00:00Z',
+  updatedAt: null,
   ...overrides
 });
 
@@ -84,4 +90,4 @@ export class SchemaValidationError extends Error {
   constructor(public errors: ValidationError[]) {
     super('Schema validation failed');
   }
-} 
+}

@@ -10,7 +10,9 @@ import type {
 /**
  * Creates a test transaction with default values
  */
-export const createTestTransaction = (overrides: Partial<Transaction> = {}): Transaction => ({
+export const createTestTransaction = (
+  overrides: Partial<Transaction> = {}
+): Transaction => ({
   id: '123e4567-e89b-12d3-a456-426614174000',
   payorId: '123e4567-e89b-12d3-a456-426614174001',
   payeeId: '123e4567-e89b-12d3-a456-426614174002',
@@ -41,7 +43,9 @@ export const createTestEntity = (overrides: Partial<Entity> = {}): Entity => ({
 /**
  * Creates a test category with default values
  */
-export const createTestCategory = (overrides: Partial<Category> = {}): Category => ({
+export const createTestCategory = (
+  overrides: Partial<Category> = {}
+): Category => ({
   id: '123e4567-e89b-12d3-a456-426614174003',
   name: 'Test Category',
   description: 'This is a test category',
@@ -56,7 +60,9 @@ export const createTestCategory = (overrides: Partial<Category> = {}): Category 
 /**
  * Creates a test recurring transaction with default values
  */
-export const createTestRecurringTransaction = (overrides: Partial<RecurringTransaction> = {}): RecurringTransaction => ({
+export const createTestRecurringTransaction = (
+  overrides: Partial<RecurringTransaction> = {}
+): RecurringTransaction => ({
   id: '123e4567-e89b-12d3-a456-426614174004',
   payorId: '123e4567-e89b-12d3-a456-426614174001',
   payeeId: '123e4567-e89b-12d3-a456-426614174002',
@@ -77,7 +83,9 @@ export const createTestRecurringTransaction = (overrides: Partial<RecurringTrans
 /**
  * Creates a test recurring transaction event with default values
  */
-export const createTestRecurringTransactionEvent = (overrides: Partial<RecurringTransactionEvent> = {}): RecurringTransactionEvent => ({
+export const createTestRecurringTransactionEvent = (
+  overrides: Partial<RecurringTransactionEvent> = {}
+): RecurringTransactionEvent => ({
   id: '123e4567-e89b-12d3-a456-426614174005',
   transactionId: '123e4567-e89b-12d3-a456-426614174000',
   recurringTransactionId: '123e4567-e89b-12d3-a456-426614174004',
@@ -91,7 +99,9 @@ export const createTestRecurringTransactionEvent = (overrides: Partial<Recurring
 /**
  * Creates a test Luca schema with default values
  */
-export const createTestLucaSchema = (overrides: Partial<LucaSchema> = {}): LucaSchema => ({
+export const createTestLucaSchema = (
+  overrides: Partial<LucaSchema> = {}
+): LucaSchema => ({
   schemaVersion: '2.0.0',
   entities: [createTestEntity()],
   categories: [createTestCategory()],
@@ -104,7 +114,10 @@ export const createTestLucaSchema = (overrides: Partial<LucaSchema> = {}): LucaS
 /**
  * Creates an array of test transactions
  */
-export const createTestTransactions = (count: number, overrides: Partial<Transaction> = {}): Transaction[] => {
+export const createTestTransactions = (
+  count: number,
+  overrides: Partial<Transaction> = {}
+): Transaction[] => {
   return Array.from({ length: count }, (_, index) =>
     createTestTransaction({
       id: `123e4567-e89b-12d3-a456-${index.toString().padStart(12, '0')}`,
@@ -116,7 +129,10 @@ export const createTestTransactions = (count: number, overrides: Partial<Transac
 /**
  * Creates an array of test entities
  */
-export const createTestEntities = (count: number, overrides: Partial<Entity> = {}): Entity[] => {
+export const createTestEntities = (
+  count: number,
+  overrides: Partial<Entity> = {}
+): Entity[] => {
   return Array.from({ length: count }, (_, index) =>
     createTestEntity({
       id: `123e4567-e89b-12d3-a456-${index.toString().padStart(12, '0')}`,
@@ -128,11 +144,14 @@ export const createTestEntities = (count: number, overrides: Partial<Entity> = {
 /**
  * Creates an array of test categories
  */
-export const createTestCategories = (count: number, overrides: Partial<Category> = {}): Category[] => {
+export const createTestCategories = (
+  count: number,
+  overrides: Partial<Category> = {}
+): Category[] => {
   return Array.from({ length: count }, (_, index) =>
     createTestCategory({
       id: `123e4567-e89b-12d3-a456-${index.toString().padStart(12, '0')}`,
       ...overrides
     })
   );
-}; 
+};

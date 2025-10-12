@@ -12,4 +12,4 @@ test('example is a valid luca schema', () => {
   const valid = validateLucaSchema(exampleData);
   if (!valid) console.log(validateLucaSchema.errors);
   expect(valid).toBe(true);
-}); 
+});

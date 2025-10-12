@@ -1,4 +1,4 @@
-export type SchemaType = 
+export type SchemaType =
   | 'category'
   | 'entity'
   | 'lucaSchema'
@@ -6,7 +6,7 @@ export type SchemaType =
   | 'recurringTransactionEvent'
   | 'transaction';
 
-export type TransactionState = 
+export type TransactionState =
   | 'PLANNED'
   | 'SCHEDULED'
   | 'PENDING'
@@ -19,12 +19,9 @@ export type TransactionState =
   | 'UPCOMING'
   | 'DELETED';
 
-export type CategoryType = 
-  | 'DEFAULT'
-  | 'MODIFIED'
-  | 'CUSTOM';
+export type CategoryType = 'DEFAULT' | 'MODIFIED' | 'CUSTOM';
 
-export type EntityType = 
+export type EntityType =
   | 'ACCOUNT'
   | 'RETAILER'
   | 'SERVICE'
@@ -32,25 +29,19 @@ export type EntityType =
   | 'UTILITY'
   | 'GOVERNMENT';
 
-export type EntityStatus = 
+export type EntityStatus =
   | 'ACTIVE'
   | 'INACTIVE'
   | 'SUSPENDED'
   | 'DELETED'
   | 'CLOSED';
 
-export type RecurringTransactionFrequency = 
-  | 'DAY'
-  | 'WEEK'
-  | 'MONTH'
-  | 'YEAR';
+export type RecurringTransactionFrequency = 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
 
-export type RecurringTransactionState = 
+export type RecurringTransactionState =
   | 'ACTIVE'
   | 'PAUSED'
   | 'COMPLETED'
   | 'CANCELLED';
 
-export type RecurringTransactionEventStatus = 
-  | 'MODIFIED'
-  | 'DELETED'; 
+export type RecurringTransactionEventStatus = 'MODIFIED' | 'DELETED';
