@@ -14,11 +14,11 @@
  * @example Migration from enums to string literals
  * ```typescript
  * // Old way (deprecated)
- * import { enums } from '@luca/schema';
+ * import { enums } from '@luca-financial/luca-schema';
  * const status = enums.TransactionStateEnum.COMPLETED;
  *
  * // New way (recommended)
- * import type { TransactionState } from '@luca/schema/types';
+ * import type { TransactionState } from '@luca-financial/luca-schema/types';
  * const status: TransactionState = 'COMPLETED';
  * ```
  */
@@ -48,11 +48,11 @@ import type {
  * @example Migration
  * ```typescript
  * // Old way (deprecated)
- * import { enums } from '@luca/schema';
+ * import { enums } from '@luca-financial/luca-schema';
  * const entityType = enums.EntityTypeEnum.ACCOUNT;
  *
  * // New way (recommended)
- * import type { EntityType } from '@luca/schema/types';
+ * import type { EntityType } from '@luca-financial/luca-schema/types';
  * const entityType: EntityType = 'ACCOUNT';
  * ```
  */
@@ -297,13 +297,13 @@ export const SchemasEnum = {
  *
  * @example Legacy usage (deprecated)
  * ```typescript
- * import { enums } from '@luca/schema';
+ * import { enums } from '@luca-financial/luca-schema';
  * const state = enums.TransactionStateEnum.COMPLETED;
  * ```
  *
  * @example Modern usage (recommended)
  * ```typescript
- * import type { TransactionState } from '@luca/schema/types';
+ * import type { TransactionState } from '@luca-financial/luca-schema/types';
  * const state: TransactionState = 'COMPLETED';
  * ```
  */
