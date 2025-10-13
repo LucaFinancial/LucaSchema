@@ -1,55 +1,181 @@
 /**
  * Enhanced error handling utilities for LucaSchema
+ *
+ * Provides structured error classes, severity levels, and intelligent suggestion
+ * generation for schema validation failures and runtime errors.
+ *
+ * @fileoverview Error handling system for financial data validation
+ * @version 2.0.0
+ * @since 2.0.0
+ *
+ * @example Basic error handling
+ * ```typescript
+ * import { LucaErrorHandler, LucaErrorType } from '@luca/schema';
+ *
+ * try {
+ *   // Some validation operation
+ * } catch (error) {
+ *   if (LucaErrorHandler.isValidationError(error)) {
+ *     console.log(`Field: ${error.field}`);
+ *     console.log(`Suggestion: ${error.suggestion}`);
+ *   }
+ * }
+ * ```
  */
 
 import type { ValidationError } from './lucaValidator';
 
 /**
- * Categories of errors that can occur in LucaSchema
+ * Categories of errors that can occur in LucaSchema operations
+ *
+ * @enum {string}
+ * @readonly
+ * @since 2.0.0
+ *
+ * @example
+ * ```typescript
+ * switch (error.type) {
+ *   case LucaErrorType.VALIDATION_ERROR:
+ *     // Handle data validation failures
+ *     break;
+ *   case LucaErrorType.SCHEMA_ERROR:
+ *     // Handle schema definition issues
+ *     break;
+ * }
+ * ```
  */
 export enum LucaErrorType {
+  /** Data failed schema validation */
   VALIDATION_ERROR = 'VALIDATION_ERROR',
+  /** Schema definition or compilation error */
   SCHEMA_ERROR = 'SCHEMA_ERROR',
+  /** Type mismatch or casting error */
   TYPE_ERROR = 'TYPE_ERROR',
+  /** Runtime execution error */
   RUNTIME_ERROR = 'RUNTIME_ERROR'
 }
 
 /**
- * Severity levels for errors
+ * Severity levels for error classification and prioritization
+ *
+ * @enum {string}
+ * @readonly
+ * @since 2.0.0
+ *
+ * @example
+ * ```typescript
+ * if (error.severity === LucaErrorSeverity.CRITICAL) {
+ *   // Alert operations team
+ *   alertOps(error);
+ * } else if (error.severity === LucaErrorSeverity.HIGH) {
+ *   // Log for immediate attention
+ *   logger.error(error);
+ * }
+ * ```
  */
 export enum LucaErrorSeverity {
+  /** Minor issues that don't affect core functionality */
   LOW = 'LOW',
+  /** Issues that may impact user experience */
   MEDIUM = 'MEDIUM',
+  /** Issues that significantly impact functionality */
   HIGH = 'HIGH',
+  /** Issues that prevent core operations */
   CRITICAL = 'CRITICAL'
 }
 
 /**
- * Enhanced error information
+ * Structure for enhanced error information and context
+ *
+ * @interface LucaErrorDetails
+ * @since 2.0.0
+ *
+ * @example
+ * ```typescript
+ * const errorDetails: LucaErrorDetails = {
+ *   type: LucaErrorType.VALIDATION_ERROR,
+ *   severity: LucaErrorSeverity.MEDIUM,
+ *   code: 'INVALID_AMOUNT',
+ *   message: 'Amount must be a positive integer',
+ *   field: 'amount',
+ *   value: -100,
+ *   suggestion: 'Provide a positive amount in cents',
+ *   context: { userId: '123', operation: 'transfer' }
+ * };
+ * ```
  */
 export interface LucaErrorDetails {
+  /** Classification of the error type */
   type: LucaErrorType;
+  /** Severity level for prioritization */
   severity: LucaErrorSeverity;
+  /** Unique error code for programmatic handling */
   code: string;
+  /** Human-readable error message */
   message: string;
+  /** Field name that caused the error (for validation errors) */
   field?: string;
+  /** The invalid value that caused the error */
   value?: unknown;
+  /** Helpful suggestion for fixing the error */
   suggestion?: string;
+  /** Additional context information */
   context?: Record<string, unknown>;
 }
 
 /**
- * Main error class for LucaSchema
+ * Base error class for all LucaSchema errors with enhanced context and metadata
+ *
+ * Provides structured error information including severity, error codes, field context,
+ * and helpful suggestions for resolution. All LucaSchema errors extend this class.
+ *
+ * @class LucaError
+ * @extends {Error}
+ * @since 2.0.0
+ *
+ * @example Creating a custom error
+ * ```typescript
+ * const error = new LucaError({
+ *   type: LucaErrorType.VALIDATION_ERROR,
+ *   severity: LucaErrorSeverity.MEDIUM,
+ *   code: 'INVALID_CURRENCY',
+ *   message: 'Currency code must be ISO 4217 format',
+ *   field: 'currency',
+ *   value: 'invalid-currency',
+ *   suggestion: 'Use a valid currency code like USD, EUR, or GBP',
+ *   context: { requestId: 'req-123' }
+ * });
+ * ```
+ *
+ * @example Error serialization
+ * ```typescript
+ * const error = new LucaError(errorDetails);
+ * const json = error.toJSON();
+ * // Send to logging service or API response
+ * logger.error(json);
+ * ```
  */
 export class LucaError extends Error {
+  /** Error classification type */
   public readonly type: LucaErrorType;
+  /** Severity level for prioritization */
   public readonly severity: LucaErrorSeverity;
+  /** Unique error code for programmatic handling */
   public readonly code: string;
+  /** Field name that caused the error (optional) */
   public readonly field?: string;
+  /** The invalid value that caused the error (optional) */
   public readonly value?: unknown;
+  /** Helpful suggestion for fixing the error (optional) */
   public readonly suggestion?: string;
+  /** Additional context information (optional) */
   public readonly context?: Record<string, unknown>;
 
+  /**
+   * Creates a new LucaError with the provided details
+   *
+   * @param details - Complete error information and context
+   */
   constructor(details: LucaErrorDetails) {
     super(details.message);
     this.name = 'LucaError';
@@ -63,7 +189,24 @@ export class LucaError extends Error {
   }
 
   /**
-   * Convert to a plain object for serialization
+   * Converts the error to a plain object for serialization and logging
+   *
+   * Useful for sending error information to logging services, APIs, or
+   * storing in databases while preserving all relevant context.
+   *
+   * @returns Plain object representation of the error
+   *
+   * @example
+   * ```typescript
+   * const error = new LucaError(errorDetails);
+   * const errorJson = error.toJSON();
+   *
+   * // Send to logging service
+   * await logService.error(errorJson);
+   *
+   * // Include in API response
+   * res.status(400).json({ error: errorJson });
+   * ```
    */
   toJSON() {
     return {
@@ -82,11 +225,56 @@ export class LucaError extends Error {
 }
 
 /**
- * Validation-specific error class
+ * Specialized error class for schema validation failures with enhanced context
+ *
+ * Extends LucaError to provide specific handling for JSON schema validation failures.
+ * Includes the original AJV validation errors, intelligent suggestion generation,
+ * and field-specific context for debugging.
+ *
+ * @class LucaValidationError
+ * @extends {LucaError}
+ * @since 2.0.0
+ *
+ * @example Handling validation errors
+ * ```typescript
+ * try {
+ *   lucaValidator.validateOrThrow('transaction', invalidData);
+ * } catch (error) {
+ *   if (error instanceof LucaValidationError) {
+ *     console.log(`Validation failed for field: ${error.field}`);
+ *     console.log(`Suggestion: ${error.suggestion}`);
+ *     console.log(`Original errors:`, error.validationErrors);
+ *   }
+ * }
+ * ```
+ *
+ * @example Manual creation
+ * ```typescript
+ * const ajvErrors = [
+ *   {
+ *     keyword: 'type',
+ *     instancePath: '/amount',
+ *     message: 'must be integer',
+ *     params: { type: 'integer' }
+ *   }
+ * ];
+ *
+ * const error = new LucaValidationError(ajvErrors, {
+ *   data: { amount: 100.5 },
+ *   operation: 'create_transaction'
+ * });
+ * ```
  */
 export class LucaValidationError extends LucaError {
+  /** Original AJV validation errors that caused this failure */
   public readonly validationErrors: ValidationError[];
 
+  /**
+   * Creates a new validation error from AJV validation failures
+   *
+   * @param validationErrors - Array of AJV validation errors
+   * @param context - Additional context including the original data and operation details
+   */
   constructor(
     validationErrors: ValidationError[],
     context?: Record<string, unknown>
@@ -144,8 +332,31 @@ function formatValidationMessage(errors: ValidationError[]): string {
 }
 
 /**
- * Generate helpful suggestions based on validation errors
- * @internal - Exported for testing purposes
+ * Generates intelligent suggestions for fixing validation errors
+ *
+ * Analyzes validation errors and the actual invalid values to provide
+ * context-aware suggestions for resolving validation failures. Particularly
+ * helpful for common issues like decimal amounts that should be integers.
+ *
+ * @internal - Exported for testing purposes only
+ * @param error - The AJV validation error object
+ * @param actualValue - The actual invalid value that caused the error
+ * @returns A helpful suggestion string, or undefined if no specific suggestion available
+ * @since 2.0.0
+ *
+ * @example Decimal amount detection
+ * ```typescript
+ * const error = { keyword: 'type', params: { type: 'integer' } };
+ * const suggestion = generateSuggestion(error, 100.5);
+ * // Returns: "Convert decimal amount to integer cents (e.g., 100.50 → 10050)"
+ * ```
+ *
+ * @example UUID format guidance
+ * ```typescript
+ * const error = { keyword: 'format', params: { format: 'uuid' } };
+ * const suggestion = generateSuggestion(error, 'invalid-uuid');
+ * // Returns: "Provide a valid UUID (e.g., "123e4567-e89b-12d3-a456-426614174000")"
+ * ```
  */
 export function generateSuggestion(
   error: ValidationError,
@@ -191,11 +402,67 @@ export function generateSuggestion(
 }
 
 /**
- * Error handler utility functions
+ * Utility class for creating and managing LucaSchema errors
+ *
+ * Provides static factory methods for creating different types of errors,
+ * type guards for error identification, and utilities for error handling
+ * and logging. Centralizes error creation logic and ensures consistent
+ * error formatting across the library.
+ *
+ * @class LucaErrorHandler
+ * @since 2.0.0
+ *
+ * @example Creating validation errors
+ * ```typescript
+ * const ajvErrors = [...]; // AJV validation errors
+ * const validationError = LucaErrorHandler.fromValidationErrors(ajvErrors, {
+ *   userId: '123',
+ *   operation: 'create_transaction'
+ * });
+ * ```
+ *
+ * @example Creating schema errors
+ * ```typescript
+ * const schemaError = LucaErrorHandler.createSchemaError(
+ *   'Invalid schema definition',
+ *   'transaction',
+ *   { version: '2.0.0' }
+ * );
+ * ```
+ *
+ * @example Error type checking
+ * ```typescript
+ * try {
+ *   // Some operation
+ * } catch (error) {
+ *   if (LucaErrorHandler.isValidationError(error)) {
+ *     // Handle validation-specific logic
+ *   } else if (LucaErrorHandler.isLucaError(error)) {
+ *     // Handle other LucaSchema errors
+ *   }
+ * }
+ * ```
  */
 export class LucaErrorHandler {
   /**
-   * Convert AJV validation errors to LucaValidationError
+   * Converts AJV validation errors to a structured LucaValidationError
+   *
+   * Takes raw AJV validation errors and enhances them with context,
+   * field information, and intelligent suggestions for resolution.
+   *
+   * @param errors - Array of AJV validation errors
+   * @param context - Additional context for error enhancement
+   * @returns Enhanced validation error with suggestions and context
+   *
+   * @example
+   * ```typescript
+   * const ajvErrors = ajv.errors || [];
+   * const enhancedError = LucaErrorHandler.fromValidationErrors(ajvErrors, {
+   *   schema: 'transaction',
+   *   data: originalData,
+   *   userId: currentUser.id
+   * });
+   * ```
    */
   static fromValidationErrors(
     errors: ValidationError[],
