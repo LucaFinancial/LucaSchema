@@ -1,7 +1,8 @@
-import Ajv2020 from 'ajv/dist/2020';
-import addFormats from 'ajv-formats';
 import { AnySchema, ErrorObject } from 'ajv';
+import addFormats from 'ajv-formats';
+import Ajv2020 from 'ajv/dist/2020';
 
+import { LucaErrorHandler } from './errorHandling';
 import schemas from './schemas';
 import type { Transaction } from './types';
 
@@ -50,6 +51,19 @@ export interface LucaValidator {
   validate<T>(schema: AnySchema, data: unknown): data is T;
 
   /**
+   * Validate data and throw enhanced error on failure
+   * @param key - Schema key to validate against
+   * @param data - Data to validate
+   * @param context - Additional context for error reporting
+   * @throws {LucaValidationError} When validation fails
+   */
+  validateOrThrow<T>(
+    key: keyof typeof schemas,
+    data: unknown,
+    context?: Record<string, unknown>
+  ): asserts data is T;
+
+  /**
    * Last validation errors
    */
   errors: ValidationError[] | null;
@@ -61,7 +75,9 @@ addFormats(ajvInstance);
 // Validate and add schemas
 Object.entries(schemas).forEach(([key, schema]) => {
   if (!ajvInstance.validateSchema(schema as AnySchema)) {
-    throw new Error(`Invalid schema: ${key}`);
+    throw LucaErrorHandler.createSchemaError(`Invalid schema: ${key}`, key, {
+      schema: schema
+    });
   }
   ajvInstance.addSchema(schema as AnySchema, key);
 });
@@ -91,6 +107,30 @@ const lucaValidator: LucaValidator = {
     const isValid = typeof result === 'boolean' ? result : true; // Handle sync validation
     this.errors = ajvInstance.errors as ValidationError[] | null;
     return isValid;
+  },
+
+  validateOrThrow<T>(
+    key: keyof typeof schemas,
+    data: unknown,
+    context?: Record<string, unknown>
+  ): asserts data is T {
+    const validator = this.getSchema<T>(key);
+    if (!validator) {
+      throw LucaErrorHandler.createSchemaError(
+        `Schema not found: ${String(key)}`,
+        String(key),
+        context
+      );
+    }
+
+    const isValid = validator(data);
+    if (!isValid && validator.errors) {
+      throw LucaErrorHandler.fromValidationErrors(validator.errors, {
+        schema: key,
+        data,
+        ...context
+      });
+    }
   },
 
   errors: null
