@@ -11,7 +11,7 @@
  *
  * @example Basic usage
  * ```typescript
- * import { dollarsToMinorUnits, minorUnitsToDollars, formatMinorUnits } from '@luca/schema';
+ * import { dollarsToMinorUnits, minorUnitsToDollars, formatMinorUnits } from '@luca-financial/luca-schema';
  *
  * // Convert user input to storage format
  * const userInput = 125.75;

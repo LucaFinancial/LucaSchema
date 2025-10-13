@@ -11,7 +11,7 @@
  *
  * @example Using schemas with validator
  * ```typescript
- * import schemas from '@luca/schema/schemas';
+ * import schemas from '@luca-financial/luca-schema/schemas';
  * import Ajv from 'ajv';
  *
  * const ajv = new Ajv();
@@ -42,7 +42,7 @@ import transaction from './transaction.json';
  *
  * @example Schema validation
  * ```typescript
- * import { lucaValidator } from '@luca/schema';
+ * import { lucaValidator } from '@luca-financial/luca-schema';
  *
  * // Validate a transaction
  * const transaction = { amount: 10050, payorId: 'user1', ... };
@@ -90,7 +90,7 @@ export interface Schemas {
  *
  * @example Direct schema access
  * ```typescript
- * import schemas from '@luca/schema/schemas';
+ * import schemas from '@luca-financial/luca-schema/schemas';
  *
  * // Get transaction schema
  * const transactionSchema = schemas.transaction;
@@ -104,7 +104,7 @@ export interface Schemas {
  * ```typescript
  * import Ajv from 'ajv';
  * import addFormats from 'ajv-formats';
- * import schemas from '@luca/schema/schemas';
+ * import schemas from '@luca-financial/luca-schema/schemas';
  *
  * const ajv = new Ajv();
  * addFormats(ajv);

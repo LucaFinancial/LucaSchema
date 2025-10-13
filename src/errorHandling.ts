@@ -10,7 +10,7 @@
  *
  * @example Basic error handling
  * ```typescript
- * import { LucaErrorHandler, LucaErrorType } from '@luca/schema';
+ * import { LucaErrorHandler, LucaErrorType } from '@luca-financial/luca-schema';
  *
  * try {
  *   // Some validation operation

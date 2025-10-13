@@ -17,7 +17,7 @@
  * ## Quick Start
  *
  * ```typescript
- * import { lucaValidator, dollarsToMinorUnits } from '@luca/schema';
+ * import { lucaValidator, dollarsToMinorUnits } from '@luca-financial/luca-schema';
  *
  * // Create a transaction
  * const transaction = {
@@ -79,7 +79,7 @@ export {
  *
  * @example Converting monetary values
  * ```typescript
- * import { dollarsToMinorUnits, minorUnitsToDollars, formatMinorUnits } from '@luca/schema';
+ * import { dollarsToMinorUnits, minorUnitsToDollars, formatMinorUnits } from '@luca-financial/luca-schema';
  *
  * // Convert user input to storage format
  * const userAmount = 125.75;
@@ -113,7 +113,7 @@ export {
  *   LucaErrorHandler,
  *   LucaValidationError,
  *   LucaErrorType
- * } from '@luca/schema';
+ * } from '@luca-financial/luca-schema';
  *
  * try {
  *   // Some validation operation
@@ -153,7 +153,7 @@ export {
  *
  * @example Using validation types
  * ```typescript
- * import type { ValidationError, ValidateFunction } from '@luca/schema';
+ * import type { ValidationError, ValidateFunction } from '@luca-financial/luca-schema';
  *
  * function handleValidation<T>(
  *   validator: ValidateFunction<T>,

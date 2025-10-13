@@ -94,7 +94,7 @@ export interface ValidateFunction<T> {
  *
  * @example Basic validation
  * ```typescript
- * import { lucaValidator } from '@luca/schema';
+ * import { lucaValidator } from '@luca-financial/luca-schema';
  *
  * const transaction = {
  *   id: 'tx-123',
@@ -239,7 +239,7 @@ Object.entries(schemas).forEach(([key, schema]) => {
  *
  * @example Basic usage
  * ```typescript
- * import lucaValidator from '@luca/schema/validator';
+ * import lucaValidator from '@luca-financial/luca-schema/validator';
  *
  * // Validate a transaction
  * const transaction = { /* transaction data *\/ };
