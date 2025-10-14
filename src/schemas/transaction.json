@@ -34,11 +34,10 @@
       "description": "Category identifier for organizing the transaction. Can be null if not categorized."
     },
     "amount": {
-      "type": "number",
+      "type": "integer",
       "title": "Amount",
       "minimum": 0,
-      "multipleOf": 0.01,
-      "description": "The monetary value of the transaction."
+      "description": "The monetary value of the transaction in minor units (cents). For example, $100.50 would be represented as 10050."
     },
     "description": {
       "type": "string",

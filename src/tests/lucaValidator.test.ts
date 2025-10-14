@@ -103,3 +103,23 @@ test('validate handles invalid UUID format', () => {
   expect(schema.errors).toBeDefined();
   expect(schema.errors?.some(error => error.keyword === 'format')).toBe(true);
 });
+
+test('direct validate method works correctly', () => {
+  const transaction = createTestTransaction();
+  const schemas = require('../schemas').default;
+
+  // Test valid data
+  const isValid = lucaValidator.validate(schemas.transaction, transaction);
+  expect(isValid).toBe(true);
+  expect(lucaValidator.errors).toBeNull();
+
+  // Test invalid data
+  const invalidTransaction = { ...transaction, amount: 'invalid' };
+  const isInvalid = lucaValidator.validate(
+    schemas.transaction,
+    invalidTransaction
+  );
+  expect(isInvalid).toBe(false);
+  expect(lucaValidator.errors).toBeDefined();
+  expect(lucaValidator.errors?.length).toBeGreaterThan(0);
+});

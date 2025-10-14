@@ -33,7 +33,7 @@ test('validates transaction with custom overrides', () => {
   }
 
   const transaction = createTestTransaction({
-    amount: 999.99,
+    amount: 99999,
     description: 'Custom transaction',
     transactionState: 'PENDING'
   });
