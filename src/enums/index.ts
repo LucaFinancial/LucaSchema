@@ -8,6 +8,9 @@
  * @fileoverview Runtime enum exports
  */
 
+// Account enums
+export { AccountTypeEnum, TransactionSideEnum } from './account';
+
 // Category enums
 export { CategoryTypeEnum } from './category';
 
@@ -28,6 +31,7 @@ export {
 export { SchemasEnum } from './schema';
 
 // Import all for backward compatibility object
+import { AccountTypeEnum, TransactionSideEnum } from './account';
 import { CategoryTypeEnum } from './category';
 import { EntityTypeEnum, EntityStatusEnum } from './entity';
 import { TransactionStateEnum } from './transaction';
@@ -40,6 +44,8 @@ import { SchemasEnum } from './schema';
 
 // Backward compatibility - single object export
 const enums = {
+  AccountTypeEnum,
+  TransactionSideEnum,
   CategoryTypeEnum,
   EntityTypeEnum,
   EntityStatusEnum,

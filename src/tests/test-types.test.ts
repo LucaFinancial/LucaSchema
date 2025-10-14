@@ -18,6 +18,7 @@ test('Transaction validation', () => {
     date: '2024-01-01',
     description: 'Test transaction',
     transactionState: 'COMPLETED',
+    side: 'DEBIT',
     createdAt: '2024-01-01T00:00:00Z',
     updatedAt: null
   };
@@ -159,6 +160,7 @@ test('RecurringTransactionEvent validation', () => {
 test('LucaSchema validation', () => {
   const lucaSchema: LucaSchema = {
     schemaVersion: '2.0.0',
+    accounts: [],
     entities: [],
     categories: [],
     transactions: [],

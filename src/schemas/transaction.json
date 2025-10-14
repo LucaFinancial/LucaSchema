@@ -62,14 +62,22 @@
         "DELETED"
       ],
       "description": "The current state of the transaction."
+    },
+    "side": {
+      "type": "string",
+      "title": "Transaction Side",
+      "enum": ["DEBIT", "CREDIT"],
+      "description": "Indicates whether this transaction represents a debit or credit in double-entry accounting."
     }
   },
   "required": [
+    "id",
     "date",
     "payorId",
     "payeeId",
     "amount",
     "description",
-    "transactionState"
+    "transactionState",
+    "side"
   ]
 }

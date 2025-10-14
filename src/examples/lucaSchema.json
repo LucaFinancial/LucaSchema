@@ -1,5 +1,6 @@
 {
   "schemaVersion": "2.0.0",
+  "accounts": [],
   "categories": [],
   "entities": [
     {
@@ -42,6 +43,7 @@
       "date": "2024-01-15",
       "description": "Monthly rent payment",
       "transactionState": "COMPLETED",
+      "side": "DEBIT",
       "createdAt": "2024-01-01T00:00:00Z",
       "updatedAt": "2024-01-15T00:00:00Z"
     },
@@ -54,6 +56,7 @@
       "date": "2024-01-10",
       "description": "Internet bill payment",
       "transactionState": "PENDING",
+      "side": "DEBIT",
       "createdAt": "2024-01-05T00:00:00Z",
       "updatedAt": "2024-01-10T00:00:00Z"
     },
@@ -66,6 +69,7 @@
       "date": "2024-01-20",
       "description": "Electricity bill payment",
       "transactionState": "SCHEDULED",
+      "side": "DEBIT",
       "createdAt": "2024-01-10T00:00:00Z",
       "updatedAt": "2024-01-15T00:00:00Z"
     }

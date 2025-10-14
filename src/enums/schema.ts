@@ -10,6 +10,8 @@ import type { SchemaType } from '../types';
  * Schema type enumeration for identifying different schema types
  */
 export const SchemasEnum = {
+  /** Account schema identifier */
+  ACCOUNT: 'account',
   /** Category schema identifier */
   CATEGORY: 'category',
   /** Entity schema identifier */

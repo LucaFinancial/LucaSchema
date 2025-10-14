@@ -1,0 +1,112 @@
+[
+  {
+    "id": "30000000-0000-0000-0000-000000000001",
+    "name": "Cash",
+    "description": "Cash on hand",
+    "accountNumber": "1000",
+    "accountType": "ASSET",
+    "parentAccountId": null,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "30000000-0000-0000-0000-000000000002",
+    "name": "Checking Account",
+    "description": "Primary checking account",
+    "accountNumber": "1010",
+    "accountType": "ASSET",
+    "parentAccountId": null,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "30000000-0000-0000-0000-000000000003",
+    "name": "Accounts Payable",
+    "description": "Money owed to suppliers",
+    "accountNumber": "2000",
+    "accountType": "LIABILITY",
+    "parentAccountId": null,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "30000000-0000-0000-0000-000000000004",
+    "name": "Credit Card",
+    "description": "Business credit card",
+    "accountNumber": "2100",
+    "accountType": "LIABILITY",
+    "parentAccountId": null,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "30000000-0000-0000-0000-000000000005",
+    "name": "Owner's Equity",
+    "description": "Owner's investment in the business",
+    "accountNumber": "3000",
+    "accountType": "EQUITY",
+    "parentAccountId": null,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "30000000-0000-0000-0000-000000000006",
+    "name": "Sales Revenue",
+    "description": "Revenue from sales",
+    "accountNumber": "4000",
+    "accountType": "REVENUE",
+    "parentAccountId": null,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "30000000-0000-0000-0000-000000000007",
+    "name": "Service Revenue",
+    "description": "Revenue from services",
+    "accountNumber": "4100",
+    "accountType": "REVENUE",
+    "parentAccountId": null,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "30000000-0000-0000-0000-000000000008",
+    "name": "Rent Expense",
+    "description": "Office rent expense",
+    "accountNumber": "5000",
+    "accountType": "EXPENSE",
+    "parentAccountId": null,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "30000000-0000-0000-0000-000000000009",
+    "name": "Utilities Expense",
+    "description": "Utilities expense",
+    "accountNumber": "5100",
+    "accountType": "EXPENSE",
+    "parentAccountId": null,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "30000000-0000-0000-0000-000000000010",
+    "name": "Salaries Expense",
+    "description": "Employee salaries",
+    "accountNumber": "5200",
+    "accountType": "EXPENSE",
+    "parentAccountId": null,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": null
+  }
+]

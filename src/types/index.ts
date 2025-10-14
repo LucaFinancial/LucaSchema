@@ -1,6 +1,11 @@
 // Import all types for controlled re-export
+import type { Account, AccountType } from './account';
 import type { Entity, EntityType, EntityStatus } from './entity';
-import type { Transaction, TransactionState } from './transaction';
+import type {
+  Transaction,
+  TransactionState,
+  TransactionSide
+} from './transaction';
 import type { Category, CategoryType } from './category';
 import type {
   RecurringTransaction,
@@ -13,6 +18,7 @@ import type { SchemaType } from './schema';
 
 // Export interfaces
 export type {
+  Account,
   Entity,
   Transaction,
   Category,
@@ -22,9 +28,11 @@ export type {
 
 // Export types
 export type {
+  AccountType,
   EntityType,
   EntityStatus,
   TransactionState,
+  TransactionSide,
   CategoryType,
   RecurringTransactionFrequency,
   RecurringTransactionState,
@@ -35,6 +43,7 @@ export type {
 // Main schema interface
 export interface LucaSchema {
   schemaVersion: string;
+  accounts: Account[];
   entities: Entity[];
   categories: Category[];
   transactions: Transaction[];
