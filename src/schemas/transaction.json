@@ -63,11 +63,11 @@
       ],
       "description": "The current state of the transaction."
     },
-    "side": {
+    "entryType": {
       "type": "string",
-      "title": "Transaction Side",
+      "title": "Entry Type",
       "enum": ["DEBIT", "CREDIT"],
-      "description": "Indicates whether this transaction represents a debit or credit in double-entry accounting."
+      "description": "Indicates whether this transaction represents a debit or credit entry in double-entry accounting."
     }
   },
   "required": [
@@ -78,6 +78,6 @@
     "amount",
     "description",
     "transactionState",
-    "side"
+    "entryType"
   ]
 }

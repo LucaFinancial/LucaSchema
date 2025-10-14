@@ -3,36 +3,36 @@ import { createTestTransaction } from './test-utils';
 
 const validateTransaction = lucaValidator.getSchema('transaction');
 
-describe('Transaction side (debit/credit) validation', () => {
-  test('validates transaction with DEBIT side', () => {
+describe('Transaction entry type (debit/credit) validation', () => {
+  test('validates transaction with DEBIT entry type', () => {
     if (!validateTransaction) {
       throw new Error('Transaction schema not found in lucaValidator.');
     }
 
-    const transaction = createTestTransaction({ side: 'DEBIT' });
+    const transaction = createTestTransaction({ entryType: 'DEBIT' });
     const valid = validateTransaction(transaction);
     if (!valid) console.log(validateTransaction.errors);
     expect(valid).toBe(true);
   });
 
-  test('validates transaction with CREDIT side', () => {
+  test('validates transaction with CREDIT entry type', () => {
     if (!validateTransaction) {
       throw new Error('Transaction schema not found in lucaValidator.');
     }
 
-    const transaction = createTestTransaction({ side: 'CREDIT' });
+    const transaction = createTestTransaction({ entryType: 'CREDIT' });
     const valid = validateTransaction(transaction);
     if (!valid) console.log(validateTransaction.errors);
     expect(valid).toBe(true);
   });
 
-  test('rejects transaction without side field', () => {
+  test('rejects transaction without entryType field', () => {
     if (!validateTransaction) {
       throw new Error('Transaction schema not found in lucaValidator.');
     }
 
     const transaction = createTestTransaction();
-    delete (transaction as any).side;
+    delete (transaction as any).entryType;
 
     const valid = validateTransaction(transaction);
     expect(valid).toBe(false);
@@ -40,17 +40,18 @@ describe('Transaction side (debit/credit) validation', () => {
     expect(
       validateTransaction.errors!.some(
         err =>
-          err.keyword === 'required' && err.params?.missingProperty === 'side'
+          err.keyword === 'required' &&
+          err.params?.missingProperty === 'entryType'
       )
     ).toBe(true);
   });
 
-  test('rejects transaction with invalid side value', () => {
+  test('rejects transaction with invalid entry type value', () => {
     if (!validateTransaction) {
       throw new Error('Transaction schema not found in lucaValidator.');
     }
 
-    const transaction = createTestTransaction({ side: 'INVALID' as any });
+    const transaction = createTestTransaction({ entryType: 'INVALID' as any });
     const valid = validateTransaction(transaction);
     expect(valid).toBe(false);
     expect(validateTransaction.errors).toBeDefined();
@@ -67,7 +68,7 @@ describe('Transaction side (debit/credit) validation', () => {
     // Debit transaction (e.g., increase in asset)
     const debitTransaction = createTestTransaction({
       id: '10000000-0000-0000-0000-000000000001',
-      side: 'DEBIT',
+      entryType: 'DEBIT',
       amount: 10000,
       description: 'Purchase office supplies'
     });
@@ -75,7 +76,7 @@ describe('Transaction side (debit/credit) validation', () => {
     // Credit transaction (e.g., decrease in cash)
     const creditTransaction = createTestTransaction({
       id: '10000000-0000-0000-0000-000000000002',
-      side: 'CREDIT',
+      entryType: 'CREDIT',
       amount: 10000,
       description: 'Payment for office supplies'
     });

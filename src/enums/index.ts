@@ -9,7 +9,7 @@
  */
 
 // Account enums
-export { AccountTypeEnum, TransactionSideEnum } from './account';
+export { AccountTypeEnum, EntryTypeEnum } from './account';
 
 // Category enums
 export { CategoryTypeEnum } from './category';
@@ -31,7 +31,7 @@ export {
 export { SchemasEnum } from './schema';
 
 // Import all for backward compatibility object
-import { AccountTypeEnum, TransactionSideEnum } from './account';
+import { AccountTypeEnum, EntryTypeEnum } from './account';
 import { CategoryTypeEnum } from './category';
 import { EntityTypeEnum, EntityStatusEnum } from './entity';
 import { TransactionStateEnum } from './transaction';
@@ -45,7 +45,7 @@ import { SchemasEnum } from './schema';
 // Backward compatibility - single object export
 const enums = {
   AccountTypeEnum,
-  TransactionSideEnum,
+  EntryTypeEnum,
   CategoryTypeEnum,
   EntityTypeEnum,
   EntityStatusEnum,

@@ -13,7 +13,7 @@ export type TransactionState =
   | 'UPCOMING'
   | 'DELETED';
 
-export type TransactionSide = 'DEBIT' | 'CREDIT';
+export type EntryType = 'DEBIT' | 'CREDIT';
 
 // Transaction interface
 export interface Transaction {
@@ -25,7 +25,7 @@ export interface Transaction {
   date: string;
   description: string;
   transactionState: TransactionState;
-  side: TransactionSide;
+  entryType: EntryType;
   createdAt: string;
   updatedAt: string | null;
 }

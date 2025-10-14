@@ -16,7 +16,7 @@ describe('Integer minor units validation', () => {
       date: '2024-01-01',
       description: 'Test transaction with decimal',
       transactionState: 'COMPLETED',
-      side: 'DEBIT',
+      entryType: 'DEBIT',
       createdAt: '2024-01-01T00:00:00Z',
       updatedAt: null
     };
@@ -49,7 +49,7 @@ describe('Integer minor units validation', () => {
       date: '2024-01-01',
       description: 'Test transaction with integer',
       transactionState: 'COMPLETED',
-      side: 'DEBIT',
+      entryType: 'DEBIT',
       createdAt: '2024-01-01T00:00:00Z',
       updatedAt: null
     };

@@ -36,25 +36,25 @@ export const AccountTypeEnum = {
 } as const;
 
 /**
- * Transaction side enumeration
+ * Entry type enumeration
  *
- * Represents the debit or credit side of a transaction in double-entry accounting
+ * Represents the debit or credit classification of a transaction entry in double-entry accounting
  *
  * @enum {string}
  * @readonly
  *
  * @example
  * ```typescript
- * import { TransactionSideEnum } from '@luca-financial/luca-schema';
+ * import { EntryTypeEnum } from '@luca-financial/luca-schema';
  *
  * const transaction = {
- *   side: TransactionSideEnum.DEBIT
+ *   entryType: EntryTypeEnum.DEBIT
  * };
  * ```
  */
-export const TransactionSideEnum = {
-  /** Debit side - Increases assets and expenses, decreases liabilities, equity, and revenue */
+export const EntryTypeEnum = {
+  /** Debit entry - Increases assets and expenses, decreases liabilities, equity, and revenue */
   DEBIT: 'DEBIT',
-  /** Credit side - Increases liabilities, equity, and revenue, decreases assets and expenses */
+  /** Credit entry - Increases liabilities, equity, and revenue, decreases assets and expenses */
   CREDIT: 'CREDIT'
 } as const;

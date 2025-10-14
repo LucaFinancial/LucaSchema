@@ -1,11 +1,7 @@
 // Import all types for controlled re-export
 import type { Account, AccountType } from './account';
 import type { Entity, EntityType, EntityStatus } from './entity';
-import type {
-  Transaction,
-  TransactionState,
-  TransactionSide
-} from './transaction';
+import type { Transaction, TransactionState, EntryType } from './transaction';
 import type { Category, CategoryType } from './category';
 import type {
   RecurringTransaction,
@@ -32,7 +28,7 @@ export type {
   EntityType,
   EntityStatus,
   TransactionState,
-  TransactionSide,
+  EntryType,
   CategoryType,
   RecurringTransactionFrequency,
   RecurringTransactionState,

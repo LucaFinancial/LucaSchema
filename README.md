@@ -30,7 +30,7 @@ const transactionData = {
   date: '2024-01-01',
   description: 'Test transaction',
   transactionState: enums.TransactionStateEnum.COMPLETED,
-  side: enums.TransactionSideEnum.DEBIT,
+  entryType: enums.EntryTypeEnum.DEBIT,
   createdAt: '2024-01-01T00:00:00Z',
   updatedAt: null
 };
@@ -60,7 +60,7 @@ Validates financial transactions with properties like amount, date, and state. S
 **Important**:
 
 - All monetary amounts are stored as integers in minor units (cents) to avoid floating-point precision issues.
-- The `side` field indicates whether the transaction is a DEBIT or CREDIT for double-entry accounting.
+- The `entryType` field indicates whether the transaction is a DEBIT or CREDIT entry for double-entry accounting.
 - The `id` field is required for all transactions.
 
 ```typescript
@@ -73,7 +73,7 @@ const transaction = {
   date: string;
   description: string;
   transactionState: TransactionState;
-  side: 'DEBIT' | 'CREDIT'; // Double-entry accounting side
+  entryType: 'DEBIT' | 'CREDIT'; // Double-entry accounting entry type
   createdAt: string;
   updatedAt: string | null;
 };
