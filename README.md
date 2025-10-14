@@ -30,6 +30,7 @@ const transactionData = {
   date: '2024-01-01',
   description: 'Test transaction',
   transactionState: enums.TransactionStateEnum.COMPLETED,
+  side: enums.TransactionSideEnum.DEBIT,
   createdAt: '2024-01-01T00:00:00Z',
   updatedAt: null
 };
@@ -54,9 +55,13 @@ console.log(`Transaction amount: ${formatMinorUnits(transactionData.amount)}`); 
 
 ### Transaction
 
-Validates financial transactions with properties like amount, date, and state.
+Validates financial transactions with properties like amount, date, and state. Supports double-entry accounting with debit/credit classification.
 
-**Important**: All monetary amounts are stored as integers in minor units (cents) to avoid floating-point precision issues.
+**Important**:
+
+- All monetary amounts are stored as integers in minor units (cents) to avoid floating-point precision issues.
+- The `side` field indicates whether the transaction is a DEBIT or CREDIT for double-entry accounting.
+- The `id` field is required for all transactions.
 
 ```typescript
 const transaction = {
@@ -68,6 +73,7 @@ const transaction = {
   date: string;
   description: string;
   transactionState: TransactionState;
+  side: 'DEBIT' | 'CREDIT'; // Double-entry accounting side
   createdAt: string;
   updatedAt: string | null;
 };
@@ -91,6 +97,32 @@ const recurringTransaction = {
   startOn: string;
   endOn: string | null;
   recurringTransactionState: 'ACTIVE' | 'PAUSED' | 'COMPLETED' | 'CANCELLED';
+  createdAt: string;
+  updatedAt: string | null;
+};
+```
+
+### Account
+
+Validates accounts in the chart of accounts for double-entry bookkeeping. Accounts are the fundamental elements for tracking financial transactions.
+
+**Account Types**:
+
+- **ASSET**: Resources owned (normal debit balance) - e.g., Cash, Accounts Receivable
+- **LIABILITY**: Obligations owed (normal credit balance) - e.g., Accounts Payable, Loans
+- **EQUITY**: Owner's interest (normal credit balance) - e.g., Owner's Capital, Retained Earnings
+- **REVENUE**: Income earned (normal credit balance) - e.g., Sales Revenue, Service Revenue
+- **EXPENSE**: Costs incurred (normal debit balance) - e.g., Rent Expense, Utilities
+
+```typescript
+const account = {
+  id: string;
+  name: string;
+  description: string | null;
+  accountNumber: string; // Numeric identifier (e.g., '1000', '2100')
+  accountType: 'ASSET' | 'LIABILITY' | 'EQUITY' | 'REVENUE' | 'EXPENSE';
+  parentAccountId: string | null; // For hierarchical chart of accounts
+  isActive: boolean;
   createdAt: string;
   updatedAt: string | null;
 };

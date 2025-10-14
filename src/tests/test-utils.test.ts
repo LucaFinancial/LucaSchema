@@ -1,14 +1,28 @@
 import {
+  createTestAccount,
   createTestTransaction,
   createTestEntity,
   createTestCategory,
   createTestRecurringTransaction,
   createTestRecurringTransactionEvent,
   createTestLucaSchema,
+  createTestAccounts,
   createTestTransactions,
   createTestEntities,
   createTestCategories
 } from './test-utils';
+
+test('createTestAccount creates valid account', () => {
+  const account = createTestAccount();
+  expect(account).toMatchObject({
+    id: expect.any(String),
+    name: expect.any(String),
+    accountNumber: expect.any(String),
+    accountType: expect.any(String),
+    isActive: expect.any(Boolean),
+    createdAt: expect.any(String)
+  });
+});
 
 test('createTestTransaction creates valid transaction', () => {
   const transaction = createTestTransaction();
@@ -20,6 +34,7 @@ test('createTestTransaction creates valid transaction', () => {
     date: expect.any(String),
     description: expect.any(String),
     transactionState: expect.any(String),
+    side: expect.any(String),
     createdAt: expect.any(String)
   });
 });
@@ -80,6 +95,19 @@ test('createTestLucaSchema creates valid schema', () => {
     transactions: expect.any(Array),
     recurringTransactions: expect.any(Array),
     recurringTransactionEvents: expect.any(Array)
+  });
+});
+
+test('createTestAccounts creates array of accounts', () => {
+  const count = 5;
+  const accounts = createTestAccounts(count);
+  expect(accounts).toHaveLength(count);
+  accounts.forEach(account => {
+    expect(account).toMatchObject({
+      id: expect.any(String),
+      name: expect.any(String),
+      accountNumber: expect.any(String)
+    });
   });
 });
 
