@@ -56,7 +56,7 @@ import lucaValidator from './lucaValidator';
 import schemas from './schemas';
 
 /**
- * Core library exports containing the main validator, schemas, and legacy enums
+ * Core library exports containing the main validator, schemas, and enums
  *
  * @namespace Core
  */
@@ -65,7 +65,7 @@ export {
   lucaValidator,
   /** Collection of all JSON schemas for financial data validation */
   schemas,
-  /** @deprecated Legacy enum objects for backward compatibility */
+  /** Runtime enum objects for backward compatibility */
   enums
 };
 

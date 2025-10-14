@@ -355,18 +355,13 @@ export const createTestTransaction = (overrides = {}): Transaction => ({
 });
 
 /**
- * Legacy validation error class for backward compatibility
+ * Validation error class for backward compatibility
  *
- * @deprecated Use LucaValidationError from errorHandling module instead
  * @since 1.0.0
  *
- * @example Migration
+ * @example Usage
  * ```typescript
- * // Old way (deprecated)
  * throw new SchemaValidationError(errors);
- *
- * // New way (recommended)
- * throw new LucaValidationError(errors, context);
  * ```
  */
 export class SchemaValidationError extends Error {
