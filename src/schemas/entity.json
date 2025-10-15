@@ -39,6 +39,20 @@
       "title": "Entity Status",
       "enum": ["ACTIVE", "INACTIVE", "SUSPENDED", "DELETED", "CLOSED"],
       "description": "The status of the entity, indicating whether it is active, inactive, suspended, or deleted. Controlled to specific predefined options for consistency and integrity."
+    },
+    "accountType": {
+      "type": ["string", "null"],
+      "title": "Account Type",
+      "enum": [
+        "CHECKING",
+        "SAVINGS",
+        "CREDIT_CARD",
+        "INVESTMENT",
+        "LOAN",
+        "CASH",
+        null
+      ],
+      "description": "For entities of type ACCOUNT, specifies the type of financial account (e.g., checking, savings, credit card). Null for non-account entities."
     }
   }
 }

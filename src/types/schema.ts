@@ -1,7 +1,6 @@
 // Schema types and utilities
 
 export const SchemasEnum = {
-  ACCOUNT: 'account',
   CATEGORY: 'category',
   ENTITY: 'entity',
   LUCASCHEMA: 'lucaSchema',

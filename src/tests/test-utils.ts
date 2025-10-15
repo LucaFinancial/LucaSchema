@@ -1,5 +1,4 @@
 import type {
-  Account,
   Transaction,
   Entity,
   Category,
@@ -7,24 +6,6 @@ import type {
   RecurringTransactionEvent,
   LucaSchema
 } from '../types';
-
-/**
- * Creates a test account with default values
- */
-export const createTestAccount = (
-  overrides: Partial<Account> = {}
-): Account => ({
-  id: '123e4567-e89b-12d3-a456-426614174010',
-  name: 'Test Account',
-  description: 'This is a test account',
-  accountNumber: '1000',
-  accountType: 'ASSET',
-  parentAccountId: null,
-  isActive: true,
-  createdAt: '2024-01-01T00:00:00Z',
-  updatedAt: null,
-  ...overrides
-});
 
 /**
  * Creates a test transaction with default values
@@ -123,7 +104,6 @@ export const createTestLucaSchema = (
   overrides: Partial<LucaSchema> = {}
 ): LucaSchema => ({
   schemaVersion: '2.0.0',
-  accounts: [createTestAccount()],
   entities: [createTestEntity()],
   categories: [createTestCategory()],
   transactions: [createTestTransaction()],
@@ -131,22 +111,6 @@ export const createTestLucaSchema = (
   recurringTransactionEvents: [createTestRecurringTransactionEvent()],
   ...overrides
 });
-
-/**
- * Creates an array of test accounts
- */
-export const createTestAccounts = (
-  count: number,
-  overrides: Partial<Account> = {}
-): Account[] => {
-  return Array.from({ length: count }, (_, index) =>
-    createTestAccount({
-      id: `123e4567-e89b-12d3-a456-${index.toString().padStart(12, '0')}`,
-      accountNumber: (1000 + index).toString(),
-      ...overrides
-    })
-  );
-};
 
 /**
  * Creates an array of test transactions

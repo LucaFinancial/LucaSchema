@@ -4,7 +4,7 @@
  */
 
 // Import types for satisfies constraints
-import type { TransactionState } from '../types';
+import type { TransactionState, EntryType } from '../types';
 
 /**
  * Transaction state enumeration for tracking transaction lifecycle
@@ -33,3 +33,15 @@ export const TransactionStateEnum = {
   /** Transaction was deleted */
   DELETED: 'DELETED'
 } as const satisfies Record<string, TransactionState>;
+
+/**
+ * Entry type enumeration for double-entry accounting
+ *
+ * Indicates whether a transaction entry is a debit or credit
+ */
+export const EntryTypeEnum = {
+  /** Debit entry - Increases assets and expenses, decreases liabilities and revenue */
+  DEBIT: 'DEBIT',
+  /** Credit entry - Increases liabilities and revenue, decreases assets and expenses */
+  CREDIT: 'CREDIT'
+} as const satisfies Record<string, EntryType>;

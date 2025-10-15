@@ -102,35 +102,9 @@ const recurringTransaction = {
 };
 ```
 
-### Account
-
-Validates accounts in the chart of accounts for double-entry bookkeeping. Accounts are the fundamental elements for tracking financial transactions.
-
-**Account Types**:
-
-- **ASSET**: Resources owned (normal debit balance) - e.g., Cash, Accounts Receivable
-- **LIABILITY**: Obligations owed (normal credit balance) - e.g., Accounts Payable, Loans
-- **EQUITY**: Owner's interest (normal credit balance) - e.g., Owner's Capital, Retained Earnings
-- **REVENUE**: Income earned (normal credit balance) - e.g., Sales Revenue, Service Revenue
-- **EXPENSE**: Costs incurred (normal debit balance) - e.g., Rent Expense, Utilities
-
-```typescript
-const account = {
-  id: string;
-  name: string;
-  description: string | null;
-  accountNumber: string; // Numeric identifier (e.g., '1000', '2100')
-  accountType: 'ASSET' | 'LIABILITY' | 'EQUITY' | 'REVENUE' | 'EXPENSE';
-  parentAccountId: string | null; // For hierarchical chart of accounts
-  isActive: boolean;
-  createdAt: string;
-  updatedAt: string | null;
-};
-```
-
 ### Entity
 
-Validates financial entities like accounts, retailers, or individuals.
+Validates financial entities like personal accounts, retailers, or individuals. For entities of type `ACCOUNT`, you can specify the account type (checking, savings, credit card, etc.).
 
 ```typescript
 const entity = {
@@ -139,10 +113,20 @@ const entity = {
   description: string | null;
   entityType: 'ACCOUNT' | 'RETAILER' | 'SERVICE' | 'INDIVIDUAL' | 'UTILITY' | 'GOVERNMENT';
   entityStatus: 'ACTIVE' | 'INACTIVE' | 'SUSPENDED' | 'DELETED' | 'CLOSED';
+  accountType?: 'CHECKING' | 'SAVINGS' | 'CREDIT_CARD' | 'INVESTMENT' | 'LOAN' | 'CASH' | null;
   createdAt: string;
   updatedAt: string | null;
 };
 ```
+
+**Personal Finance Account Types** (when `entityType` is `ACCOUNT`):
+
+- **CHECKING**: Checking account for daily transactions
+- **SAVINGS**: Savings account
+- **CREDIT_CARD**: Credit card account
+- **INVESTMENT**: Investment/brokerage account
+- **LOAN**: Loan account (mortgage, car loan, etc.)
+- **CASH**: Cash on hand
 
 ### Category
 

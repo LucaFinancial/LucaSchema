@@ -6,7 +6,6 @@
   "type": "object",
   "required": [
     "schemaVersion",
-    "accounts",
     "categories",
     "entities",
     "recurringTransactions",
@@ -17,14 +16,6 @@
     "schemaVersion": {
       "type": "string",
       "description": "Schema version of the luca ledger"
-    },
-    "accounts": {
-      "type": "array",
-      "description": "List of accounts in the chart of accounts",
-      "uniqueItems": true,
-      "items": {
-        "$ref": "./account.json"
-      }
     },
     "categories": {
       "type": "array",

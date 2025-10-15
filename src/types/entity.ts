@@ -15,6 +15,14 @@ export type EntityStatus =
   | 'DELETED'
   | 'CLOSED';
 
+export type AccountType =
+  | 'CHECKING'
+  | 'SAVINGS'
+  | 'CREDIT_CARD'
+  | 'INVESTMENT'
+  | 'LOAN'
+  | 'CASH';
+
 // Entity interface
 export interface Entity {
   id: string;
@@ -22,6 +30,7 @@ export interface Entity {
   description: string | null;
   entityType: EntityType;
   entityStatus: EntityStatus;
+  accountType?: AccountType | null;
   createdAt: string;
   updatedAt: string | null;
 }
