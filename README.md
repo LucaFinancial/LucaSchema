@@ -55,12 +55,13 @@ console.log(`Transaction amount: ${formatMinorUnits(transactionData.amount)}`); 
 
 ### Transaction
 
-Validates financial transactions with properties like amount, date, and state. Supports double-entry accounting with debit/credit classification.
+Validates financial transactions with properties like amount, date, and state. Supports double-entry accounting with debit/credit classification and transaction grouping for journal entries.
 
 **Important**:
 
 - All monetary amounts are stored as integers in minor units (cents) to avoid floating-point precision issues.
 - The `entryType` field indicates whether the transaction is a DEBIT or CREDIT entry for double-entry accounting.
+- The `transactionGroupId` field links related debit and credit entries that form a complete journal entry.
 - The `id` field is required for all transactions.
 
 ```typescript
@@ -74,10 +75,38 @@ const transaction = {
   description: string;
   transactionState: TransactionState;
   entryType: 'DEBIT' | 'CREDIT'; // Double-entry accounting entry type
+  transactionGroupId: string | null; // Links related debit/credit entries
   createdAt: string;
   updatedAt: string | null;
 };
 ```
+
+### Account
+
+Validates accounts in the chart of accounts with support for hierarchical structure. Follows standard accounting categories (Assets, Liabilities, Equity, Revenue, Expenses) and supports parent/child relationships.
+
+```typescript
+const account = {
+  id: string;
+  name: string;
+  description: string | null;
+  accountNumber: string; // 4-10 digit account number (e.g., '1000', '1110')
+  accountCategory: 'ASSETS' | 'LIABILITIES' | 'EQUITY' | 'REVENUE' | 'EXPENSES';
+  normalBalance: 'DEBIT' | 'CREDIT'; // Which side increases the account
+  parentAccountId: string | null; // For hierarchical account structure
+  accountStatus: 'ACTIVE' | 'INACTIVE' | 'CLOSED';
+  createdAt: string;
+  updatedAt: string | null;
+};
+```
+
+**Account Categories and Normal Balances**:
+
+- **ASSETS**: Resources owned (Normal Balance: DEBIT)
+- **LIABILITIES**: Obligations owed (Normal Balance: CREDIT)
+- **EQUITY**: Owner's interest (Normal Balance: CREDIT)
+- **REVENUE**: Income from operations (Normal Balance: CREDIT)
+- **EXPENSES**: Costs incurred (Normal Balance: DEBIT)
 
 ### RecurringTransaction
 
@@ -194,6 +223,106 @@ const amountInDollars = minorUnitsToDollars(10050); // 100.50
 // Format for display
 const formatted = formatMinorUnits(10050); // '$100.50'
 const formattedEuro = formatMinorUnits(10050, 'EUR', 'de-DE'); // '100,50 €'
+```
+
+## Transaction Grouping and Double-Entry Accounting
+
+LucaSchema supports proper double-entry accounting through transaction grouping. Each financial transaction should have corresponding debit and credit entries that balance.
+
+### Journal Entry Validation
+
+```typescript
+import { validateJournalEntry } from '@luca-financial/luca-schema';
+
+// Create linked debit and credit entries
+const transactions = [
+  {
+    id: 'txn-1',
+    entryType: 'DEBIT',
+    amount: 10000, // $100 debit to Cash
+    transactionGroupId: 'group-123'
+    // ... other fields
+  },
+  {
+    id: 'txn-2',
+    entryType: 'CREDIT',
+    amount: 10000, // $100 credit to Revenue
+    transactionGroupId: 'group-123'
+    // ... other fields
+  }
+];
+
+// Validate that debits equal credits
+const result = validateJournalEntry(transactions);
+console.log(result.isValid); // true
+console.log(result.totalDebits); // 10000
+console.log(result.totalCredits); // 10000
+```
+
+### Transaction Grouping Utilities
+
+```typescript
+import {
+  groupTransactionsByGroupId,
+  validateAllJournalEntries
+} from '@luca-financial/luca-schema';
+
+// Group transactions by their transactionGroupId
+const groups = groupTransactionsByGroupId(allTransactions);
+
+// Validate all groups at once
+const validationResults = validateAllJournalEntries(allTransactions);
+for (const [groupId, result] of validationResults) {
+  if (!result.isValid) {
+    console.error(`Group ${groupId} is imbalanced:`, result.error);
+  }
+}
+```
+
+## Chart of Accounts Hierarchy
+
+LucaSchema supports hierarchical chart of accounts with parent/child relationships, enabling multi-level account organization.
+
+### Account Hierarchy Navigation
+
+```typescript
+import {
+  getAccountAncestors,
+  getAccountDescendants,
+  getAccountChildren,
+  getAccountPath,
+  getAccountDepth,
+  getRootAccounts,
+  isLeafAccount,
+  getAccountsByCategory
+} from '@luca-financial/luca-schema';
+
+// Navigate up the hierarchy
+const ancestors = getAccountAncestors(cashAccountId, allAccounts);
+// Returns: [Current Assets, Assets]
+
+// Navigate down the hierarchy
+const descendants = getAccountDescendants(assetsAccountId, allAccounts);
+// Returns all child accounts at any depth
+
+// Get immediate children only
+const children = getAccountChildren(assetsAccountId, allAccounts);
+
+// Get full path from root to account
+const path = getAccountPath(checkingAccountId, allAccounts);
+// Returns: ['Assets', 'Current Assets', 'Cash', 'Checking Account']
+
+// Get account depth (0 = root level)
+const depth = getAccountDepth(cashAccountId, allAccounts);
+
+// Get all root accounts
+const roots = getRootAccounts(allAccounts);
+
+// Check if account is a leaf (has no children)
+const isLeaf = isLeafAccount(checkingAccountId, allAccounts);
+
+// Get all accounts in a category
+const assetAccounts = getAccountsByCategory('ASSETS', allAccounts);
 ```
 
 ### Migration Guide

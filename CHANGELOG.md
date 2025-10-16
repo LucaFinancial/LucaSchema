@@ -5,6 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added - Phase 2: Transaction Linking and Account Hierarchy
+
+- **Transaction Grouping**: Added `transactionGroupId` field to link related debit/credit entries in double-entry bookkeeping
+- **Chart of Accounts**: New `Account` schema with hierarchical structure supporting:
+  - Five standard accounting categories: ASSETS, LIABILITIES, EQUITY, REVENUE, EXPENSES
+  - Parent/child account relationships via `parentAccountId`
+  - Account numbering scheme with 4-10 digit numbers
+  - Normal balance indicator (DEBIT or CREDIT)
+  - Account status tracking (ACTIVE, INACTIVE, CLOSED)
+- **Account Enums**: Runtime enumerations for account categories, normal balances, and statuses
+- **Transaction Grouping Utilities**:
+  - `validateJournalEntry()` - Validates that debits equal credits in a journal entry
+  - `groupTransactionsByGroupId()` - Groups transactions by their group ID
+  - `validateAllJournalEntries()` - Batch validation of multiple transaction groups
+- **Account Hierarchy Utilities**:
+  - `getAccountAncestors()` - Navigate up the account hierarchy
+  - `getAccountDescendants()` - Get all child accounts recursively
+  - `getAccountChildren()` - Get immediate child accounts
+  - `getAccountPath()` - Get full path from root to account
+  - `getAccountDepth()` - Get nesting level of an account
+  - `getRootAccounts()` - Get all top-level accounts
+  - `isLeafAccount()` - Check if account has no children
+  - `getAccountsByCategory()` - Filter accounts by category
+- Example chart of accounts with hierarchical structure
+- Example journal entries demonstrating linked debit/credit transactions
+- Comprehensive test suite for transaction grouping and account hierarchy (122 tests total)
+- Full documentation of new features in README
+
+### Changed
+
+- Transaction schema now includes optional `transactionGroupId` field for linking entries
+- Schema enumeration updated to include 'account' schema type
+- Test utilities enhanced with account creation helpers
+
 ## [2.0.0] - 2025-10-12
 
 ### Added
