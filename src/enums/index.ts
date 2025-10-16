@@ -27,6 +27,13 @@ export {
 // Schema enums
 export { SchemasEnum } from './schema';
 
+// Account enums (for chart of accounts)
+export {
+  AccountCategoryEnum,
+  NormalBalanceEnum,
+  AccountStatusEnum
+} from './account';
+
 // Import all for backward compatibility object
 import { CategoryTypeEnum } from './category';
 import { EntityTypeEnum, EntityStatusEnum, AccountTypeEnum } from './entity';
@@ -37,6 +44,11 @@ import {
   RecurringTransactionEventStatusEnum
 } from './recurring';
 import { SchemasEnum } from './schema';
+import {
+  AccountCategoryEnum,
+  NormalBalanceEnum,
+  AccountStatusEnum
+} from './account';
 
 // Backward compatibility - single object export
 const enums = {
@@ -49,7 +61,10 @@ const enums = {
   RecurringTransactionFrequencyEnum,
   RecurringTransactionStateEnum,
   RecurringTransactionEventStatusEnum,
-  SchemasEnum
+  SchemasEnum,
+  AccountCategoryEnum,
+  NormalBalanceEnum,
+  AccountStatusEnum
 } as const;
 
 export default enums;

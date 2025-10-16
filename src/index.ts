@@ -100,6 +100,73 @@ export {
 } from './utils';
 
 /**
+ * Transaction grouping and validation utilities
+ *
+ * Functions for working with grouped transactions in double-entry accounting,
+ * including validation of journal entries.
+ *
+ * @namespace TransactionGrouping
+ *
+ * @example Validating journal entries
+ * ```typescript
+ * import { validateJournalEntry } from '@luca-financial/luca-schema';
+ *
+ * const transactions = [
+ *   { entryType: 'DEBIT', amount: 10000, ... },
+ *   { entryType: 'CREDIT', amount: 10000, ... }
+ * ];
+ *
+ * const result = validateJournalEntry(transactions);
+ * console.log(result.isValid); // true
+ * ```
+ */
+export {
+  /** Validates that a group of transactions forms a balanced journal entry */
+  validateJournalEntry,
+  /** Groups transactions by their transactionGroupId */
+  groupTransactionsByGroupId,
+  /** Validates all transaction groups in a set of transactions */
+  validateAllJournalEntries,
+  /** Type definition for journal entry validation results */
+  type JournalEntryValidationResult
+} from './transactionGrouping';
+
+/**
+ * Account hierarchy navigation utilities
+ *
+ * Functions for working with hierarchical chart of accounts,
+ * including navigation and tree operations.
+ *
+ * @namespace AccountHierarchy
+ *
+ * @example Navigating account hierarchy
+ * ```typescript
+ * import { getAccountAncestors, getAccountChildren } from '@luca-financial/luca-schema';
+ *
+ * const ancestors = getAccountAncestors('cash-account-id', allAccounts);
+ * const children = getAccountChildren('assets-account-id', allAccounts);
+ * ```
+ */
+export {
+  /** Gets all ancestor accounts from parent to root */
+  getAccountAncestors,
+  /** Gets all descendant accounts recursively */
+  getAccountDescendants,
+  /** Gets immediate child accounts */
+  getAccountChildren,
+  /** Gets the full path of account names from root to account */
+  getAccountPath,
+  /** Gets the depth level of an account in the hierarchy */
+  getAccountDepth,
+  /** Gets all root accounts (no parent) */
+  getRootAccounts,
+  /** Checks if an account is a leaf account (no children) */
+  isLeafAccount,
+  /** Gets all accounts in a specific category */
+  getAccountsByCategory
+} from './accountHierarchy';
+
+/**
  * Enhanced error handling system with structured errors and intelligent suggestions
  *
  * Provides comprehensive error classes, type guards, and utilities for handling

@@ -10,6 +10,12 @@ import type {
   RecurringTransactionEventStatus
 } from './recurring';
 import type { SchemaType } from './schema';
+import type {
+  Account,
+  AccountCategory,
+  NormalBalance,
+  AccountStatus
+} from './account';
 
 // Export interfaces
 export type {
@@ -17,7 +23,8 @@ export type {
   Transaction,
   Category,
   RecurringTransaction,
-  RecurringTransactionEvent
+  RecurringTransactionEvent,
+  Account
 };
 
 // Export types
@@ -31,7 +38,10 @@ export type {
   RecurringTransactionFrequency,
   RecurringTransactionState,
   RecurringTransactionEventStatus,
-  SchemaType
+  SchemaType,
+  AccountCategory,
+  NormalBalance,
+  AccountStatus
 };
 
 // Main schema interface
@@ -42,4 +52,5 @@ export interface LucaSchema {
   transactions: Transaction[];
   recurringTransactions: RecurringTransaction[];
   recurringTransactionEvents: RecurringTransactionEvent[];
+  accounts?: Account[];
 }

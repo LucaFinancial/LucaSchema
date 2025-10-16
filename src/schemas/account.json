@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/account.json",
+  "title": "Account",
+  "description": "Defines the schema for accounts in a chart of accounts. Supports hierarchical account structure with parent/child relationships for proper double-entry accounting.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "./common.json"
+    }
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Account Name",
+      "description": "The name of the account (e.g., 'Cash', 'Accounts Receivable', 'Sales Revenue')."
+    },
+    "description": {
+      "type": ["string", "null"],
+      "title": "Description",
+      "description": "A description of the account, providing additional context. Can be null if not specified."
+    },
+    "accountNumber": {
+      "type": "string",
+      "title": "Account Number",
+      "pattern": "^[0-9]{4,10}$",
+      "description": "The unique account number following a standard numbering scheme (4-10 digits). Example: Assets start with 1xxx, Liabilities with 2xxx, Equity with 3xxx, Revenue with 4xxx, Expenses with 5xxx."
+    },
+    "accountCategory": {
+      "type": "string",
+      "title": "Account Category",
+      "enum": ["ASSETS", "LIABILITIES", "EQUITY", "REVENUE", "EXPENSES"],
+      "description": "The primary accounting category for this account, following the accounting equation: Assets = Liabilities + Equity."
+    },
+    "normalBalance": {
+      "type": "string",
+      "title": "Normal Balance",
+      "enum": ["DEBIT", "CREDIT"],
+      "description": "Indicates which side (debit or credit) increases the account. Assets and Expenses have DEBIT normal balance. Liabilities, Equity, and Revenue have CREDIT normal balance."
+    },
+    "parentAccountId": {
+      "type": ["string", "null"],
+      "title": "Parent Account ID",
+      "format": "uuid",
+      "description": "The identifier of the parent account in the hierarchy. Null for top-level accounts."
+    },
+    "accountStatus": {
+      "type": "string",
+      "title": "Account Status",
+      "enum": ["ACTIVE", "INACTIVE", "CLOSED"],
+      "description": "The status of the account, indicating whether it is active, inactive, or closed."
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "accountNumber",
+    "accountCategory",
+    "normalBalance",
+    "parentAccountId",
+    "accountStatus"
+  ]
+}

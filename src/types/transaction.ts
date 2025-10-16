@@ -26,6 +26,7 @@ export interface Transaction {
   description: string;
   transactionState: TransactionState;
   entryType: EntryType;
+  transactionGroupId: string | null;
   createdAt: string;
   updatedAt: string | null;
 }

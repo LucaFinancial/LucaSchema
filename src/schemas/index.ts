@@ -22,6 +22,7 @@
  */
 
 import { AnySchema } from 'ajv';
+import account from './account.json';
 import category from './category.json';
 import common from './common.json';
 import entity from './entity.json';
@@ -54,6 +55,8 @@ import transaction from './transaction.json';
  * ```
  */
 export interface Schemas {
+  /** Schema for chart of accounts (assets, liabilities, equity, revenue, expenses) */
+  account: AnySchema;
   /** Schema for transaction categories (income, expense, transfer types) */
   category: AnySchema;
   /** Common schema definitions shared across other schemas */
@@ -116,6 +119,7 @@ export interface Schemas {
  * ```
  */
 const schemas: Schemas = {
+  account,
   category,
   common,
   entity,

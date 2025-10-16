@@ -350,6 +350,7 @@ export const createTestTransaction = (overrides = {}): Transaction => ({
   description: 'Test transaction',
   transactionState: 'COMPLETED',
   entryType: 'DEBIT',
+  transactionGroupId: null,
   createdAt: '2024-01-01T00:00:00Z',
   updatedAt: null,
   ...overrides
