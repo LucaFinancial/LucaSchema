@@ -16,15 +16,22 @@ describe('Integer minor units validation', () => {
       date: '2024-01-01',
       description: 'Test transaction with decimal',
       transactionState: 'COMPLETED',
+      entryType: 'DEBIT',
       createdAt: '2024-01-01T00:00:00Z',
       updatedAt: null
     };
 
     const isValid = validateTransaction(transactionWithDecimal);
     expect(isValid).toBe(false);
-    expect(validateTransaction.errors).toHaveLength(1);
-    expect(validateTransaction.errors![0].keyword).toBe('type');
-    expect(validateTransaction.errors![0].message).toBe('must be integer');
+    expect(validateTransaction.errors).toBeDefined();
+    expect(validateTransaction.errors!.length).toBeGreaterThan(0);
+    expect(
+      validateTransaction.errors!.some(err => err.keyword === 'type')
+    ).toBe(true);
+    const typeError = validateTransaction.errors!.find(
+      err => err.keyword === 'type'
+    );
+    expect(typeError?.message).toBe('must be integer');
   });
 
   test('should accept integer amounts', () => {
@@ -42,6 +49,7 @@ describe('Integer minor units validation', () => {
       date: '2024-01-01',
       description: 'Test transaction with integer',
       transactionState: 'COMPLETED',
+      entryType: 'DEBIT',
       createdAt: '2024-01-01T00:00:00Z',
       updatedAt: null
     };

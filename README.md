@@ -30,6 +30,7 @@ const transactionData = {
   date: '2024-01-01',
   description: 'Test transaction',
   transactionState: enums.TransactionStateEnum.COMPLETED,
+  entryType: enums.EntryTypeEnum.DEBIT,
   createdAt: '2024-01-01T00:00:00Z',
   updatedAt: null
 };
@@ -54,9 +55,13 @@ console.log(`Transaction amount: ${formatMinorUnits(transactionData.amount)}`); 
 
 ### Transaction
 
-Validates financial transactions with properties like amount, date, and state.
+Validates financial transactions with properties like amount, date, and state. Supports double-entry accounting with debit/credit classification.
 
-**Important**: All monetary amounts are stored as integers in minor units (cents) to avoid floating-point precision issues.
+**Important**:
+
+- All monetary amounts are stored as integers in minor units (cents) to avoid floating-point precision issues.
+- The `entryType` field indicates whether the transaction is a DEBIT or CREDIT entry for double-entry accounting.
+- The `id` field is required for all transactions.
 
 ```typescript
 const transaction = {
@@ -68,6 +73,7 @@ const transaction = {
   date: string;
   description: string;
   transactionState: TransactionState;
+  entryType: 'DEBIT' | 'CREDIT'; // Double-entry accounting entry type
   createdAt: string;
   updatedAt: string | null;
 };
@@ -98,7 +104,7 @@ const recurringTransaction = {
 
 ### Entity
 
-Validates financial entities like accounts, retailers, or individuals.
+Validates financial entities like personal accounts, retailers, or individuals. For entities of type `ACCOUNT`, you can specify the account type (checking, savings, credit card, etc.).
 
 ```typescript
 const entity = {
@@ -107,10 +113,20 @@ const entity = {
   description: string | null;
   entityType: 'ACCOUNT' | 'RETAILER' | 'SERVICE' | 'INDIVIDUAL' | 'UTILITY' | 'GOVERNMENT';
   entityStatus: 'ACTIVE' | 'INACTIVE' | 'SUSPENDED' | 'DELETED' | 'CLOSED';
+  accountType?: 'CHECKING' | 'SAVINGS' | 'CREDIT_CARD' | 'INVESTMENT' | 'LOAN' | 'CASH' | null;
   createdAt: string;
   updatedAt: string | null;
 };
 ```
+
+**Personal Finance Account Types** (when `entityType` is `ACCOUNT`):
+
+- **CHECKING**: Checking account for daily transactions
+- **SAVINGS**: Savings account
+- **CREDIT_CARD**: Credit card account
+- **INVESTMENT**: Investment/brokerage account
+- **LOAN**: Loan account (mortgage, car loan, etc.)
+- **CASH**: Cash on hand
 
 ### Category
 

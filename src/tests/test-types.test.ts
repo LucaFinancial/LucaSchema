@@ -18,6 +18,7 @@ test('Transaction validation', () => {
     date: '2024-01-01',
     description: 'Test transaction',
     transactionState: 'COMPLETED',
+    entryType: 'DEBIT',
     createdAt: '2024-01-01T00:00:00Z',
     updatedAt: null
   };

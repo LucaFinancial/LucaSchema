@@ -20,6 +20,7 @@ test('createTestTransaction creates valid transaction', () => {
     date: expect.any(String),
     description: expect.any(String),
     transactionState: expect.any(String),
+    entryType: expect.any(String),
     createdAt: expect.any(String)
   });
 });

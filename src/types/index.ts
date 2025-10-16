@@ -1,6 +1,6 @@
 // Import all types for controlled re-export
-import type { Entity, EntityType, EntityStatus } from './entity';
-import type { Transaction, TransactionState } from './transaction';
+import type { Entity, EntityType, EntityStatus, AccountType } from './entity';
+import type { Transaction, TransactionState, EntryType } from './transaction';
 import type { Category, CategoryType } from './category';
 import type {
   RecurringTransaction,
@@ -22,9 +22,11 @@ export type {
 
 // Export types
 export type {
+  AccountType,
   EntityType,
   EntityStatus,
   TransactionState,
+  EntryType,
   CategoryType,
   RecurringTransactionFrequency,
   RecurringTransactionState,

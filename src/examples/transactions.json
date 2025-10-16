@@ -9,7 +9,8 @@
     "description": "Monthly rent payment",
     "transactionState": "COMPLETED",
     "createdAt": "2024-01-01T00:00:00Z",
-    "updatedAt": "2024-01-15T00:00:00Z"
+    "updatedAt": "2024-01-15T00:00:00Z",
+    "entryType": "DEBIT"
   },
   {
     "id": "10000000-0000-0000-0000-000000000002",
@@ -21,7 +22,8 @@
     "description": "Internet bill payment",
     "transactionState": "PENDING",
     "createdAt": "2024-01-05T00:00:00Z",
-    "updatedAt": "2024-01-10T00:00:00Z"
+    "updatedAt": "2024-01-10T00:00:00Z",
+    "entryType": "DEBIT"
   },
   {
     "id": "10000000-0000-0000-0000-000000000003",
@@ -33,7 +35,8 @@
     "description": "Electricity bill payment",
     "transactionState": "SCHEDULED",
     "createdAt": "2024-01-10T00:00:00Z",
-    "updatedAt": "2024-01-15T00:00:00Z"
+    "updatedAt": "2024-01-15T00:00:00Z",
+    "entryType": "DEBIT"
   },
   {
     "id": "10000000-0000-0000-0000-000000000004",
@@ -45,7 +48,8 @@
     "description": "Car loan payment",
     "transactionState": "COMPLETED",
     "createdAt": "2024-01-25T00:00:00Z",
-    "updatedAt": "2024-02-01T00:00:00Z"
+    "updatedAt": "2024-02-01T00:00:00Z",
+    "entryType": "DEBIT"
   },
   {
     "id": "10000000-0000-0000-0000-000000000005",
@@ -57,7 +61,8 @@
     "description": "Utility bill payment",
     "transactionState": "COMPLETED",
     "createdAt": "2024-01-30T00:00:00Z",
-    "updatedAt": "2024-02-05T00:00:00Z"
+    "updatedAt": "2024-02-05T00:00:00Z",
+    "entryType": "DEBIT"
   },
   {
     "id": "10000000-0000-0000-0000-000000000006",
@@ -69,7 +74,8 @@
     "description": "Phone bill payment",
     "transactionState": "PENDING",
     "createdAt": "2024-02-01T00:00:00Z",
-    "updatedAt": "2024-02-10T00:00:00Z"
+    "updatedAt": "2024-02-10T00:00:00Z",
+    "entryType": "DEBIT"
   },
   {
     "id": "10000000-0000-0000-0000-000000000007",
@@ -81,7 +87,8 @@
     "description": "Health insurance premium",
     "transactionState": "SCHEDULED",
     "createdAt": "2024-02-01T00:00:00Z",
-    "updatedAt": "2024-02-15T00:00:00Z"
+    "updatedAt": "2024-02-15T00:00:00Z",
+    "entryType": "DEBIT"
   },
   {
     "id": "10000000-0000-0000-0000-000000000008",
@@ -93,7 +100,8 @@
     "description": "Credit card payment",
     "transactionState": "COMPLETED",
     "createdAt": "2024-02-10T00:00:00Z",
-    "updatedAt": "2024-02-20T00:00:00Z"
+    "updatedAt": "2024-02-20T00:00:00Z",
+    "entryType": "DEBIT"
   },
   {
     "id": "10000000-0000-0000-0000-000000000009",
@@ -105,7 +113,8 @@
     "description": "Monthly gym membership",
     "transactionState": "COMPLETED",
     "createdAt": "2024-02-15T00:00:00Z",
-    "updatedAt": "2024-02-25T00:00:00Z"
+    "updatedAt": "2024-02-25T00:00:00Z",
+    "entryType": "DEBIT"
   },
   {
     "id": "10000000-0000-0000-0000-000000000010",
@@ -117,6 +126,7 @@
     "description": "Rent payment",
     "transactionState": "COMPLETED",
     "createdAt": "2024-02-20T00:00:00Z",
-    "updatedAt": "2024-03-01T00:00:00Z"
+    "updatedAt": "2024-03-01T00:00:00Z",
+    "entryType": "DEBIT"
   }
 ]

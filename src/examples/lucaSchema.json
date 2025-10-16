@@ -43,7 +43,8 @@
       "description": "Monthly rent payment",
       "transactionState": "COMPLETED",
       "createdAt": "2024-01-01T00:00:00Z",
-      "updatedAt": "2024-01-15T00:00:00Z"
+      "updatedAt": "2024-01-15T00:00:00Z",
+      "entryType": "DEBIT"
     },
     {
       "id": "10000000-0000-0000-0000-000000000002",
@@ -55,7 +56,8 @@
       "description": "Internet bill payment",
       "transactionState": "PENDING",
       "createdAt": "2024-01-05T00:00:00Z",
-      "updatedAt": "2024-01-10T00:00:00Z"
+      "updatedAt": "2024-01-10T00:00:00Z",
+      "entryType": "DEBIT"
     },
     {
       "id": "10000000-0000-0000-0000-000000000003",
@@ -67,7 +69,8 @@
       "description": "Electricity bill payment",
       "transactionState": "SCHEDULED",
       "createdAt": "2024-01-10T00:00:00Z",
-      "updatedAt": "2024-01-15T00:00:00Z"
+      "updatedAt": "2024-01-15T00:00:00Z",
+      "entryType": "DEBIT"
     }
   ]
 }

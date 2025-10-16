@@ -11,11 +11,11 @@
 // Category enums
 export { CategoryTypeEnum } from './category';
 
-// Entity enums
-export { EntityTypeEnum, EntityStatusEnum } from './entity';
+// Entity enums (includes AccountTypeEnum for personal finance accounts)
+export { EntityTypeEnum, EntityStatusEnum, AccountTypeEnum } from './entity';
 
 // Transaction enums
-export { TransactionStateEnum } from './transaction';
+export { TransactionStateEnum, EntryTypeEnum } from './transaction';
 
 // Recurring transaction enums
 export {
@@ -29,8 +29,8 @@ export { SchemasEnum } from './schema';
 
 // Import all for backward compatibility object
 import { CategoryTypeEnum } from './category';
-import { EntityTypeEnum, EntityStatusEnum } from './entity';
-import { TransactionStateEnum } from './transaction';
+import { EntityTypeEnum, EntityStatusEnum, AccountTypeEnum } from './entity';
+import { TransactionStateEnum, EntryTypeEnum } from './transaction';
 import {
   RecurringTransactionFrequencyEnum,
   RecurringTransactionStateEnum,
@@ -40,10 +40,12 @@ import { SchemasEnum } from './schema';
 
 // Backward compatibility - single object export
 const enums = {
+  AccountTypeEnum,
   CategoryTypeEnum,
   EntityTypeEnum,
   EntityStatusEnum,
   TransactionStateEnum,
+  EntryTypeEnum,
   RecurringTransactionFrequencyEnum,
   RecurringTransactionStateEnum,
   RecurringTransactionEventStatusEnum,
