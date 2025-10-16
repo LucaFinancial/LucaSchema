@@ -160,7 +160,6 @@ test('RecurringTransactionEvent validation', () => {
 test('LucaSchema validation', () => {
   const lucaSchema: LucaSchema = {
     schemaVersion: '2.0.0',
-    accounts: [],
     entities: [],
     categories: [],
     transactions: [],
