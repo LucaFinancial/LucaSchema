@@ -71,10 +71,21 @@ export default lucaValidator as LucaValidator;
 // Add test utilities
 export const createTestTransaction = (overrides = {}): Transaction => ({
   id: 'test-id',
-  payorId: 'test-payor',
-  payeeId: 'test-payee',
+  postings: [
+    {
+      accountId: 'test-account-1',
+      amount: 10000,
+      description: null,
+      order: 0
+    },
+    {
+      accountId: 'test-account-2',
+      amount: -10000,
+      description: null,
+      order: 1
+    }
+  ],
   categoryId: null,
-  amount: 100,
   date: '2024-01-01',
   description: 'Test transaction',
   transactionState: 'COMPLETED',

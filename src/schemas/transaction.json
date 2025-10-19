@@ -15,30 +15,20 @@
       "format": "date",
       "description": "The date the transaction took place."
     },
-    "payorId": {
-      "type": "string",
-      "title": "Payor ID",
-      "format": "uuid",
-      "description": "Identifier for the payor in the transaction."
-    },
-    "payeeId": {
-      "type": "string",
-      "title": "Payee ID",
-      "format": "uuid",
-      "description": "Identifier for the payee in the transaction."
+    "postings": {
+      "type": "array",
+      "title": "Postings",
+      "minItems": 2,
+      "items": {
+        "$ref": "./posting.json"
+      },
+      "description": "Array of postings (debits and credits) that make up this double-entry transaction. Must contain at least 2 postings and the sum of all posting amounts must equal zero."
     },
     "categoryId": {
       "type": ["string", "null"],
       "title": "Category ID",
       "format": "uuid",
-      "description": "Category identifier for organizing the transaction. Can be null if not categorized."
-    },
-    "amount": {
-      "type": "number",
-      "title": "Amount",
-      "minimum": 0,
-      "multipleOf": 0.01,
-      "description": "The monetary value of the transaction."
+      "description": "Category identifier for organizing the transaction. Can be null if not categorized. This is a decorative field that may be derived from the primary debit or credit account."
     },
     "description": {
       "type": "string",
@@ -67,9 +57,7 @@
   },
   "required": [
     "date",
-    "payorId",
-    "payeeId",
-    "amount",
+    "postings",
     "description",
     "transactionState"
   ]

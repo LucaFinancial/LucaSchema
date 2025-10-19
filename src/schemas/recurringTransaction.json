@@ -10,30 +10,26 @@
     }
   ],
   "properties": {
-    "payorId": {
-      "type": "string",
-      "title": "Payor ID",
-      "format": "uuid",
-      "description": "Identifier for the payor in the transaction."
-    },
-    "payeeId": {
-      "type": "string",
-      "title": "Payee ID",
-      "format": "uuid",
-      "description": "Identifier for the payee in the transaction."
+    "postings": {
+      "type": "array",
+      "title": "Postings",
+      "minItems": 2,
+      "items": {
+        "$ref": "./posting.json"
+      },
+      "description": "Array of posting templates for this recurring transaction. Must contain at least 2 postings and the sum of all posting amounts must equal zero."
     },
     "categoryId": {
       "type": ["string", "null"],
       "title": "Category ID",
       "format": "uuid",
-      "description": "Category identifier for organizing the transaction. Can be null if not categorized."
+      "description": "Category identifier for organizing the transaction. Can be null if not categorized. This is a decorative field that may be derived from the primary debit or credit account."
     },
-    "amount": {
-      "type": "number",
-      "title": "Amount",
-      "minimum": 0,
-      "multipleOf": 0.01,
-      "description": "The monetary value of the transaction."
+    "description": {
+      "type": "string",
+      "title": "Description",
+      "maxLength": 500,
+      "description": "A brief description of the recurring transaction."
     },
     "frequency": {
       "type": "string",
@@ -73,9 +69,8 @@
     }
   },
   "required": [
-    "payorId",
-    "payeeId",
-    "amount",
+    "postings",
+    "description",
     "frequency",
     "interval",
     "occurrences",

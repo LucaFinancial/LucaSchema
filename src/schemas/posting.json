@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/posting.json",
+  "title": "Posting",
+  "description": "Represents an individual debit or credit entry in a double-entry accounting transaction. Each posting references an account and contains a signed amount where positive values represent debits and negative values represent credits.",
+  "type": "object",
+  "properties": {
+    "accountId": {
+      "type": "string",
+      "title": "Account ID",
+      "format": "uuid",
+      "description": "Reference to an entity with entityType='ACCOUNT'. This is the account being debited or credited."
+    },
+    "amount": {
+      "type": "integer",
+      "title": "Amount",
+      "not": {
+        "const": 0
+      },
+      "description": "Signed integer amount in minor units (e.g., cents). Positive values represent debits, negative values represent credits. Zero amounts are not allowed."
+    },
+    "description": {
+      "type": ["string", "null"],
+      "title": "Description",
+      "maxLength": 500,
+      "description": "Optional posting-level description providing additional context for this specific debit or credit entry."
+    },
+    "order": {
+      "type": "integer",
+      "title": "Order",
+      "minimum": 0,
+      "description": "Zero-based ordering index for stable sorting of postings within the transaction. Used to maintain consistent presentation order."
+    }
+  },
+  "required": ["accountId", "amount", "order"]
+}
