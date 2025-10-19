@@ -16,6 +16,8 @@ export type TransactionState =
 export type EntryType = 'DEBIT' | 'CREDIT';
 
 // Transaction interface
+// Note: In accounting terminology, this represents a "posting" or "journal entry line"
+// within a complete journal entry. The journalEntryId links multiple postings together.
 export interface Transaction {
   id: string;
   payorId: string;
@@ -26,7 +28,7 @@ export interface Transaction {
   description: string;
   transactionState: TransactionState;
   entryType: EntryType;
-  transactionGroupId: string | null;
+  journalEntryId: string | null;
   createdAt: string;
   updatedAt: string | null;
 }

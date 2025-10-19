@@ -100,36 +100,43 @@ export {
 } from './utils';
 
 /**
- * Transaction grouping and validation utilities
+ * Journal entry grouping and validation utilities
  *
- * Functions for working with grouped transactions in double-entry accounting,
- * including validation of journal entries.
+ * Functions for working with journal entries in double-entry accounting,
+ * including validation and grouping of postings.
  *
- * @namespace TransactionGrouping
+ * Note: In this library, 'Transaction' objects represent individual postings
+ * (journal entry lines), and 'journalEntryId' links postings into complete
+ * journal entries.
+ *
+ * @namespace JournalEntries
  *
  * @example Validating journal entries
  * ```typescript
  * import { validateJournalEntry } from '@luca-financial/luca-schema';
  *
- * const transactions = [
+ * const postings = [
  *   { entryType: 'DEBIT', amount: 10000, ... },
  *   { entryType: 'CREDIT', amount: 10000, ... }
  * ];
  *
- * const result = validateJournalEntry(transactions);
+ * const result = validateJournalEntry(postings);
  * console.log(result.isValid); // true
  * ```
  */
 export {
-  /** Validates that a group of transactions forms a balanced journal entry */
+  /** Validates that a group of postings forms a balanced journal entry */
   validateJournalEntry,
-  /** Groups transactions by their transactionGroupId */
-  groupTransactionsByGroupId,
-  /** Validates all transaction groups in a set of transactions */
+  /** Groups postings by their journalEntryId */
+  groupTransactionsByJournalEntry,
+  /** Validates all journal entries in a set of postings */
   validateAllJournalEntries,
   /** Type definition for journal entry validation results */
   type JournalEntryValidationResult
 } from './transactionGrouping';
+
+// Deprecated: Export with old name for backward compatibility
+export { groupTransactionsByJournalEntry as groupTransactionsByGroupId } from './transactionGrouping';
 
 /**
  * Account hierarchy navigation utilities

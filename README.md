@@ -55,14 +55,15 @@ console.log(`Transaction amount: ${formatMinorUnits(transactionData.amount)}`); 
 
 ### Transaction
 
-Validates financial transactions with properties like amount, date, and state. Supports double-entry accounting with debit/credit classification and transaction grouping for journal entries.
+Validates financial transactions with properties like amount, date, and state. Supports double-entry accounting with debit/credit classification and journal entry grouping.
 
 **Important**:
 
 - All monetary amounts are stored as integers in minor units (cents) to avoid floating-point precision issues.
-- The `entryType` field indicates whether the transaction is a DEBIT or CREDIT entry for double-entry accounting.
-- The `transactionGroupId` field links related debit and credit entries that form a complete journal entry.
+- The `entryType` field indicates whether this posting is a DEBIT or CREDIT entry for double-entry accounting.
+- The `journalEntryId` field links related debit and credit postings that form a complete journal entry.
 - The `id` field is required for all transactions.
+- **Note**: In accounting terminology, each `Transaction` object represents a "posting" or "journal entry line". The `journalEntryId` links multiple postings into a complete "journal entry" or "transaction".
 
 ```typescript
 const transaction = {
@@ -75,7 +76,7 @@ const transaction = {
   description: string;
   transactionState: TransactionState;
   entryType: 'DEBIT' | 'CREDIT'; // Double-entry accounting entry type
-  transactionGroupId: string | null; // Links related debit/credit entries
+  journalEntryId: string | null; // Links related debit/credit postings
   createdAt: string;
   updatedAt: string | null;
 };
@@ -225,9 +226,11 @@ const formatted = formatMinorUnits(10050); // '$100.50'
 const formattedEuro = formatMinorUnits(10050, 'EUR', 'de-DE'); // '100,50 €'
 ```
 
-## Transaction Grouping and Double-Entry Accounting
+## Journal Entry Grouping and Double-Entry Accounting
 
-LucaSchema supports proper double-entry accounting through transaction grouping. Each financial transaction should have corresponding debit and credit entries that balance.
+LucaSchema supports proper double-entry accounting through journal entry grouping. Each journal entry should have corresponding debit and credit postings that balance.
+
+**Terminology Note**: In this library, `Transaction` objects represent individual "postings" (journal entry lines), and the `journalEntryId` field links multiple postings into a complete "journal entry" in accounting terms.
 
 ### Journal Entry Validation
 
@@ -240,14 +243,14 @@ const transactions = [
     id: 'txn-1',
     entryType: 'DEBIT',
     amount: 10000, // $100 debit to Cash
-    transactionGroupId: 'group-123'
+    journalEntryId: 'group-123'
     // ... other fields
   },
   {
     id: 'txn-2',
     entryType: 'CREDIT',
     amount: 10000, // $100 credit to Revenue
-    transactionGroupId: 'group-123'
+    journalEntryId: 'group-123'
     // ... other fields
   }
 ];
@@ -263,12 +266,12 @@ console.log(result.totalCredits); // 10000
 
 ```typescript
 import {
-  groupTransactionsByGroupId,
+  groupTransactionsByJournalEntry,
   validateAllJournalEntries
 } from '@luca-financial/luca-schema';
 
-// Group transactions by their transactionGroupId
-const groups = groupTransactionsByGroupId(allTransactions);
+// Group transactions by their journalEntryId
+const groups = groupTransactionsByJournalEntry(allTransactions);
 
 // Validate all groups at once
 const validationResults = validateAllJournalEntries(allTransactions);

@@ -4,26 +4,26 @@ import { createTestTransaction } from './test-utils';
 const validateTransaction = lucaValidator.getSchema('transaction');
 
 describe('Transaction GroupId Validation', () => {
-  test('validates transaction with transactionGroupId', () => {
+  test('validates transaction with journalEntryId', () => {
     if (!validateTransaction) {
       throw new Error('Transaction schema not found in lucaValidator.');
     }
 
     const transaction = createTestTransaction({
-      transactionGroupId: '123e4567-e89b-12d3-a456-426614174999'
+      journalEntryId: '123e4567-e89b-12d3-a456-426614174999'
     });
     const valid = validateTransaction(transaction);
     if (!valid) console.log(validateTransaction.errors);
     expect(valid).toBe(true);
   });
 
-  test('validates transaction with null transactionGroupId', () => {
+  test('validates transaction with null journalEntryId', () => {
     if (!validateTransaction) {
       throw new Error('Transaction schema not found in lucaValidator.');
     }
 
     const transaction = createTestTransaction({
-      transactionGroupId: null
+      journalEntryId: null
     });
     const valid = validateTransaction(transaction);
     if (!valid) console.log(validateTransaction.errors);
@@ -41,30 +41,30 @@ describe('Transaction GroupId Validation', () => {
       id: '123e4567-e89b-12d3-a456-426614175001',
       entryType: 'DEBIT',
       amount: 10000,
-      transactionGroupId: groupId
+      journalEntryId: groupId
     });
 
     const creditTransaction = createTestTransaction({
       id: '123e4567-e89b-12d3-a456-426614175002',
       entryType: 'CREDIT',
       amount: 10000,
-      transactionGroupId: groupId
+      journalEntryId: groupId
     });
 
     expect(validateTransaction(debitTransaction)).toBe(true);
     expect(validateTransaction(creditTransaction)).toBe(true);
-    expect(debitTransaction.transactionGroupId).toBe(
-      creditTransaction.transactionGroupId
+    expect(debitTransaction.journalEntryId).toBe(
+      creditTransaction.journalEntryId
     );
   });
 
-  test('rejects transaction with invalid UUID format for transactionGroupId', () => {
+  test('rejects transaction with invalid UUID format for journalEntryId', () => {
     if (!validateTransaction) {
       throw new Error('Transaction schema not found in lucaValidator.');
     }
 
     const transaction = createTestTransaction({
-      transactionGroupId: 'invalid-uuid' as any
+      journalEntryId: 'invalid-uuid' as any
     });
     const valid = validateTransaction(transaction);
     expect(valid).toBe(false);

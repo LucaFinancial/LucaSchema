@@ -1,6 +1,6 @@
 import {
   validateJournalEntry,
-  groupTransactionsByGroupId,
+  groupTransactionsByJournalEntry,
   validateAllJournalEntries
 } from '../transactionGrouping';
 import { createTestTransaction } from './test-utils';
@@ -13,13 +13,13 @@ describe('Transaction Grouping Utilities', () => {
           id: 'txn-1',
           entryType: 'DEBIT',
           amount: 10000,
-          transactionGroupId: 'group-1'
+          journalEntryId: 'group-1'
         }),
         createTestTransaction({
           id: 'txn-2',
           entryType: 'CREDIT',
           amount: 10000,
-          transactionGroupId: 'group-1'
+          journalEntryId: 'group-1'
         })
       ];
 
@@ -40,19 +40,19 @@ describe('Transaction Grouping Utilities', () => {
           id: 'txn-1',
           entryType: 'DEBIT',
           amount: 7500,
-          transactionGroupId: 'group-1'
+          journalEntryId: 'group-1'
         }),
         createTestTransaction({
           id: 'txn-2',
           entryType: 'DEBIT',
           amount: 2500,
-          transactionGroupId: 'group-1'
+          journalEntryId: 'group-1'
         }),
         createTestTransaction({
           id: 'txn-3',
           entryType: 'CREDIT',
           amount: 10000,
-          transactionGroupId: 'group-1'
+          journalEntryId: 'group-1'
         })
       ];
 
@@ -72,13 +72,13 @@ describe('Transaction Grouping Utilities', () => {
           id: 'txn-1',
           entryType: 'DEBIT',
           amount: 10000,
-          transactionGroupId: 'group-1'
+          journalEntryId: 'group-1'
         }),
         createTestTransaction({
           id: 'txn-2',
           entryType: 'CREDIT',
           amount: 9000,
-          transactionGroupId: 'group-1'
+          journalEntryId: 'group-1'
         })
       ];
 
@@ -132,36 +132,36 @@ describe('Transaction Grouping Utilities', () => {
       expect(result.error).toContain('No debit entries');
     });
 
-    test('invalidates an empty transaction array', () => {
+    test('invalidates an empty array', () => {
       const result = validateJournalEntry([]);
 
       expect(result.isValid).toBe(false);
-      expect(result.error).toContain('No transactions provided');
+      expect(result.error).toContain('No postings provided');
     });
   });
 
-  describe('groupTransactionsByGroupId', () => {
-    test('groups transactions by transactionGroupId', () => {
+  describe('groupTransactionsByJournalEntry', () => {
+    test('groups transactions by journalEntryId', () => {
       const transactions = [
         createTestTransaction({
           id: 'txn-1',
-          transactionGroupId: 'group-1'
+          journalEntryId: 'group-1'
         }),
         createTestTransaction({
           id: 'txn-2',
-          transactionGroupId: 'group-1'
+          journalEntryId: 'group-1'
         }),
         createTestTransaction({
           id: 'txn-3',
-          transactionGroupId: 'group-2'
+          journalEntryId: 'group-2'
         }),
         createTestTransaction({
           id: 'txn-4',
-          transactionGroupId: null
+          journalEntryId: null
         })
       ];
 
-      const groups = groupTransactionsByGroupId(transactions);
+      const groups = groupTransactionsByJournalEntry(transactions);
 
       expect(groups.size).toBe(3);
       expect(groups.get('group-1')).toHaveLength(2);
@@ -170,7 +170,7 @@ describe('Transaction Grouping Utilities', () => {
     });
 
     test('handles empty transaction array', () => {
-      const groups = groupTransactionsByGroupId([]);
+      const groups = groupTransactionsByJournalEntry([]);
 
       expect(groups.size).toBe(0);
     });
@@ -184,26 +184,26 @@ describe('Transaction Grouping Utilities', () => {
           id: 'txn-1',
           entryType: 'DEBIT',
           amount: 10000,
-          transactionGroupId: 'group-1'
+          journalEntryId: 'group-1'
         }),
         createTestTransaction({
           id: 'txn-2',
           entryType: 'CREDIT',
           amount: 10000,
-          transactionGroupId: 'group-1'
+          journalEntryId: 'group-1'
         }),
         // Imbalanced group
         createTestTransaction({
           id: 'txn-3',
           entryType: 'DEBIT',
           amount: 5000,
-          transactionGroupId: 'group-2'
+          journalEntryId: 'group-2'
         }),
         createTestTransaction({
           id: 'txn-4',
           entryType: 'CREDIT',
           amount: 6000,
-          transactionGroupId: 'group-2'
+          journalEntryId: 'group-2'
         })
       ];
 

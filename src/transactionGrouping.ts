@@ -1,10 +1,14 @@
 /**
- * Transaction grouping and validation utilities
+ * Journal entry grouping and validation utilities
  *
- * Functions for working with grouped transactions in double-entry accounting,
- * including validation of journal entries and transaction grouping.
+ * Functions for working with journal entries in double-entry accounting,
+ * including validation and grouping of postings (transaction records).
  *
- * @fileoverview Transaction grouping utilities
+ * Note: In this library, 'Transaction' objects represent individual postings
+ * (journal entry lines), and 'journalEntryId' links postings into complete
+ * journal entries.
+ *
+ * @fileoverview Journal entry utilities
  * @version 2.0.0
  * @since 2.0.0
  */
@@ -32,23 +36,22 @@ export interface JournalEntryValidationResult {
 }
 
 /**
- * Validates that a group of transactions forms a complete journal entry
+ * Validates that a group of postings forms a complete journal entry
  *
- * In double-entry accounting, every transaction must have equal debits and credits.
- * This function validates that the sum of debit entries equals the sum of credit entries
- * in a transaction group.
+ * In double-entry accounting, every journal entry must have equal debits and credits.
+ * This function validates that the sum of debit postings equals the sum of credit postings.
  *
- * @param transactions - Array of transactions that should form a complete journal entry
+ * @param postings - Array of transaction records (postings) that should form a complete journal entry
  * @returns Validation result with details about the journal entry
  *
  * @example Basic validation
  * ```typescript
- * const transactions = [
+ * const postings = [
  *   { id: '1', entryType: 'DEBIT', amount: 10000, ... },  // $100 debit
  *   { id: '2', entryType: 'CREDIT', amount: 10000, ... }  // $100 credit
  * ];
  *
- * const result = validateJournalEntry(transactions);
+ * const result = validateJournalEntry(postings);
  * console.log(result.isValid); // true
  * console.log(result.totalDebits); // 10000
  * console.log(result.totalCredits); // 10000
@@ -56,14 +59,14 @@ export interface JournalEntryValidationResult {
  *
  * @example Complex journal entry
  * ```typescript
- * // Split transaction: $150 payment split between two expense accounts
- * const transactions = [
+ * // Split journal entry: $150 payment split between two expense accounts
+ * const postings = [
  *   { id: '1', entryType: 'DEBIT', amount: 10000, ... },  // Office supplies $100
  *   { id: '2', entryType: 'DEBIT', amount: 5000, ... },   // Utilities $50
  *   { id: '3', entryType: 'CREDIT', amount: 15000, ... }  // Cash $150
  * ];
  *
- * const result = validateJournalEntry(transactions);
+ * const result = validateJournalEntry(postings);
  * console.log(result.isValid); // true
  * console.log(result.totalDebits); // 15000
  * console.log(result.totalCredits); // 15000
@@ -72,9 +75,9 @@ export interface JournalEntryValidationResult {
  * @since 2.0.0
  */
 export function validateJournalEntry(
-  transactions: Transaction[]
+  postings: Transaction[]
 ): JournalEntryValidationResult {
-  if (!transactions || transactions.length === 0) {
+  if (!postings || postings.length === 0) {
     return {
       isValid: false,
       totalDebits: 0,
@@ -82,7 +85,7 @@ export function validateJournalEntry(
       difference: 0,
       debitCount: 0,
       creditCount: 0,
-      error: 'No transactions provided'
+      error: 'No postings provided'
     };
   }
 
@@ -91,12 +94,12 @@ export function validateJournalEntry(
   let debitCount = 0;
   let creditCount = 0;
 
-  for (const transaction of transactions) {
-    if (transaction.entryType === 'DEBIT') {
-      totalDebits += transaction.amount;
+  for (const posting of postings) {
+    if (posting.entryType === 'DEBIT') {
+      totalDebits += posting.amount;
       debitCount++;
-    } else if (transaction.entryType === 'CREDIT') {
-      totalCredits += transaction.amount;
+    } else if (posting.entryType === 'CREDIT') {
+      totalCredits += posting.amount;
       creditCount++;
     }
   }
@@ -127,81 +130,81 @@ export function validateJournalEntry(
 }
 
 /**
- * Groups transactions by their transactionGroupId
+ * Groups postings by their journalEntryId
  *
- * Organizes transactions into groups based on their transactionGroupId.
- * Useful for analyzing journal entries or displaying related transactions together.
+ * Organizes transaction records into journal entries based on their journalEntryId.
+ * Useful for analyzing journal entries or displaying related postings together.
  *
- * @param transactions - Array of transactions to group
- * @returns Map of transactionGroupId to array of transactions
+ * @param postings - Array of transaction records (postings) to group
+ * @returns Map of journalEntryId to array of postings
  *
  * @example
  * ```typescript
- * const transactions = [
- *   { id: '1', transactionGroupId: 'group-1', entryType: 'DEBIT', ... },
- *   { id: '2', transactionGroupId: 'group-1', entryType: 'CREDIT', ... },
- *   { id: '3', transactionGroupId: 'group-2', entryType: 'DEBIT', ... },
- *   { id: '4', transactionGroupId: null, entryType: 'DEBIT', ... }
+ * const postings = [
+ *   { id: '1', journalEntryId: 'je-1', entryType: 'DEBIT', ... },
+ *   { id: '2', journalEntryId: 'je-1', entryType: 'CREDIT', ... },
+ *   { id: '3', journalEntryId: 'je-2', entryType: 'DEBIT', ... },
+ *   { id: '4', journalEntryId: null, entryType: 'DEBIT', ... }
  * ];
  *
- * const groups = groupTransactionsByGroupId(transactions);
+ * const groups = groupTransactionsByJournalEntry(postings);
  * // Map {
- * //   'group-1' => [{ id: '1', ... }, { id: '2', ... }],
- * //   'group-2' => [{ id: '3', ... }],
+ * //   'je-1' => [{ id: '1', ... }, { id: '2', ... }],
+ * //   'je-2' => [{ id: '3', ... }],
  * //   null => [{ id: '4', ... }]
  * // }
  * ```
  *
  * @since 2.0.0
  */
-export function groupTransactionsByGroupId(
-  transactions: Transaction[]
+export function groupTransactionsByJournalEntry(
+  postings: Transaction[]
 ): Map<string | null, Transaction[]> {
   const groups = new Map<string | null, Transaction[]>();
 
-  for (const transaction of transactions) {
-    const groupId = transaction.transactionGroupId;
-    const group = groups.get(groupId) || [];
-    group.push(transaction);
-    groups.set(groupId, group);
+  for (const posting of postings) {
+    const journalEntryId = posting.journalEntryId;
+    const group = groups.get(journalEntryId) || [];
+    group.push(posting);
+    groups.set(journalEntryId, group);
   }
 
   return groups;
 }
 
 /**
- * Validates all transaction groups in a set of transactions
+ * Validates all journal entries in a set of postings
  *
- * Checks that each transaction group forms a valid journal entry.
- * Returns a map of group IDs to their validation results.
+ * Checks that each journal entry forms a valid balanced entry.
+ * Returns a map of journal entry IDs to their validation results.
  *
- * @param transactions - Array of transactions to validate
- * @returns Map of transactionGroupId to validation result
+ * @param postings - Array of transaction records (postings) to validate
+ * @returns Map of journalEntryId to validation result
  *
  * @example
  * ```typescript
- * const transactions = [
- *   { id: '1', transactionGroupId: 'group-1', entryType: 'DEBIT', amount: 10000 },
- *   { id: '2', transactionGroupId: 'group-1', entryType: 'CREDIT', amount: 10000 },
- *   { id: '3', transactionGroupId: 'group-2', entryType: 'DEBIT', amount: 5000 },
- *   { id: '4', transactionGroupId: 'group-2', entryType: 'CREDIT', amount: 6000 }
+ * const postings = [
+ *   { id: '1', journalEntryId: 'je-1', entryType: 'DEBIT', amount: 10000 },
+ *   { id: '2', journalEntryId: 'je-1', entryType: 'CREDIT', amount: 10000 },
+ *   { id: '3', journalEntryId: 'je-2', entryType: 'DEBIT', amount: 5000 },
+ *   { id: '4', journalEntryId: 'je-2', entryType: 'CREDIT', amount: 6000 }
  * ];
  *
- * const results = validateAllJournalEntries(transactions);
- * console.log(results.get('group-1').isValid); // true
- * console.log(results.get('group-2').isValid); // false (imbalanced)
+ * const results = validateAllJournalEntries(postings);
+ * console.log(results.get('je-1').isValid); // true
+ * console.log(results.get('je-2').isValid); // false (imbalanced)
  * ```
  *
  * @since 2.0.0
  */
 export function validateAllJournalEntries(
-  transactions: Transaction[]
+  postings: Transaction[]
 ): Map<string | null, JournalEntryValidationResult> {
-  const groups = groupTransactionsByGroupId(transactions);
+  const groups = groupTransactionsByJournalEntry(postings);
   const results = new Map<string | null, JournalEntryValidationResult>();
 
-  for (const [groupId, groupTransactions] of groups) {
-    results.set(groupId, validateJournalEntry(groupTransactions));
+  for (const [journalEntryId, entryPostings] of groups) {
+    results.set(journalEntryId, validateJournalEntry(entryPostings));
   }
 
   return results;

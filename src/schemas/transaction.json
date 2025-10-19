@@ -69,11 +69,11 @@
       "enum": ["DEBIT", "CREDIT"],
       "description": "Indicates whether this transaction represents a debit or credit entry in double-entry accounting."
     },
-    "transactionGroupId": {
+    "journalEntryId": {
       "type": ["string", "null"],
-      "title": "Transaction Group ID",
+      "title": "Journal Entry ID",
       "format": "uuid",
-      "description": "Groups related debit and credit entries that belong to the same financial transaction. Used for double-entry bookkeeping to link corresponding entries. Can be null for standalone entries."
+      "description": "Links related debit and credit postings that belong to the same journal entry. Used for double-entry bookkeeping to group corresponding postings. Can be null for standalone entries."
     }
   },
   "required": [
