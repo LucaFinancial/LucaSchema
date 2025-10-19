@@ -4,8 +4,22 @@ import type {
   Category,
   RecurringTransaction,
   RecurringTransactionEvent,
-  LucaSchema
+  LucaSchema,
+  Posting
 } from '../types';
+
+/**
+ * Creates a test posting with default values
+ */
+export const createTestPosting = (
+  overrides: Partial<Posting> = {}
+): Posting => ({
+  accountId: '123e4567-e89b-12d3-a456-426614174010',
+  amount: 10000,
+  description: null,
+  order: 0,
+  ...overrides
+});
 
 /**
  * Creates a test transaction with default values
@@ -14,10 +28,21 @@ export const createTestTransaction = (
   overrides: Partial<Transaction> = {}
 ): Transaction => ({
   id: '123e4567-e89b-12d3-a456-426614174000',
-  payorId: '123e4567-e89b-12d3-a456-426614174001',
-  payeeId: '123e4567-e89b-12d3-a456-426614174002',
+  postings: [
+    {
+      accountId: '123e4567-e89b-12d3-a456-426614174001',
+      amount: 10050,
+      description: null,
+      order: 0
+    },
+    {
+      accountId: '123e4567-e89b-12d3-a456-426614174002',
+      amount: -10050,
+      description: null,
+      order: 1
+    }
+  ],
   categoryId: '123e4567-e89b-12d3-a456-426614174003',
-  amount: 100.5,
   date: '2024-01-01',
   description: 'Test transaction',
   transactionState: 'COMPLETED',
@@ -64,10 +89,21 @@ export const createTestRecurringTransaction = (
   overrides: Partial<RecurringTransaction> = {}
 ): RecurringTransaction => ({
   id: '123e4567-e89b-12d3-a456-426614174004',
-  payorId: '123e4567-e89b-12d3-a456-426614174001',
-  payeeId: '123e4567-e89b-12d3-a456-426614174002',
+  postings: [
+    {
+      accountId: '123e4567-e89b-12d3-a456-426614174001',
+      amount: 5000,
+      description: null,
+      order: 0
+    },
+    {
+      accountId: '123e4567-e89b-12d3-a456-426614174002',
+      amount: -5000,
+      description: null,
+      order: 1
+    }
+  ],
   categoryId: '123e4567-e89b-12d3-a456-426614174003',
-  amount: 50.0,
   description: 'Monthly subscription',
   frequency: 'MONTH',
   interval: 1,

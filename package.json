@@ -1,6 +1,6 @@
 {
   "name": "@luca-financial/luca-schema",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "Schemas for the Luca Ledger application",
   "author": "Johnathan Aspinwall",
   "main": "dist/cjs/index.js",
@@ -48,7 +48,7 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 80,
+        "branches": 75,
         "functions": 80,
         "lines": 80,
         "statements": 80

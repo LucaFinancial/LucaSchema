@@ -1,9 +1,14 @@
+export interface Posting {
+  accountId: string;
+  amount: number;
+  description?: string | null;
+  order: number;
+}
+
 export interface Transaction {
   id: string;
-  payorId: string;
-  payeeId: string;
+  postings: Posting[];
   categoryId: string | null;
-  amount: number;
   date: string;
   description: string;
   transactionState:
@@ -51,10 +56,8 @@ export interface Category {
 
 export interface RecurringTransaction {
   id: string;
-  payorId: string;
-  payeeId: string;
+  postings: Posting[];
   categoryId: string | null;
-  amount: number;
   description: string;
   frequency: 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
   interval: number;
@@ -90,6 +93,7 @@ export declare const schemas: Record<string, object>;
 export declare const enums: Record<string, Record<string, string>>;
 
 // The following types are exported from this file:
+// Posting
 // Transaction
 // Entity
 // Category

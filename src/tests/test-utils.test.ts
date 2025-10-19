@@ -7,20 +7,35 @@ import {
   createTestLucaSchema,
   createTestTransactions,
   createTestEntities,
-  createTestCategories
+  createTestCategories,
+  createTestPosting
 } from './test-utils';
+
+test('createTestPosting creates valid posting', () => {
+  const posting = createTestPosting();
+  expect(posting).toMatchObject({
+    accountId: expect.any(String),
+    amount: expect.any(Number),
+    order: expect.any(Number)
+  });
+  expect(posting.description).toBeNull();
+});
 
 test('createTestTransaction creates valid transaction', () => {
   const transaction = createTestTransaction();
   expect(transaction).toMatchObject({
     id: expect.any(String),
-    payorId: expect.any(String),
-    payeeId: expect.any(String),
-    amount: expect.any(Number),
+    postings: expect.any(Array),
     date: expect.any(String),
     description: expect.any(String),
     transactionState: expect.any(String),
     createdAt: expect.any(String)
+  });
+  expect(transaction.postings).toHaveLength(2);
+  expect(transaction.postings[0]).toMatchObject({
+    accountId: expect.any(String),
+    amount: expect.any(Number),
+    order: expect.any(Number)
   });
 });
 
@@ -49,14 +64,13 @@ test('createTestRecurringTransaction creates valid recurring transaction', () =>
   const recurringTransaction = createTestRecurringTransaction();
   expect(recurringTransaction).toMatchObject({
     id: expect.any(String),
-    payorId: expect.any(String),
-    payeeId: expect.any(String),
-    amount: expect.any(Number),
+    postings: expect.any(Array),
     frequency: expect.any(String),
     interval: expect.any(Number),
     recurringTransactionState: expect.any(String),
     createdAt: expect.any(String)
   });
+  expect(recurringTransaction.postings).toHaveLength(2);
 });
 
 test('createTestRecurringTransactionEvent creates valid event', () => {
@@ -90,8 +104,9 @@ test('createTestTransactions creates array of transactions', () => {
   transactions.forEach(transaction => {
     expect(transaction).toMatchObject({
       id: expect.any(String),
-      amount: expect.any(Number)
+      postings: expect.any(Array)
     });
+    expect(transaction.postings).toHaveLength(2);
   });
 });
 

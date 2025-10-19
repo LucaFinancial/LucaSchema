@@ -8,7 +8,13 @@ test('getSchema returns undefined for non-existent schema', () => {
 
 test('validate returns false for invalid data', () => {
   const transaction = createTestTransaction();
-  const invalidTransaction = { ...transaction, amount: 'invalid' };
+  const invalidTransaction = {
+    ...transaction,
+    postings: [
+      { ...transaction.postings[0], amount: 'invalid' },
+      transaction.postings[1]
+    ]
+  };
   const schema = lucaValidator.getSchema('transaction');
 
   if (!schema) {
@@ -37,7 +43,7 @@ test('validate returns true for valid data', () => {
 test('validate handles missing required fields', () => {
   const transaction = createTestTransaction();
   const invalidTransaction = { ...transaction };
-  delete (invalidTransaction as any).amount;
+  delete (invalidTransaction as any).postings;
 
   const schema = lucaValidator.getSchema('transaction');
   if (!schema) {
