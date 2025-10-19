@@ -19,6 +19,7 @@
       "type": "array",
       "title": "Postings",
       "minItems": 2,
+      "balancedPostings": true,
       "items": {
         "$ref": "./posting.json"
       },

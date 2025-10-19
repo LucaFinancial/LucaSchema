@@ -58,6 +58,37 @@ export interface LucaValidator {
 const lucaValidator = new Ajv2020();
 addFormats(lucaValidator);
 
+// Add custom validation keyword for double-entry balance
+lucaValidator.addKeyword({
+  keyword: 'balancedPostings',
+  type: 'array',
+  schemaType: 'boolean',
+  validate: function validate(
+    schemaValue: boolean,
+    data: Array<{ amount: number }>
+  ) {
+    if (!schemaValue) return true; // If not required, skip validation
+
+    // Calculate sum of all posting amounts
+    const sum = data.reduce((acc, posting) => acc + posting.amount, 0);
+
+    // For double-entry accounting, sum must be zero
+    if (sum !== 0) {
+      (validate as any).errors = [
+        {
+          keyword: 'balancedPostings',
+          message: `Postings must balance to zero (current sum: ${sum})`,
+          params: { sum }
+        }
+      ];
+      return false;
+    }
+
+    return true;
+  },
+  errors: true
+});
+
 // Validate and add schemas
 Object.entries(schemas).forEach(([key, schema]) => {
   if (!lucaValidator.validateSchema(schema as AnySchema)) {

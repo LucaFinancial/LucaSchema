@@ -4,8 +4,8 @@
   "entities": [
     {
       "id": "00000000-0000-0000-0000-000000000001",
-      "name": "Main Street Bank",
-      "description": "A local banking institution offering a range of financial services.",
+      "name": "Checking Account",
+      "description": "Primary checking account for daily transactions",
       "entityType": "ACCOUNT",
       "entityStatus": "ACTIVE",
       "createdAt": "2024-01-01T00:00:00Z",
@@ -13,18 +13,18 @@
     },
     {
       "id": "00000000-0000-0000-0000-000000000002",
-      "name": "John Doe",
-      "description": "An individual customer with personal banking and loan services.",
-      "entityType": "INDIVIDUAL",
+      "name": "Groceries Expense",
+      "description": "Grocery shopping expense account",
+      "entityType": "ACCOUNT",
       "entityStatus": "ACTIVE",
       "createdAt": "2024-01-02T00:00:00Z",
       "updatedAt": null
     },
     {
       "id": "00000000-0000-0000-0000-000000000003",
-      "name": "City Water Department",
-      "description": "Provides water utility services to the local area.",
-      "entityType": "UTILITY",
+      "name": "Grocery Store",
+      "description": "Local grocery retailer",
+      "entityType": "RETAILER",
       "entityStatus": "ACTIVE",
       "createdAt": "2024-01-03T00:00:00Z",
       "updatedAt": null
@@ -35,36 +35,69 @@
   "transactions": [
     {
       "id": "10000000-0000-0000-0000-000000000001",
-      "payorId": "00000000-0000-0000-0000-000000000001",
-      "payeeId": "00000000-0000-0000-0000-000000000002",
+      "postings": [
+        {
+          "accountId": "00000000-0000-0000-0000-000000000002",
+          "amount": 6532,
+          "description": "Groceries expense",
+          "order": 0
+        },
+        {
+          "accountId": "00000000-0000-0000-0000-000000000001",
+          "amount": -6532,
+          "description": "Payment from checking",
+          "order": 1
+        }
+      ],
       "categoryId": "20000000-0000-0000-0000-000000000003",
-      "amount": 1200.0,
       "date": "2024-01-15",
-      "description": "Monthly rent payment",
+      "description": "Weekly grocery shopping",
       "transactionState": "COMPLETED",
       "createdAt": "2024-01-01T00:00:00Z",
       "updatedAt": "2024-01-15T00:00:00Z"
     },
     {
       "id": "10000000-0000-0000-0000-000000000002",
-      "payorId": "00000000-0000-0000-0000-000000000003",
-      "payeeId": "00000000-0000-0000-0000-000000000004",
+      "postings": [
+        {
+          "accountId": "00000000-0000-0000-0000-000000000002",
+          "amount": 4250,
+          "description": null,
+          "order": 0
+        },
+        {
+          "accountId": "00000000-0000-0000-0000-000000000001",
+          "amount": -4250,
+          "description": null,
+          "order": 1
+        }
+      ],
       "categoryId": "20000000-0000-0000-0000-000000000005",
-      "amount": 60.0,
       "date": "2024-01-10",
-      "description": "Internet bill payment",
+      "description": "Grocery shopping",
       "transactionState": "PENDING",
       "createdAt": "2024-01-05T00:00:00Z",
       "updatedAt": "2024-01-10T00:00:00Z"
     },
     {
       "id": "10000000-0000-0000-0000-000000000003",
-      "payorId": "00000000-0000-0000-0000-000000000005",
-      "payeeId": "00000000-0000-0000-0000-000000000006",
+      "postings": [
+        {
+          "accountId": "00000000-0000-0000-0000-000000000002",
+          "amount": 8900,
+          "description": null,
+          "order": 0
+        },
+        {
+          "accountId": "00000000-0000-0000-0000-000000000001",
+          "amount": -8900,
+          "description": null,
+          "order": 1
+        }
+      ],
       "categoryId": "20000000-0000-0000-0000-000000000007",
-      "amount": 150.0,
       "date": "2024-01-20",
-      "description": "Electricity bill payment",
+      "description": "Monthly grocery stock-up",
       "transactionState": "SCHEDULED",
       "createdAt": "2024-01-10T00:00:00Z",
       "updatedAt": "2024-01-15T00:00:00Z"
