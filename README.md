@@ -13,16 +13,27 @@ npm install @luca-financial/luca-schema
 ```typescript
 import { lucaValidator, enums, schemas } from '@luca-financial/luca-schema';
 
-// Validate a transaction
+// Validate a transaction with double-entry postings
 const validateTransaction = lucaValidator.getSchema('transaction');
 const transactionData = {
   id: '123e4567-e89b-12d3-a456-426614174000',
-  payorId: '123e4567-e89b-12d3-a456-426614174001',
-  payeeId: '123e4567-e89b-12d3-a456-426614174002',
+  postings: [
+    {
+      accountId: '123e4567-e89b-12d3-a456-426614174001', // Groceries expense account
+      amount: 6532, // $65.32 in cents (debit)
+      description: 'Weekly groceries',
+      order: 0
+    },
+    {
+      accountId: '123e4567-e89b-12d3-a456-426614174002', // Checking account
+      amount: -6532, // $65.32 in cents (credit)
+      description: 'Payment from checking',
+      order: 1
+    }
+  ],
   categoryId: '123e4567-e89b-12d3-a456-426614174003',
-  amount: 100.5,
   date: '2024-01-01',
-  description: 'Test transaction',
+  description: 'Grocery shopping at market',
   transactionState: enums.TransactionStateEnum.COMPLETED,
   createdAt: '2024-01-01T00:00:00Z',
   updatedAt: null
@@ -41,19 +52,79 @@ const isValidDirect = lucaValidator.validate(
 );
 ```
 
+## Double-Entry Accounting
+
+LucaSchema uses double-entry accounting principles where every transaction consists of multiple postings (debits and credits) that must balance to zero.
+
+### Key Concepts
+
+- **Postings**: Individual debit or credit entries that make up a transaction
+- **Signed Amounts**: Positive values represent debits, negative values represent credits
+- **Balance Rule**: The sum of all posting amounts in a transaction must equal zero
+- **Minor Units**: All amounts are stored as integers in minor units (e.g., cents for USD)
+
+### Example Transactions
+
+#### Simple Expense
+
+```typescript
+// Expense: Groceries $65.32
+{
+  postings: [
+    { accountId: 'groceries-expense', amount: 6532, order: 0 }, // Dr Groceries
+    { accountId: 'checking-account', amount: -6532, order: 1 } // Cr Checking
+  ];
+}
+```
+
+#### Income
+
+```typescript
+// Income: Salary $2000
+{
+  postings: [
+    { accountId: 'checking-account', amount: 200000, order: 0 }, // Dr Checking
+    { accountId: 'salary-income', amount: -200000, order: 1 } // Cr Salary
+  ];
+}
+```
+
+#### Transfer
+
+```typescript
+// Transfer: $500 from Checking to Savings
+{
+  postings: [
+    { accountId: 'savings-account', amount: 50000, order: 0 }, // Dr Savings
+    { accountId: 'checking-account', amount: -50000, order: 1 } // Cr Checking
+  ];
+}
+```
+
+#### Split Transaction
+
+```typescript
+// Split: Shopping with multiple categories
+{
+  postings: [
+    { accountId: 'groceries', amount: 5000, order: 0 }, // Dr Groceries $50
+    { accountId: 'household', amount: 3000, order: 1 }, // Dr Household $30
+    { accountId: 'checking-account', amount: -8000, order: 2 } // Cr Checking $80
+  ];
+}
+```
+
 ## Available Schemas
 
 ### Transaction
 
-Validates financial transactions with properties like amount, date, and state.
+Validates financial transactions with double-entry postings.
 
 ```typescript
 const transaction = {
   id: string;
-  payorId: string;
-  payeeId: string;
+  postings: Posting[];  // Array of debits and credits that balance to zero
   categoryId: string | null;
-  amount: number;
   date: string;
   description: string;
   transactionState: TransactionState;
@@ -62,17 +133,28 @@ const transaction = {
 };
 ```
 
+### Posting
+
+Represents an individual debit or credit entry in a transaction.
+
+```typescript
+const posting = {
+  accountId: string;      // Reference to account entity
+  amount: number;         // Signed integer (positive=debit, negative=credit)
+  description?: string | null;
+  order: number;         // Zero-based ordering index
+};
+```
+
 ### RecurringTransaction
 
-Validates recurring transaction templates with frequency and interval settings.
+Validates recurring transaction templates with double-entry postings.
 
 ```typescript
 const recurringTransaction = {
   id: string;
-  payorId: string;
-  payeeId: string;
+  postings: Posting[];  // Array of posting templates
   categoryId: string | null;
-  amount: number;
   description: string;
   frequency: 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
   interval: number;

@@ -56,10 +56,5 @@
       "description": "The current state of the transaction."
     }
   },
-  "required": [
-    "date",
-    "postings",
-    "description",
-    "transactionState"
-  ]
+  "required": ["date", "postings", "description", "transactionState"]
 }

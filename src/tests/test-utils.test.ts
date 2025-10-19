@@ -7,8 +7,19 @@ import {
   createTestLucaSchema,
   createTestTransactions,
   createTestEntities,
-  createTestCategories
+  createTestCategories,
+  createTestPosting
 } from './test-utils';
+
+test('createTestPosting creates valid posting', () => {
+  const posting = createTestPosting();
+  expect(posting).toMatchObject({
+    accountId: expect.any(String),
+    amount: expect.any(Number),
+    order: expect.any(Number)
+  });
+  expect(posting.description).toBeNull();
+});
 
 test('createTestTransaction creates valid transaction', () => {
   const transaction = createTestTransaction();
