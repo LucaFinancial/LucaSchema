@@ -11,7 +11,6 @@ describe('Double-Entry Validation', () => {
 
     const transaction = createTestTransaction();
     const valid = validateTransaction(transaction);
-    if (!valid) console.log(validateTransaction.errors);
     expect(valid).toBe(true);
   });
 
@@ -61,7 +60,7 @@ describe('Double-Entry Validation', () => {
       postings: [
         {
           accountId: '123e4567-e89b-12d3-a456-426614174001',
-          amount: 0,
+          amount: 10000, // Non-zero amount
           description: null,
           order: 0
         }
@@ -136,7 +135,6 @@ describe('Double-Entry Validation', () => {
     });
 
     const valid = validateTransaction(transaction);
-    if (!valid) console.log(validateTransaction.errors);
     expect(valid).toBe(true);
   });
 
@@ -163,7 +161,6 @@ describe('Double-Entry Validation', () => {
     });
 
     const valid = validateTransaction(transaction);
-    if (!valid) console.log(validateTransaction.errors);
     expect(valid).toBe(true);
   });
 
