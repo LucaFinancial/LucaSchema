@@ -1,67 +1,63 @@
+import {
+  TransactionState,
+  AccountType,
+  RecurringTransactionFrequency,
+  RecurringTransactionState,
+  RecurringTransactionEventStatus
+} from './enums';
+
 export interface Transaction {
   id: string;
-  payorId: string;
-  payeeId: string;
+  accountId: string;
   categoryId: string | null;
   amount: number;
   date: string;
   description: string;
-  transactionState:
-    | 'PLANNED'
-    | 'SCHEDULED'
-    | 'PENDING'
-    | 'COMPLETED'
-    | 'CANCELLED'
-    | 'FAILED'
-    | 'DISPUTED'
-    | 'REFUNDED'
-    | 'TENTATIVE'
-    | 'UPCOMING'
-    | 'DELETED';
+  transactionState: TransactionState;
   createdAt: string;
   updatedAt: string | null;
 }
 
-export interface Entity {
+export interface TransactionSplit {
+  id: string;
+  transactionId: string;
+  amount: number;
+  categoryId: string;
+  description: string | null;
+  createdAt: string;
+  updatedAt: string | null;
+}
+
+export interface Account {
   id: string;
   name: string;
-  description: string | null;
-  entityType:
-    | 'ACCOUNT'
-    | 'RETAILER'
-    | 'SERVICE'
-    | 'INDIVIDUAL'
-    | 'UTILITY'
-    | 'GOVERNMENT';
-  entityStatus: 'ACTIVE' | 'INACTIVE' | 'SUSPENDED' | 'DELETED' | 'CLOSED';
+  type: AccountType;
+  statementDay: number | null;
   createdAt: string;
   updatedAt: string | null;
 }
 
 export interface Category {
   id: string;
+  slug: string;
   name: string;
-  description: string | null;
   parentId: string | null;
-  defaultCategoryId: string | null;
-  categoryType: 'DEFAULT' | 'MODIFIED' | 'CUSTOM';
   createdAt: string;
   updatedAt: string | null;
 }
 
 export interface RecurringTransaction {
   id: string;
-  payorId: string;
-  payeeId: string;
+  accountId: string;
   categoryId: string | null;
   amount: number;
   description: string;
-  frequency: 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
+  frequency: RecurringTransactionFrequency;
   interval: number;
   occurrences: number | null;
   startOn: string;
   endOn: string | null;
-  recurringTransactionState: 'ACTIVE' | 'PAUSED' | 'COMPLETED' | 'CANCELLED';
+  recurringTransactionState: RecurringTransactionState;
   createdAt: string;
   updatedAt: string | null;
 }
@@ -73,14 +69,15 @@ export interface RecurringTransactionEvent {
   transactionId: string | null;
   recurringTransactionId: string;
   expectedDate: string;
-  eventState: 'MODIFIED' | 'DELETED';
+  eventState: RecurringTransactionEventStatus;
 }
 
 export interface LucaSchema {
   schemaVersion: string;
-  entities: Entity[];
+  accounts: Account[];
   categories: Category[];
   transactions: Transaction[];
+  transactionSplits: TransactionSplit[];
   recurringTransactions: RecurringTransaction[];
   recurringTransactionEvents: RecurringTransactionEvent[];
 }
@@ -88,11 +85,3 @@ export interface LucaSchema {
 // Main exports
 export declare const schemas: Record<string, object>;
 export declare const enums: Record<string, Record<string, string>>;
-
-// The following types are exported from this file:
-// Transaction
-// Entity
-// Category
-// RecurringTransaction
-// RecurringTransactionEvent
-// LucaSchema

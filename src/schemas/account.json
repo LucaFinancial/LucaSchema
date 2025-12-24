@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/account.json",
+  "title": "Account",
+  "description": "Defines the schema for accounts.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "./common.json"
+    }
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Account Name",
+      "description": "The name of the account."
+    },
+    "type": {
+      "type": "string",
+      "title": "Account Type",
+      "enum": ["CHECKING", "SAVINGS", "CREDIT_CARD", "EXTERNAL"],
+      "description": "The type of the account."
+    },
+    "statementDay": {
+      "type": ["integer", "null"],
+      "title": "Statement Day",
+      "minimum": 1,
+      "maximum": 31,
+      "description": "The day of the month the statement is issued (for credit cards)."
+    }
+  },
+  "required": ["name", "type"]
+}

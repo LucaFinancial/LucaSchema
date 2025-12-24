@@ -1,21 +1,20 @@
 import {
   SchemaType,
   TransactionState,
-  CategoryType,
-  EntityType,
-  EntityStatus,
+  AccountType,
   RecurringTransactionFrequency,
   RecurringTransactionState,
   RecurringTransactionEventStatus
 } from './types/enums';
 
 const SchemasEnum: Record<string, SchemaType> = Object.freeze({
+  ACCOUNT: 'account',
   CATEGORY: 'category',
-  ENTITY: 'entity',
   LUCASCHEMA: 'lucaSchema',
   RECURRING_TRANSACTION: 'recurringTransaction',
   RECURRING_TRANSACTION_EVENT: 'recurringTransactionEvent',
-  TRANSACTION: 'transaction'
+  TRANSACTION: 'transaction',
+  TRANSACTION_SPLIT: 'transactionSplit'
 });
 
 const TransactionStateEnum: Record<string, TransactionState> = Object.freeze({
@@ -32,27 +31,11 @@ const TransactionStateEnum: Record<string, TransactionState> = Object.freeze({
   DELETED: 'DELETED'
 });
 
-const CategoryTypeEnum: Record<string, CategoryType> = Object.freeze({
-  DEFAULT: 'DEFAULT',
-  MODIFIED: 'MODIFIED',
-  CUSTOM: 'CUSTOM'
-});
-
-const EntityTypeEnum: Record<string, EntityType> = Object.freeze({
-  ACCOUNT: 'ACCOUNT',
-  RETAILER: 'RETAILER',
-  SERVICE: 'SERVICE',
-  INDIVIDUAL: 'INDIVIDUAL',
-  UTILITY: 'UTILITY',
-  GOVERNMENT: 'GOVERNMENT'
-});
-
-const EntityStatusEnum: Record<string, EntityStatus> = Object.freeze({
-  ACTIVE: 'ACTIVE',
-  INACTIVE: 'INACTIVE',
-  SUSPENDED: 'SUSPENDED',
-  DELETED: 'DELETED',
-  CLOSED: 'CLOSED'
+const AccountTypeEnum: Record<string, AccountType> = Object.freeze({
+  CHECKING: 'CHECKING',
+  SAVINGS: 'SAVINGS',
+  CREDIT_CARD: 'CREDIT_CARD',
+  EXTERNAL: 'EXTERNAL'
 });
 
 const RecurringTransactionFrequencyEnum: Record<
@@ -82,9 +65,7 @@ const RecurringTransactionEventStatusEnum: Record<
 });
 
 const enums = {
-  CategoryTypeEnum,
-  EntityTypeEnum,
-  EntityStatusEnum,
+  AccountTypeEnum,
   RecurringTransactionFrequencyEnum,
   RecurringTransactionStateEnum,
   RecurringTransactionEventStatusEnum,

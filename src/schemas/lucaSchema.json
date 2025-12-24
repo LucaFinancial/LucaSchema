@@ -7,10 +7,11 @@
   "required": [
     "schemaVersion",
     "categories",
-    "entities",
+    "accounts",
     "recurringTransactions",
     "recurringTransactionEvents",
-    "transactions"
+    "transactions",
+    "transactionSplits"
   ],
   "properties": {
     "schemaVersion": {
@@ -25,12 +26,12 @@
         "$ref": "./category.json"
       }
     },
-    "entities": {
+    "accounts": {
       "type": "array",
-      "description": "List of entities",
+      "description": "List of accounts",
       "uniqueItems": true,
       "items": {
-        "$ref": "./entity.json"
+        "$ref": "./account.json"
       }
     },
     "recurringTransactions": {
@@ -55,6 +56,14 @@
       "uniqueItems": true,
       "items": {
         "$ref": "./transaction.json"
+      }
+    },
+    "transactionSplits": {
+      "type": "array",
+      "description": "List of transaction splits",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./transactionSplit.json"
       }
     }
   }

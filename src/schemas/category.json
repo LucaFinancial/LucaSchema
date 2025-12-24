@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/category.json",
   "title": "Category",
-  "description": "Defines the schema for categories used to organize transactions within a ledger application. Categories can be default, modified, or custom, providing flexibility in categorization.",
+  "description": "Defines the schema for categories.",
   "type": "object",
   "allOf": [
     {
@@ -10,54 +10,23 @@
     }
   ],
   "properties": {
+    "slug": {
+      "type": "string",
+      "title": "Slug",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier in kebab-case"
+    },
     "name": {
       "type": "string",
       "title": "Category Name",
       "description": "The name of the category."
-    },
-    "description": {
-      "type": ["string", "null"],
-      "title": "Description",
-      "description": "A description of the category, providing additional context. Can be null if not specified."
     },
     "parentId": {
       "type": ["string", "null"],
       "title": "Parent Category ID",
       "format": "uuid",
       "description": "The identifier of the parent category, if any. Null if the category is top-level."
-    },
-    "defaultCategoryId": {
-      "type": ["string", "null"],
-      "title": "Default Category ID",
-      "format": "uuid",
-      "description": "For custom categories, this indicates the default category from which this was derived. Required if categoryType is MODIFIED."
-    },
-    "categoryType": {
-      "type": "string",
-      "title": "Category Type",
-      "enum": ["DEFAULT", "MODIFIED", "CUSTOM"],
-      "description": "The type of the category, indicating whether it is a default, modified, or custom category."
     }
   },
-  "required": [
-    "name",
-    "description",
-    "parentId",
-    "defaultCategoryId",
-    "categoryType"
-  ],
-  "if": {
-    "properties": {
-      "categoryType": {
-        "const": "MODIFIED"
-      }
-    }
-  },
-  "then": {
-    "properties": {
-      "defaultCategoryId": {
-        "type": "string"
-      }
-    }
-  }
+  "required": ["slug", "name", "parentId"]
 }
