@@ -1,6 +1,7 @@
 import type {
   Transaction,
-  Entity,
+  TransactionSplit,
+  Account,
   Category,
   RecurringTransaction,
   RecurringTransactionEvent,
@@ -14,8 +15,7 @@ export const createTestTransaction = (
   overrides: Partial<Transaction> = {}
 ): Transaction => ({
   id: '123e4567-e89b-12d3-a456-426614174000',
-  payorId: '123e4567-e89b-12d3-a456-426614174001',
-  payeeId: '123e4567-e89b-12d3-a456-426614174002',
+  accountId: '123e4567-e89b-12d3-a456-426614174001',
   categoryId: '123e4567-e89b-12d3-a456-426614174003',
   amount: 100.5,
   date: '2024-01-01',
@@ -27,14 +27,15 @@ export const createTestTransaction = (
 });
 
 /**
- * Creates a test entity with default values
+ * Creates a test account with default values
  */
-export const createTestEntity = (overrides: Partial<Entity> = {}): Entity => ({
+export const createTestAccount = (
+  overrides: Partial<Account> = {}
+): Account => ({
   id: '123e4567-e89b-12d3-a456-426614174001',
-  name: 'Test Entity',
-  description: 'This is a test entity',
-  entityType: 'INDIVIDUAL',
-  entityStatus: 'ACTIVE',
+  name: 'Test Account',
+  type: 'CHECKING',
+  statementDay: null,
   createdAt: '2024-01-01T00:00:00Z',
   updatedAt: null,
   ...overrides
@@ -47,11 +48,9 @@ export const createTestCategory = (
   overrides: Partial<Category> = {}
 ): Category => ({
   id: '123e4567-e89b-12d3-a456-426614174003',
+  slug: 'test-category',
   name: 'Test Category',
-  description: 'This is a test category',
   parentId: null,
-  defaultCategoryId: null,
-  categoryType: 'CUSTOM',
   createdAt: '2024-01-01T00:00:00Z',
   updatedAt: null,
   ...overrides
@@ -64,8 +63,7 @@ export const createTestRecurringTransaction = (
   overrides: Partial<RecurringTransaction> = {}
 ): RecurringTransaction => ({
   id: '123e4567-e89b-12d3-a456-426614174004',
-  payorId: '123e4567-e89b-12d3-a456-426614174001',
-  payeeId: '123e4567-e89b-12d3-a456-426614174002',
+  accountId: '123e4567-e89b-12d3-a456-426614174001',
   categoryId: '123e4567-e89b-12d3-a456-426614174003',
   amount: 50.0,
   description: 'Monthly subscription',
@@ -97,15 +95,32 @@ export const createTestRecurringTransactionEvent = (
 });
 
 /**
+ * Creates a test transaction split with default values
+ */
+export const createTestTransactionSplit = (
+  overrides: Partial<TransactionSplit> = {}
+): TransactionSplit => ({
+  id: '123e4567-e89b-12d3-a456-426614174006',
+  transactionId: '123e4567-e89b-12d3-a456-426614174000',
+  amount: 50.25,
+  categoryId: '123e4567-e89b-12d3-a456-426614174003',
+  description: 'Test split',
+  createdAt: '2024-01-01T00:00:00Z',
+  updatedAt: null,
+  ...overrides
+});
+
+/**
  * Creates a test Luca schema with default values
  */
 export const createTestLucaSchema = (
   overrides: Partial<LucaSchema> = {}
 ): LucaSchema => ({
   schemaVersion: '2.0.0',
-  entities: [createTestEntity()],
+  accounts: [createTestAccount()],
   categories: [createTestCategory()],
   transactions: [createTestTransaction()],
+  transactionSplits: [createTestTransactionSplit()],
   recurringTransactions: [createTestRecurringTransaction()],
   recurringTransactionEvents: [createTestRecurringTransactionEvent()],
   ...overrides
@@ -127,14 +142,14 @@ export const createTestTransactions = (
 };
 
 /**
- * Creates an array of test entities
+ * Creates an array of test accounts
  */
-export const createTestEntities = (
+export const createTestAccounts = (
   count: number,
-  overrides: Partial<Entity> = {}
-): Entity[] => {
+  overrides: Partial<Account> = {}
+): Account[] => {
   return Array.from({ length: count }, (_, index) =>
-    createTestEntity({
+    createTestAccount({
       id: `123e4567-e89b-12d3-a456-${index.toString().padStart(12, '0')}`,
       ...overrides
     })
