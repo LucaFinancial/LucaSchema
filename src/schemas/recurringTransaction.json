@@ -75,9 +75,7 @@
     "description",
     "frequency",
     "interval",
-    "occurrences",
     "startOn",
-    "endOn",
     "recurringTransactionState"
   ]
 }
