@@ -21,12 +21,43 @@
       "enum": ["CHECKING", "SAVINGS", "CREDIT_CARD", "EXTERNAL"],
       "description": "The type of the account."
     },
-    "statementDay": {
+    "aggregationServiceId": {
+      "type": ["string", "null"],
+      "title": "Aggregation Service ID",
+      "description": "Identifier for this account in a financial data aggregation service (e.g., Plaid)."
+    },
+    "statementClosingDay": {
       "type": ["integer", "null"],
-      "title": "Statement Day",
+      "title": "Statement Closing Day",
       "minimum": 1,
       "maximum": 31,
       "description": "The day of the month the statement is issued (for credit cards)."
+    },
+    "paymentDueDate": {
+      "type": ["string", "null"],
+      "title": "Payment Due Date",
+      "format": "date",
+      "description": "Next payment due date in YYYY-MM-DD format, if applicable."
+    },
+    "creditLimit": {
+      "type": ["number", "null"],
+      "title": "Credit Limit",
+      "minimum": 0,
+      "description": "Credit limit for the account, if applicable."
+    },
+    "apr": {
+      "type": ["number", "null"],
+      "title": "APR",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Annual percentage rate for the account, if applicable."
+    },
+    "closedAt": {
+      "type": ["string", "null"],
+      "title": "Closed At",
+      "format": "date-time",
+      "pattern": "Z$",
+      "description": "Timestamp when the account was closed, if applicable (UTC)."
     }
   },
   "required": ["name", "type"]

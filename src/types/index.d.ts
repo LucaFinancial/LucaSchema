@@ -32,7 +32,7 @@ export interface Account {
   id: string;
   name: string;
   type: AccountType;
-  statementDay: number | null;
+  statementClosingDay: number | null;
   createdAt: string;
   updatedAt: string | null;
 }

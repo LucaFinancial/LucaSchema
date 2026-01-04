@@ -23,7 +23,7 @@
       "id": "00000000-0000-0000-0000-000000000001",
       "name": "Main Street Bank",
       "type": "CHECKING",
-      "statementDay": null,
+      "statementClosingDay": null,
       "createdAt": "2024-01-01T00:00:00Z",
       "updatedAt": null
     },
@@ -31,7 +31,7 @@
       "id": "00000000-0000-0000-0000-000000000002",
       "name": "John Doe",
       "type": "EXTERNAL",
-      "statementDay": null,
+      "statementClosingDay": null,
       "createdAt": "2024-01-02T00:00:00Z",
       "updatedAt": null
     },
@@ -39,7 +39,7 @@
       "id": "00000000-0000-0000-0000-000000000003",
       "name": "City Water Department",
       "type": "EXTERNAL",
-      "statementDay": null,
+      "statementClosingDay": null,
       "createdAt": "2024-01-03T00:00:00Z",
       "updatedAt": null
     }

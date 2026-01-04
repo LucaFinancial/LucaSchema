@@ -35,7 +35,7 @@ export const createTestAccount = (
   id: '123e4567-e89b-12d3-a456-426614174001',
   name: 'Test Account',
   type: 'CHECKING',
-  statementDay: null,
+  statementClosingDay: null,
   createdAt: '2024-01-01T00:00:00Z',
   updatedAt: null,
   ...overrides
