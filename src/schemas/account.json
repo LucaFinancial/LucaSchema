@@ -21,6 +21,11 @@
       "enum": ["CHECKING", "SAVINGS", "CREDIT_CARD", "EXTERNAL"],
       "description": "The type of the account."
     },
+    "institution": {
+      "type": ["string", "null"],
+      "title": "Institution",
+      "description": "Name of the financial institution providing the account."
+    },
     "aggregationServiceId": {
       "type": ["string", "null"],
       "title": "Aggregation Service ID",

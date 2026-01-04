@@ -21,6 +21,26 @@
       "format": "date",
       "description": "Date of the transaction in YYYY-MM-DD format"
     },
+    "authorizedAt": {
+      "type": ["string", "null"],
+      "title": "Authorized At",
+      "format": "date-time",
+      "pattern": "Z$",
+      "description": "Timestamp when the transaction was authorized, if available (UTC)."
+    },
+    "postedAt": {
+      "type": ["string", "null"],
+      "title": "Posted At",
+      "format": "date-time",
+      "pattern": "Z$",
+      "description": "Timestamp when the transaction was posted/cleared, if available (UTC)."
+    },
+    "currency": {
+      "type": ["string", "null"],
+      "title": "Currency",
+      "pattern": "^[A-Z]{3}$",
+      "description": "ISO 4217 currency code for the transaction."
+    },
     "amount": {
       "type": "number",
       "title": "Amount",
@@ -32,17 +52,33 @@
       "minLength": 1,
       "description": "Description of the transaction"
     },
+    "memo": {
+      "type": ["string", "null"],
+      "title": "Memo",
+      "description": "Additional notes for the transaction."
+    },
+    "counterparty": {
+      "type": ["string", "null"],
+      "title": "Counterparty",
+      "description": "Name of the other party (merchant/payor/payee)."
+    },
     "categoryId": {
       "type": ["string", "null"],
       "title": "Category ID",
       "format": "uuid",
       "description": "Category UUID for this transaction"
     },
+    "aggregationServiceId": {
+      "type": ["string", "null"],
+      "title": "Aggregation Service ID",
+      "description": "Identifier for this transaction in a financial data aggregation service."
+    },
     "transactionState": {
       "type": "string",
       "title": "Transaction State",
       "enum": [
         "PLANNED",
+        "ON_DECK",
         "SCHEDULED",
         "PENDING",
         "COMPLETED",
@@ -50,11 +86,16 @@
         "FAILED",
         "DISPUTED",
         "REFUNDED",
-        "TENTATIVE",
-        "UPCOMING",
         "DELETED"
       ],
       "description": "The current state of the transaction."
+    },
+    "deletedAt": {
+      "type": ["string", "null"],
+      "title": "Deleted At",
+      "format": "date-time",
+      "pattern": "Z$",
+      "description": "Timestamp when the transaction was soft-deleted, if applicable (UTC)."
     }
   },
   "required": ["accountId", "date", "amount", "description", "transactionState"]
