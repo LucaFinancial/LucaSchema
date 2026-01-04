@@ -17,6 +17,7 @@
       "type": "string",
       "title": "Date Created",
       "format": "date-time",
+      "pattern": "Z$",
       "readOnly": true,
       "description": "The timestamp of the creation of the item"
     },
@@ -24,7 +25,22 @@
       "type": ["string", "null"],
       "title": "Last Updated",
       "format": "date-time",
+      "pattern": "Z$",
       "description": "The timestamp of the last update or null if the item has not been updated yet"
+    },
+    "deletedAt": {
+      "type": ["string", "null"],
+      "title": "Date Deleted",
+      "format": "date-time",
+      "pattern": "Z$",
+      "description": "The timestamp of when the item was soft-deleted"
+    },
+    "version": {
+      "type": "integer",
+      "title": "Version",
+      "minimum": 1,
+      "default": 1,
+      "description": "Version number for optimistic concurrency control"
     }
   }
 }
