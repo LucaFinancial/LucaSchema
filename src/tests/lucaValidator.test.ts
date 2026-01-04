@@ -2,7 +2,8 @@ import { lucaValidator } from '../';
 import { createTestTransaction } from './test-utils';
 
 test('getSchema returns undefined for non-existent schema', () => {
-  const schema = lucaValidator.getSchema('nonExistentSchema' as any);
+  // @ts-expect-error Testing invalid schema key
+  const schema = lucaValidator.getSchema('nonExistentSchema');
   expect(schema).toBeUndefined();
 });
 
@@ -36,8 +37,8 @@ test('validate returns true for valid data', () => {
 
 test('validate handles missing required fields', () => {
   const transaction = createTestTransaction();
-  const invalidTransaction = { ...transaction };
-  delete (invalidTransaction as any).amount;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { amount, ...invalidTransaction } = transaction;
 
   const schema = lucaValidator.getSchema('transaction');
   if (!schema) {
