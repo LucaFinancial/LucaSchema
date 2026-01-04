@@ -14,18 +14,23 @@
       "type": "string",
       "title": "Slug",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
-      "description": "URL-friendly identifier in kebab-case"
+      "description": "URL-friendly identifier in kebab-case. Should be unique per parent (parentId + slug enforced at the DB layer)."
     },
     "name": {
       "type": "string",
       "title": "Category Name",
-      "description": "The name of the category."
+      "description": "The name of the category. Should be unique per parent alongside slug (enforced at the DB layer)."
+    },
+    "description": {
+      "type": ["string", "null"],
+      "title": "Description",
+      "description": "Optional description for the category."
     },
     "parentId": {
       "type": ["string", "null"],
       "title": "Parent Category ID",
       "format": "uuid",
-      "description": "The identifier of the parent category, if any. Null if the category is top-level."
+      "description": "The identifier of the parent category, if any. Null if the category is top-level. Parents must be top-level (no deeper than two levels; enforced outside JSON Schema)."
     }
   },
   "required": ["slug", "name", "parentId"]
