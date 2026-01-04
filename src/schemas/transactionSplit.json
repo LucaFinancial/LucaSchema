@@ -19,10 +19,11 @@
     "amount": {
       "type": "number",
       "title": "Amount",
-      "description": "The amount allocated to this split."
+      "exclusiveMinimum": 0,
+      "description": "The amount allocated to this split (must be non-zero; can be positive or negative)."
     },
     "categoryId": {
-      "type": "string",
+      "type": ["string", "null"],
       "title": "Category ID",
       "format": "uuid",
       "description": "The identifier of the category for this split."
@@ -31,6 +32,11 @@
       "type": ["string", "null"],
       "title": "Description",
       "description": "Optional description for the split."
+    },
+    "memo": {
+      "type": ["string", "null"],
+      "title": "Memo",
+      "description": "Additional notes for this split."
     }
   },
   "required": ["transactionId", "amount", "categoryId"]
