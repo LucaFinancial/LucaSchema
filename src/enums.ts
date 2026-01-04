@@ -19,6 +19,7 @@ const SchemasEnum: Record<string, SchemaType> = Object.freeze({
 
 const TransactionStateEnum: Record<string, TransactionState> = Object.freeze({
   PLANNED: 'PLANNED',
+  ON_DECK: 'ON_DECK',
   SCHEDULED: 'SCHEDULED',
   PENDING: 'PENDING',
   COMPLETED: 'COMPLETED',
@@ -26,8 +27,6 @@ const TransactionStateEnum: Record<string, TransactionState> = Object.freeze({
   FAILED: 'FAILED',
   DISPUTED: 'DISPUTED',
   REFUNDED: 'REFUNDED',
-  TENTATIVE: 'TENTATIVE',
-  UPCOMING: 'UPCOMING',
   DELETED: 'DELETED'
 });
 

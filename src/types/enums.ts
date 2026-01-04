@@ -9,6 +9,7 @@ export type SchemaType =
 
 export type TransactionState =
   | 'PLANNED'
+  | 'ON_DECK'
   | 'SCHEDULED'
   | 'PENDING'
   | 'COMPLETED'
@@ -16,8 +17,6 @@ export type TransactionState =
   | 'FAILED'
   | 'DISPUTED'
   | 'REFUNDED'
-  | 'TENTATIVE'
-  | 'UPCOMING'
   | 'DELETED';
 
 export type AccountType = 'CHECKING' | 'SAVINGS' | 'CREDIT_CARD' | 'EXTERNAL';
