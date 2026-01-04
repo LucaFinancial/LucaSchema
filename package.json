@@ -24,7 +24,7 @@
     "typescript"
   ],
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "jest": {
     "preset": "ts-jest",
@@ -57,7 +57,7 @@
     }
   },
   "scripts": {
-    "build": "yarn && yarn clean && tsc && node scripts/build.js && babel src --out-dir dist/cjs --source-maps --extensions \".ts\" --ignore 'src/examples/**','src/tests/**'",
+    "build": "pnpm install && pnpm clean && tsc && node scripts/build.js && babel src --out-dir dist/cjs --source-maps --extensions \".ts\" --ignore 'src/examples/**','src/tests/**'",
     "clean": "rimraf dist coverage",
     "lint": "prettier --check . && eslint .",
     "lint:fix": "prettier --write . && eslint . --fix",
@@ -66,8 +66,8 @@
     "test:coverage": "jest --coverage",
     "type-check": "tsc --noEmit",
     "precommit": "lint-staged",
-    "validate": "yarn type-check && yarn lint && yarn test",
-    "prepublishOnly": "yarn validate && yarn build"
+    "validate": "pnpm type-check && pnpm lint && pnpm test",
+    "prepublishOnly": "pnpm validate && pnpm build"
   },
   "lint-staged": {
     "*.{js,ts}": [
@@ -112,5 +112,5 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.51.0"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "pnpm@10.27.0"
 }
