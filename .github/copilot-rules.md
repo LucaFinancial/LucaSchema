@@ -28,6 +28,7 @@ These directives are authoritative for this repository. If anything conflicts, f
 
 - Be concise. If blocked by these rules, say so and ask for guidance.
 - When the user asks a question (especially "why"), answer it first before making any code or file changes. Do not modify files until the question is answered and the user confirms you should change something.
+- When the user asks ANY question, always answer the question first before making any code or file changes. Do not modify files until the question is answered and the user confirms you should change something. Do not request to run commands until the user confirms you should do so.
 
 ## Single Responsibility Principle (SRP)
 
