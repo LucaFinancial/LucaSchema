@@ -6,6 +6,7 @@ These directives are authoritative for this repository. If anything conflicts, f
 
 - Never add, update, or remove packages unless the user explicitly approves the specific package/action.
 - Before proposing a package, state why it is needed, confirm its purpose/safety, and wait for approval.
+- When adding an approved package, use the package manager (e.g., pnpm add / pnpm add -D) instead of editing package.json directly.
 
 ## Single source of truth: schemas
 
