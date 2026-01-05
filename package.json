@@ -89,6 +89,7 @@
   "devDependencies": {
     "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.4",
+    "@babel/plugin-syntax-import-attributes": "^7.27.1",
     "@babel/preset-env": "^7.24.4",
     "@babel/preset-typescript": "^7.27.1",
     "@eslint/js": "^9.1.1",

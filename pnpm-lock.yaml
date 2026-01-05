@@ -21,6 +21,9 @@ importers:
       '@babel/core':
         specifier: ^7.24.4
         version: 7.28.5
+      '@babel/plugin-syntax-import-attributes':
+        specifier: ^7.27.1
+        version: 7.27.1(@babel/core@7.28.5)
       '@babel/preset-env':
         specifier: ^7.24.4
         version: 7.28.5(@babel/core@7.28.5)
