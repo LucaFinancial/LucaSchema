@@ -1,12 +1,12 @@
-import account from './account.json' assert { type: 'json' };
-import category from './category.json' assert { type: 'json' };
-import common from './common.json' assert { type: 'json' };
-import lucaSchema from './lucaSchema.json' assert { type: 'json' };
-import recurringTransaction from './recurringTransaction.json' assert { type: 'json' };
-import recurringTransactionEvent from './recurringTransactionEvent.json' assert { type: 'json' };
-import transaction from './transaction.json' assert { type: 'json' };
-import transactionSplit from './transactionSplit.json' assert { type: 'json' };
-import enums from './enums.json' assert { type: 'json' };
+import account from './account.json' with { type: 'json' };
+import category from './category.json' with { type: 'json' };
+import common from './common.json' with { type: 'json' };
+import lucaSchema from './lucaSchema.json' with { type: 'json' };
+import recurringTransaction from './recurringTransaction.json' with { type: 'json' };
+import recurringTransactionEvent from './recurringTransactionEvent.json' with { type: 'json' };
+import transaction from './transaction.json' with { type: 'json' };
+import transactionSplit from './transactionSplit.json' with { type: 'json' };
+import enums from './enums.json' with { type: 'json' };
 
 export {
   account,
