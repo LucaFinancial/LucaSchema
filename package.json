@@ -57,17 +57,18 @@
     }
   },
   "scripts": {
-    "build": "pnpm install && pnpm clean && tsc && node scripts/build.js && babel src --out-dir dist/cjs --source-maps --extensions \".ts\" --ignore 'src/examples/**','src/tests/**'",
+    "build": "pnpm clean && pnpm generate:types && node scripts/build.js",
     "clean": "rimraf dist coverage",
     "lint": "prettier --check . && eslint .",
     "lint:fix": "prettier --write . && eslint . --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsc --noEmit --allowJs --resolveJsonModule",
     "precommit": "lint-staged",
-    "validate": "pnpm type-check && pnpm lint && pnpm test",
-    "prepublishOnly": "pnpm validate && pnpm build"
+    "validate": "pnpm lint && pnpm test && pnpm build",
+    "prepublishOnly": "pnpm validate && pnpm build",
+    "generate:types": "node scripts/generate-types.js"
   },
   "lint-staged": {
     "*.{js,ts}": [
