@@ -3,7 +3,6 @@ import addFormats from 'ajv-formats';
 import { AnySchema, ErrorObject } from 'ajv';
 
 import schemas from './schemas';
-import type { Transaction } from './types/index.d.ts';
 
 /**
  * Schema validation errors
@@ -69,7 +68,7 @@ Object.entries(schemas).forEach(([key, schema]) => {
 export default lucaValidator as LucaValidator;
 
 // Add test utilities
-export const createTestTransaction = (overrides = {}): Transaction => ({
+export const createTestTransaction = (overrides = {}) => ({
   id: 'test-id',
   accountId: 'test-account',
   categoryId: null,
