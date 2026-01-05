@@ -1,7 +1,9 @@
-import Ajv from 'ajv';
+import Ajv2020 from 'ajv/dist/2020';
 import addFormats from 'ajv-formats';
 import accountSchemaJson from './schemas/account.json' assert { type: 'json' };
 import categorySchemaJson from './schemas/category.json' assert { type: 'json' };
+import commonSchemaJson from './schemas/common.json' assert { type: 'json' };
+import enumsSchemaJson from './schemas/enums.json' assert { type: 'json' };
 import lucaSchemaJson from './schemas/lucaSchema.json' assert { type: 'json' };
 import recurringTransactionSchemaJson from './schemas/recurringTransaction.json' assert { type: 'json' };
 import recurringTransactionEventSchemaJson from './schemas/recurringTransactionEvent.json' assert { type: 'json' };
@@ -18,13 +20,24 @@ const schemas = {
   transactionSplit: transactionSplitSchemaJson
 };
 
+const supportSchemas = [commonSchemaJson, enumsSchemaJson];
+
 let sharedAjv;
 
 function getValidator() {
   if (sharedAjv) return sharedAjv;
-  const ajv = new Ajv({ strict: true, allErrors: true });
+  const ajv = new Ajv2020({
+    strict: true,
+    strictRequired: false,
+    allErrors: true
+  });
+  ajv.addKeyword({
+    keyword: 'LucaSchemas',
+    schemaType: 'object',
+    validate: () => true
+  });
   addFormats(ajv);
-  for (const schema of Object.values(schemas)) {
+  for (const schema of [...supportSchemas, ...Object.values(schemas)]) {
     ajv.addSchema(schema);
   }
   sharedAjv = ajv;
