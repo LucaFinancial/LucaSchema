@@ -31,7 +31,7 @@
     "eventState": {
       "type": "string",
       "title": "Event State",
-      "enum": ["MODIFIED", "DELETED"],
+      "$ref": "./enums.json#/$defs/RecurringTransactionEventStatus",
       "description": "State of the occurrence: MODIFIED (links to a transaction) or DELETED (skip this expected occurrence)."
     }
   },

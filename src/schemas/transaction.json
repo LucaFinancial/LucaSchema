@@ -76,18 +76,7 @@
     "transactionState": {
       "type": "string",
       "title": "Transaction State",
-      "enum": [
-        "PLANNED",
-        "ON_DECK",
-        "SCHEDULED",
-        "PENDING",
-        "COMPLETED",
-        "CANCELLED",
-        "FAILED",
-        "DISPUTED",
-        "REFUNDED",
-        "DELETED"
-      ],
+      "$ref": "./enums.json#/$defs/TransactionState",
       "description": "The current state of the transaction."
     },
     "deletedAt": {

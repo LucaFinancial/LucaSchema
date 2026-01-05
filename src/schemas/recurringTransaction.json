@@ -35,7 +35,7 @@
     "frequency": {
       "type": "string",
       "title": "Transaction Frequency",
-      "enum": ["DAY", "WEEK", "MONTH", "YEAR"],
+      "$ref": "./enums.json#/$defs/RecurringTransactionFrequency",
       "description": "Defines the base unit of time for the repetition."
     },
     "interval": {
@@ -65,7 +65,7 @@
     "recurringTransactionState": {
       "type": "string",
       "title": "Recurring Transaction State",
-      "enum": ["ACTIVE", "PAUSED", "COMPLETED", "CANCELLED"],
+      "$ref": "./enums.json#/$defs/RecurringTransactionState",
       "description": "Current state of the recurring transaction series."
     }
   },

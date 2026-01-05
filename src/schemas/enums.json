@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/enums.json",
+  "title": "Luca Schema Enums",
+  "description": "Shared enumerations for Luca Schema objects",
+  "LucaSchemas": {
+    "ACCOUNT": "account",
+    "CATEGORY": "category",
+    "LUCASCHEMA": "lucaSchema",
+    "RECURRING_TRANSACTION": "recurringTransaction",
+    "RECURRING_TRANSACTION_EVENT": "recurringTransactionEvent",
+    "TRANSACTION": "transaction",
+    "TRANSACTION_SPLIT": "transactionSplit"
+  },
+  "$defs": {
+    "AccountType": {
+      "type": "string",
+      "enum": ["CHECKING", "SAVINGS", "CREDIT_CARD", "EXTERNAL"],
+      "description": "Allowed account types"
+    },
+    "TransactionState": {
+      "type": "string",
+      "enum": [
+        "PLANNED",
+        "ON_DECK",
+        "SCHEDULED",
+        "PENDING",
+        "COMPLETED",
+        "CANCELLED",
+        "FAILED",
+        "DISPUTED",
+        "REFUNDED",
+        "DELETED"
+      ],
+      "description": "Allowed transaction lifecycle states"
+    },
+    "RecurringTransactionFrequency": {
+      "type": "string",
+      "enum": ["DAY", "WEEK", "MONTH", "YEAR"],
+      "description": "Allowed frequencies for recurring transactions"
+    },
+    "RecurringTransactionState": {
+      "type": "string",
+      "enum": ["ACTIVE", "PAUSED", "COMPLETED", "CANCELLED"],
+      "description": "Allowed states for recurring transactions"
+    },
+    "RecurringTransactionEventStatus": {
+      "type": "string",
+      "enum": ["MODIFIED", "DELETED"],
+      "description": "Allowed statuses for recurring transaction events"
+    }
+  }
+}

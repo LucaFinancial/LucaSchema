@@ -18,7 +18,7 @@
     "type": {
       "type": "string",
       "title": "Account Type",
-      "enum": ["CHECKING", "SAVINGS", "CREDIT_CARD", "EXTERNAL"],
+      "$ref": "./enums.json#/$defs/AccountType",
       "description": "The type of the account."
     },
     "institution": {
