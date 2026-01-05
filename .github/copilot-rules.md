@@ -27,3 +27,9 @@ These directives are authoritative for this repository. If anything conflicts, f
 ## Communication
 
 - Be concise. If blocked by these rules, say so and ask for guidance.
+- When the user asks a question (especially "why"), answer it first before making any code or file changes. Do not modify files until the question is answered and the user confirms you should change something.
+
+## Single Responsibility Principle (SRP)
+
+- Keep concerns separated: definitions, enums, utilities, and logic belong in their own files/modules with one clear purpose.
+- Do not add unrelated responsibilities to existing files; create dedicated files when needed and update references accordingly.
