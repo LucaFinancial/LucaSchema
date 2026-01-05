@@ -27,16 +27,16 @@
     "node": ">=22.0.0"
   },
   "jest": {
-    "preset": "ts-jest",
-    "transform": {
-      "^.+\\.[t|j]sx?$": "babel-jest"
-    },
+    "testEnvironment": "node",
+    "extensionsToTreatAsEsm": [
+      ".js"
+    ],
+    "transform": {},
     "testMatch": [
       "**/src/tests/**/*.test.[jt]s"
     ],
     "moduleFileExtensions": [
       "js",
-      "ts",
       "json",
       "node"
     ],
@@ -54,7 +54,8 @@
         "lines": 80,
         "statements": 80
       }
-    }
+    },
+    "passWithNoTests": false
   },
   "scripts": {
     "build": "pnpm clean && pnpm generate:types && node scripts/build.js",
