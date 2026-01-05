@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/recurringTransaction.json",
   "title": "Recurring Transaction",
-  "description": "Defines recurring financial transactions within the application, including their scheduling, frequency, interval, and optional constraints like total occurrences or an end date.",
+  "description": "Defines recurring financial transactions within the application.",
   "type": "object",
   "allOf": [
     {
@@ -10,17 +10,11 @@
     }
   ],
   "properties": {
-    "payorId": {
+    "accountId": {
       "type": "string",
-      "title": "Payor ID",
+      "title": "Account ID",
       "format": "uuid",
-      "description": "Identifier for the payor in the transaction."
-    },
-    "payeeId": {
-      "type": "string",
-      "title": "Payee ID",
-      "format": "uuid",
-      "description": "Identifier for the payee in the transaction."
+      "description": "ID of the account this transaction belongs to"
     },
     "categoryId": {
       "type": ["string", "null"],
@@ -31,14 +25,17 @@
     "amount": {
       "type": "number",
       "title": "Amount",
-      "minimum": 0,
-      "multipleOf": 0.01,
       "description": "The monetary value of the transaction."
+    },
+    "description": {
+      "type": "string",
+      "title": "Description",
+      "description": "Description of the recurring transaction."
     },
     "frequency": {
       "type": "string",
       "title": "Transaction Frequency",
-      "enum": ["DAY", "WEEK", "MONTH", "YEAR"],
+      "$ref": "./enums.json#/$defs/RecurringTransactionFrequency",
       "description": "Defines the base unit of time for the repetition."
     },
     "interval": {
@@ -68,19 +65,17 @@
     "recurringTransactionState": {
       "type": "string",
       "title": "Recurring Transaction State",
-      "enum": ["ACTIVE", "PAUSED", "COMPLETED", "CANCELLED"],
+      "$ref": "./enums.json#/$defs/RecurringTransactionState",
       "description": "Current state of the recurring transaction series."
     }
   },
   "required": [
-    "payorId",
-    "payeeId",
+    "accountId",
     "amount",
+    "description",
     "frequency",
     "interval",
-    "occurrences",
     "startOn",
-    "endOn",
     "recurringTransactionState"
   ]
 }

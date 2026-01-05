@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/account.json",
+  "title": "Account",
+  "description": "Defines the schema for accounts.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "./common.json"
+    }
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Account Name",
+      "description": "The name of the account."
+    },
+    "type": {
+      "type": "string",
+      "title": "Account Type",
+      "$ref": "./enums.json#/$defs/AccountType",
+      "description": "The type of the account."
+    },
+    "institution": {
+      "type": ["string", "null"],
+      "title": "Institution",
+      "description": "Name of the financial institution providing the account."
+    },
+    "aggregationServiceId": {
+      "type": ["string", "null"],
+      "title": "Aggregation Service ID",
+      "description": "Identifier for this account in a financial data aggregation service (e.g., Plaid)."
+    },
+    "statementClosingDay": {
+      "type": ["integer", "null"],
+      "title": "Statement Closing Day",
+      "minimum": 1,
+      "maximum": 31,
+      "description": "The day of the month the statement is issued (for credit cards)."
+    },
+    "paymentDueDate": {
+      "type": ["string", "null"],
+      "title": "Payment Due Date",
+      "format": "date",
+      "description": "Next payment due date in YYYY-MM-DD format, if applicable."
+    },
+    "creditLimit": {
+      "type": ["number", "null"],
+      "title": "Credit Limit",
+      "minimum": 0,
+      "description": "Credit limit for the account, if applicable."
+    },
+    "apr": {
+      "type": ["number", "null"],
+      "title": "APR",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Annual percentage rate for the account, if applicable."
+    },
+    "closedAt": {
+      "type": ["string", "null"],
+      "title": "Closed At",
+      "format": "date-time",
+      "pattern": "Z$",
+      "description": "Timestamp when the account was closed, if applicable (UTC)."
+    }
+  },
+  "required": ["name", "type"]
+}

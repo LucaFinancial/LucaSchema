@@ -14,7 +14,7 @@
       "type": ["string", "null"],
       "title": "Associated Transaction ID",
       "format": "uuid",
-      "description": "Identifier of the actual transaction, required if the occurrence is modified."
+      "description": "Identifier of the actual transaction when the occurrence is modified; must be null when deleted."
     },
     "recurringTransactionId": {
       "type": "string",
@@ -31,28 +31,34 @@
     "eventState": {
       "type": "string",
       "title": "Event State",
-      "enum": ["MODIFIED", "DELETED"],
-      "description": "State of the occurrence, indicating if it has been modified or logically deleted."
+      "$ref": "./enums.json#/$defs/RecurringTransactionEventStatus",
+      "description": "State of the occurrence: MODIFIED (links to a transaction) or DELETED (skip this expected occurrence)."
     }
   },
-  "required": [
-    "transactionId",
-    "recurringTransactionId",
-    "expectedDate",
-    "eventState"
-  ],
-  "if": {
-    "properties": {
-      "eventState": {
-        "const": "MODIFIED"
-      }
+  "oneOf": [
+    {
+      "properties": {
+        "eventState": { "const": "MODIFIED" },
+        "transactionId": { "type": "string", "format": "uuid" }
+      },
+      "required": [
+        "recurringTransactionId",
+        "expectedDate",
+        "eventState",
+        "transactionId"
+      ]
+    },
+    {
+      "properties": {
+        "eventState": { "const": "DELETED" },
+        "transactionId": { "type": "null" }
+      },
+      "required": [
+        "recurringTransactionId",
+        "expectedDate",
+        "eventState",
+        "transactionId"
+      ]
     }
-  },
-  "then": {
-    "properties": {
-      "transactionId": {
-        "type": "string"
-      }
-    }
-  }
+  ]
 }
