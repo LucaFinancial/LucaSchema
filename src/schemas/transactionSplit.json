@@ -17,10 +17,10 @@
       "description": "The identifier of the parent transaction."
     },
     "amount": {
-      "type": "number",
+      "type": "integer",
       "title": "Amount",
-      "exclusiveMinimum": 0,
-      "description": "The amount allocated to this split (must be non-zero; can be positive or negative)."
+      "minimum": 1,
+      "description": "The amount allocated to this split in integer minor units. Must be greater than 0."
     },
     "categoryId": {
       "type": ["string", "null"],

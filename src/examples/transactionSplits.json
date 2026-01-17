@@ -2,7 +2,7 @@
   {
     "id": "123e4567-e89b-12d3-a456-426614174006",
     "transactionId": "123e4567-e89b-12d3-a456-426614174000",
-    "amount": 50.25,
+    "amount": 5025,
     "categoryId": "123e4567-e89b-12d3-a456-426614174003",
     "description": "Groceries",
     "createdAt": "2024-01-01T00:00:00Z",

@@ -12,7 +12,8 @@ export const ids = {
   recurringTransactionEventId: '00000000-0000-0000-0000-000000000004',
   transactionId: '00000000-0000-0000-0000-000000000005',
   transactionSplitId: '00000000-0000-0000-0000-000000000006',
-  lucaSchemaId: '00000000-0000-0000-0000-000000000007'
+  lucaSchemaId: '00000000-0000-0000-0000-000000000007',
+  statementId: '00000000-0000-0000-0000-000000000008'
 };
 
 const accountTemplate = {
@@ -65,6 +66,7 @@ const transactionTemplate = {
   memo: null,
   counterparty: null,
   categoryId: null,
+  statementId: null,
   transactionState: 'COMPLETED',
   authorizedAt: null,
   postedAt: null,
@@ -81,6 +83,19 @@ const transactionSplitTemplate = {
   categoryId: null,
   description: null,
   memo: null
+};
+
+const statementTemplate = {
+  id: ids.statementId,
+  ...commonBase,
+  accountId: ids.accountId,
+  startDate: '2024-01-02',
+  endDate: '2024-02-01',
+  startingBalance: 0,
+  endingBalance: 2000,
+  totalCharges: 2500,
+  totalPayments: 500,
+  status: 'current'
 };
 
 const lucaSchemaDocTemplate = {
@@ -118,6 +133,11 @@ export const makeTransactionSplit = (overrides = {}) => ({
   ...overrides
 });
 
+export const makeStatement = (overrides = {}) => ({
+  ...structuredClone(statementTemplate),
+  ...overrides
+});
+
 export const makeLucaSchemaDoc = (overrides = {}) => ({
   ...structuredClone(lucaSchemaDocTemplate),
   ...overrides,
@@ -129,6 +149,7 @@ export const makeLucaSchemaDoc = (overrides = {}) => ({
   recurringTransactionEvents: overrides.recurringTransactionEvents ?? [
     makeRecurringTransactionEvent()
   ],
+  statements: overrides.statements ?? [makeStatement()],
   transactions: overrides.transactions ?? [makeTransaction()],
   transactionSplits: overrides.transactionSplits ?? [makeTransactionSplit()]
 });

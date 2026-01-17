@@ -5,6 +5,7 @@ import categorySchemaJson from './schemas/category.json' with { type: 'json' };
 import commonSchemaJson from './schemas/common.json' with { type: 'json' };
 import enumsSchemaJson from './schemas/enums.json' with { type: 'json' };
 import lucaSchemaJson from './schemas/lucaSchema.json' with { type: 'json' };
+import statementSchemaJson from './schemas/statement.json' with { type: 'json' };
 import recurringTransactionSchemaJson from './schemas/recurringTransaction.json' with { type: 'json' };
 import recurringTransactionEventSchemaJson from './schemas/recurringTransactionEvent.json' with { type: 'json' };
 import transactionSchemaJson from './schemas/transaction.json' with { type: 'json' };
@@ -14,6 +15,7 @@ const schemas = {
   account: accountSchemaJson,
   category: categorySchemaJson,
   lucaSchema: lucaSchemaJson,
+  statement: statementSchemaJson,
   recurringTransaction: recurringTransactionSchemaJson,
   recurringTransactionEvent: recurringTransactionEventSchemaJson,
   transaction: transactionSchemaJson,

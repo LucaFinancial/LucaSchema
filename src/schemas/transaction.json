@@ -42,9 +42,9 @@
       "description": "ISO 4217 currency code for the transaction."
     },
     "amount": {
-      "type": "number",
+      "type": "integer",
       "title": "Amount",
-      "description": "Transaction amount (can be positive or negative)"
+      "description": "Transaction amount in integer minor units. Can be positive or negative."
     },
     "description": {
       "type": "string",
@@ -67,6 +67,12 @@
       "title": "Category ID",
       "format": "uuid",
       "description": "Category UUID for this transaction"
+    },
+    "statementId": {
+      "type": ["string", "null"],
+      "title": "Statement ID",
+      "format": "uuid",
+      "description": "Statement UUID for this transaction"
     },
     "aggregationServiceId": {
       "type": ["string", "null"],
