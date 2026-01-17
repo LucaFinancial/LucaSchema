@@ -7,6 +7,7 @@
     "ACCOUNT": "account",
     "CATEGORY": "category",
     "LUCASCHEMA": "lucaSchema",
+    "STATEMENT": "statement",
     "RECURRING_TRANSACTION": "recurringTransaction",
     "RECURRING_TRANSACTION_EVENT": "recurringTransactionEvent",
     "TRANSACTION": "transaction",
@@ -48,6 +49,11 @@
       "type": "string",
       "enum": ["MODIFIED", "DELETED"],
       "description": "Allowed statuses for recurring transaction events"
+    },
+    "StatementStatus": {
+      "type": "string",
+      "enum": ["draft", "current", "past", "locked"],
+      "description": "Allowed statuses for statements"
     }
   }
 }

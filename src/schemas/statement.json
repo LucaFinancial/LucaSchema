@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/statement.json",
+  "title": "Statement",
+  "description": "Defines the schema for credit card statements.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "./common.json"
+    }
+  ],
+  "properties": {
+    "accountId": {
+      "type": "string",
+      "title": "Account ID",
+      "format": "uuid",
+      "description": "ID of the account this statement belongs to"
+    },
+    "startDate": {
+      "type": "string",
+      "title": "Start Date",
+      "format": "date",
+      "description": "Statement start date (inclusive) in YYYY-MM-DD format"
+    },
+    "endDate": {
+      "type": "string",
+      "title": "End Date",
+      "format": "date",
+      "description": "Statement end date (inclusive) in YYYY-MM-DD format"
+    },
+    "startingBalance": {
+      "type": "integer",
+      "title": "Starting Balance",
+      "description": "Balance carried into this statement period in integer minor units"
+    },
+    "endingBalance": {
+      "type": "integer",
+      "title": "Ending Balance",
+      "description": "Balance at the end of this statement period in integer minor units"
+    },
+    "totalCharges": {
+      "type": "integer",
+      "title": "Total Charges",
+      "minimum": 0,
+      "description": "Sum of all charges during the statement period in integer minor units"
+    },
+    "totalPayments": {
+      "type": "integer",
+      "title": "Total Payments",
+      "minimum": 0,
+      "description": "Sum of all payments/credits during the statement period in integer minor units"
+    },
+    "status": {
+      "type": "string",
+      "title": "Statement Status",
+      "$ref": "./enums.json#/$defs/StatementStatus",
+      "description": "Current status of the statement"
+    }
+  },
+  "required": [
+    "accountId",
+    "startDate",
+    "endDate",
+    "startingBalance",
+    "endingBalance",
+    "totalCharges",
+    "totalPayments",
+    "status"
+  ]
+}

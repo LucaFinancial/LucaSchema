@@ -23,9 +23,9 @@
       "description": "Category identifier for organizing the transaction. Can be null if not categorized."
     },
     "amount": {
-      "type": "number",
+      "type": "integer",
       "title": "Amount",
-      "description": "The monetary value of the transaction."
+      "description": "The monetary value in integer minor units. Can be positive or negative."
     },
     "description": {
       "type": "string",

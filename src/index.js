@@ -7,6 +7,7 @@ const schemas = { ...schemaIndex, enums: schemaIndex.enums };
 export const accountSchema = schemas.account;
 export const categorySchema = schemas.category;
 export const lucaSchema = schemas.lucaSchema;
+export const statementSchema = schemas.statement;
 export const recurringTransactionSchema = schemas.recurringTransaction;
 export const recurringTransactionEventSchema =
   schemas.recurringTransactionEvent;

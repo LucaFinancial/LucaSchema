@@ -8,6 +8,7 @@
     "schemaVersion",
     "categories",
     "accounts",
+    "statements",
     "recurringTransactions",
     "recurringTransactionEvents",
     "transactions",
@@ -32,6 +33,14 @@
       "uniqueItems": true,
       "items": {
         "$ref": "./account.json"
+      }
+    },
+    "statements": {
+      "type": "array",
+      "description": "List of statements",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./statement.json"
       }
     },
     "recurringTransactions": {
