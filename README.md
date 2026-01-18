@@ -130,10 +130,10 @@ const statement = {
 ## Development
 
 ```bash
-yarn build    # Build the library
-yarn test     # Run tests
-yarn lint     # Check code style
-yarn type-check # Check TypeScript types
+pnpm build    # Build the library
+pnpm test     # Run tests
+pnpm lint     # Check code style
+pnpm type-check # Check TypeScript types
 ```
 
 ## Contributing

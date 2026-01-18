@@ -1,6 +1,6 @@
 {
   "name": "@luca-financial/luca-schema",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Schemas for the Luca Ledger application",
   "author": "Johnathan Aspinwall",
   "main": "dist/esm/index.js",
@@ -113,12 +113,6 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.51.0"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "types": "./dist/index.d.ts"
-    }
   },
   "packageManager": "pnpm@10.27.0"
 }
