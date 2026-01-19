@@ -53,6 +53,8 @@ The example file includes:
 
 - **3 Transaction Splits**: Demonstration of splitting a transaction across multiple categories
   - Single online shopping purchase split into groceries, entertainment, and utilities
+  - Note: Split amounts are always positive values representing portions of the parent transaction's absolute amount
+  - The sum of all split amounts (8000 + 5000 + 2000 = 15000) equals the absolute value of the parent transaction amount (-15000)
 
 ### Data Characteristics
 
