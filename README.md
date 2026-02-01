@@ -121,7 +121,7 @@ const statement = {
   endingBalance: number;
   totalCharges: number;
   totalPayments: number;
-  status: 'draft' | 'current' | 'past' | 'locked';
+  isLocked: boolean;
   createdAt: string;
   updatedAt: string | null;
 };

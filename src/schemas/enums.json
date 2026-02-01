@@ -49,11 +49,6 @@
       "type": "string",
       "enum": ["MODIFIED", "DELETED"],
       "description": "Allowed statuses for recurring transaction events"
-    },
-    "StatementStatus": {
-      "type": "string",
-      "enum": ["draft", "current", "past", "locked"],
-      "description": "Allowed statuses for statements"
     }
   }
 }

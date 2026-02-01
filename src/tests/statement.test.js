@@ -14,9 +14,9 @@ describe('statement schema', () => {
     expectInvalid(validate, 'statement', statement);
   });
 
-  test('missing status is invalid', () => {
+  test('missing isLocked is invalid', () => {
     const statement = makeStatement();
-    delete statement.status;
+    delete statement.isLocked;
     expectInvalid(validate, 'statement', statement);
   });
 
