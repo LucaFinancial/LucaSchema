@@ -84,13 +84,6 @@
       "title": "Transaction State",
       "$ref": "./enums.json#/$defs/TransactionState",
       "description": "The current state of the transaction."
-    },
-    "deletedAt": {
-      "type": ["string", "null"],
-      "title": "Deleted At",
-      "format": "date-time",
-      "pattern": "Z$",
-      "description": "Timestamp when the transaction was soft-deleted, if applicable (UTC)."
     }
   },
   "required": ["accountId", "date", "amount", "description", "transactionState"]
