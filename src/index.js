@@ -1,6 +1,13 @@
 import * as schemaIndex from './schemas/index.js';
 import { enums, LucaSchemas } from './enums.js';
-import { validate } from './lucaValidator.js';
+import {
+  applyDefaults,
+  getRequiredFields,
+  getValidFields,
+  stripInvalidFields,
+  validate,
+  validateCollection
+} from './lucaValidator.js';
 
 const schemas = { ...schemaIndex, enums: schemaIndex.enums };
 
@@ -14,5 +21,15 @@ export const recurringTransactionEventSchema =
 export const transactionSchema = schemas.transaction;
 export const transactionSplitSchema = schemas.transactionSplit;
 
-export { enums, LucaSchemas, schemas, validate };
+export {
+  enums,
+  LucaSchemas,
+  schemas,
+  validate,
+  validateCollection,
+  getValidFields,
+  getRequiredFields,
+  stripInvalidFields,
+  applyDefaults
+};
 export default schemas;
