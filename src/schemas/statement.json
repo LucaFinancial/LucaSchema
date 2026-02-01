@@ -50,11 +50,11 @@
       "minimum": 0,
       "description": "Sum of all payments/credits during the statement period in integer minor units"
     },
-    "status": {
-      "type": "string",
-      "title": "Statement Status",
-      "$ref": "./enums.json#/$defs/StatementStatus",
-      "description": "Current status of the statement"
+    "isLocked": {
+      "type": "boolean",
+      "title": "Is Locked",
+      "default": false,
+      "description": "Whether the statement is locked for editing"
     }
   },
   "required": [
@@ -65,6 +65,6 @@
     "endingBalance",
     "totalCharges",
     "totalPayments",
-    "status"
+    "isLocked"
   ]
 }

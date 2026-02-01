@@ -95,12 +95,12 @@ const statementTemplate = {
   endingBalance: 2000,
   totalCharges: 2500,
   totalPayments: 500,
-  status: 'current'
+  isLocked: false
 };
 
 const lucaSchemaDocTemplate = {
   id: ids.lucaSchemaId,
-  schemaVersion: '1.0.0'
+  schemaVersion: '2.2.0'
 };
 
 export const makeAccount = (overrides = {}) => ({

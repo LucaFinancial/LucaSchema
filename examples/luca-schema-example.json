@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0.0",
+  "schemaVersion": "2.2.0",
   "categories": [
     {
       "id": "de7c6d19-1109-442b-807f-02807feb8e13",
@@ -206,7 +206,7 @@
       "endingBalance": 45000,
       "totalCharges": 47500,
       "totalPayments": 2500,
-      "status": "past",
+      "isLocked": false,
       "createdAt": "2024-02-15T00:00:00Z",
       "updatedAt": null
     },
@@ -219,7 +219,7 @@
       "endingBalance": 78000,
       "totalCharges": 35000,
       "totalPayments": 2000,
-      "status": "current",
+      "isLocked": false,
       "createdAt": "2024-03-15T00:00:00Z",
       "updatedAt": null
     },
@@ -232,7 +232,7 @@
       "endingBalance": 0,
       "totalCharges": 0,
       "totalPayments": 0,
-      "status": "draft",
+      "isLocked": false,
       "createdAt": "2024-03-16T00:00:00Z",
       "updatedAt": "2024-03-20T00:00:00Z"
     }
