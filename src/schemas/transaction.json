@@ -52,20 +52,11 @@
       "minLength": 1,
       "description": "Description of the transaction"
     },
-    "memo": {
-      "type": ["string", "null"],
-      "title": "Memo",
-      "description": "Additional notes for the transaction."
-    },
-    "counterparty": {
-      "type": ["string", "null"],
-      "title": "Counterparty",
-      "description": "Name of the other party (merchant/payor/payee)."
-    },
     "categoryId": {
       "type": ["string", "null"],
       "title": "Category ID",
       "format": "uuid",
+      "default": null,
       "description": "Category UUID for this transaction"
     },
     "statementId": {
@@ -83,6 +74,7 @@
       "type": "string",
       "title": "Transaction State",
       "$ref": "./enums.json#/$defs/TransactionState",
+      "default": "PLANNED",
       "description": "The current state of the transaction."
     }
   },
