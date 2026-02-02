@@ -30,6 +30,7 @@
       "type": ["string", "null"],
       "title": "Parent Category ID",
       "format": "uuid",
+      "default": null,
       "description": "The identifier of the parent category, if any. Null if the category is top-level. Parents must be top-level (no deeper than two levels; enforced outside JSON Schema)."
     }
   },

@@ -19,6 +19,7 @@
       "type": "string",
       "title": "Account Type",
       "$ref": "./enums.json#/$defs/AccountType",
+      "default": "SAVINGS",
       "description": "The type of the account."
     },
     "institution": {

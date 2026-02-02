@@ -89,14 +89,6 @@ function isPlainObject(value) {
   return proto === Object.prototype || proto === null;
 }
 
-function cloneDefault(value) {
-  if (typeof structuredClone === 'function') return structuredClone(value);
-  if (value && typeof value === 'object') {
-    return JSON.parse(JSON.stringify(value));
-  }
-  return value;
-}
-
 export function validate(schemaKey, data) {
   const ajv = getValidator();
   const schema = getSchema(schemaKey);
@@ -155,32 +147,6 @@ export function stripInvalidFields(schemaKey, data) {
     if (validFields.has(key)) cleaned[key] = value;
   }
   return cleaned;
-}
-
-/**
- * Returns a new object with top-level schema defaults applied for missing fields.
- * @param {string} schemaKey
- * @param {object | null | undefined} data
- * @returns {object}
- */
-export function applyDefaults(schemaKey, data) {
-  if (data === null || data === undefined) return {};
-  if (!isPlainObject(data)) {
-    throw new TypeError('Expected a plain object for data');
-  }
-  const schema = getSchema(schemaKey);
-  const properties = getSchemaProperties(schema);
-  const next = { ...data };
-  for (const [key, definition] of Object.entries(properties)) {
-    if (next[key] !== undefined) continue;
-    if (
-      definition &&
-      Object.prototype.hasOwnProperty.call(definition, 'default')
-    ) {
-      next[key] = cloneDefault(definition.default);
-    }
-  }
-  return next;
 }
 
 /**

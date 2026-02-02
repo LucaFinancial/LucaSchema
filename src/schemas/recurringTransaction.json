@@ -20,6 +20,7 @@
       "type": ["string", "null"],
       "title": "Category ID",
       "format": "uuid",
+      "default": null,
       "description": "Category identifier for organizing the transaction. Can be null if not categorized."
     },
     "amount": {
@@ -36,18 +37,21 @@
       "type": "string",
       "title": "Transaction Frequency",
       "$ref": "./enums.json#/$defs/RecurringTransactionFrequency",
+      "default": "MONTH",
       "description": "Defines the base unit of time for the repetition."
     },
     "interval": {
       "type": "integer",
       "title": "Frequency Interval",
       "minimum": 1,
+      "default": 1,
       "description": "Specifies the number of frequency units between each occurrence (e.g., every 2 weeks)."
     },
     "occurrences": {
       "type": ["integer", "null"],
       "title": "Total Occurrences",
       "minimum": 1,
+      "default": null,
       "description": "The total number of times the transaction should occur. Can be null if not specified."
     },
     "startOn": {
@@ -66,11 +70,13 @@
       "type": "string",
       "title": "Recurring Transaction State",
       "$ref": "./enums.json#/$defs/RecurringTransactionState",
+      "default": "ACTIVE",
       "description": "Current state of the recurring transaction series."
     }
   },
   "required": [
     "accountId",
+    "categoryId",
     "amount",
     "description",
     "frequency",

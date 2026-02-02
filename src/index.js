@@ -1,7 +1,6 @@
 import * as schemaIndex from './schemas/index.js';
 import { enums, LucaSchemas } from './enums.js';
 import {
-  applyDefaults,
   getRequiredFields,
   getValidFields,
   stripInvalidFields,
@@ -29,7 +28,6 @@ export {
   validateCollection,
   getValidFields,
   getRequiredFields,
-  stripInvalidFields,
-  applyDefaults
+  stripInvalidFields
 };
 export default schemas;

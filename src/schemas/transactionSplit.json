@@ -26,17 +26,13 @@
       "type": ["string", "null"],
       "title": "Category ID",
       "format": "uuid",
+      "default": null,
       "description": "The identifier of the category for this split."
     },
     "description": {
       "type": ["string", "null"],
       "title": "Description",
       "description": "Optional description for the split."
-    },
-    "memo": {
-      "type": ["string", "null"],
-      "title": "Memo",
-      "description": "Additional notes for this split."
     }
   },
   "required": ["transactionId", "amount", "categoryId"]
