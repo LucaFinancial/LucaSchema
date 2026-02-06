@@ -16,8 +16,7 @@
 - [ ] Updated changelog if needed
 - [ ] Updated/added tests if needed
 - [ ] Updated/added examples if needed
-- [ ] Verified all new and existing tests pass
-- [ ] Ran pnpm test
+- [ ] Ran pnpm test, all tests pass
 - [ ] Ran pnpm lint
 
 ## Related Issues
