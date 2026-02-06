@@ -11,6 +11,7 @@
 
 ## Checklist
 
+- [ ] Increment Version in package.json (semantic versioning)
 - [ ] Updated README or documentation if needed
 - [ ] Updated changelog if needed
 - [ ] Updated/added tests if needed
