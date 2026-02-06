@@ -5,11 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v2.2.0]
+## [2.3.2] - 2026-02-06
+
+### Changed
+
+- Update README schema documentation and validator utilities.
+- Update changelog entries for recent releases.
+- Add pull request template with changelog checklist item.
+
+## [v2.3.1] - 2026-02-01
+
+### Changed
+
+- Remove `applyDefaults` helper and update schemas.
+
+## [v2.3.0] - 2026-02-01
+
+### Changed
+
+- Remove `deletedAt` field and refactor validation logic.
+
+## [v2.2.0] - 2026-02-01
 
 ### Changed
 
 - Replace statement `status` with boolean `isLocked` and remove `StatementStatus` enum.
+- Breaking change from 2.1.5 to 2.2.0.
+
+## [2.1.5] - 2026-01-19
+
+### Added
+
+- Add comprehensive example JSON dataset for development and testing.
+
+## [2.1.4] - 2026-01-19
+
+### Changed
+
+- Rename copilot-rules.md to copilot-instructions.md and restructure content.
 
 ## [2.1.3] - 2026-01-18
 
