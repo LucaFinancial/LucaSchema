@@ -34,6 +34,43 @@ if (!result.valid) {
 
 ## Available Schemas
 
+### Common Fields
+
+All entity schemas include common fields:
+
+```typescript
+const common = {
+  id: string;
+  createdAt: string;
+  updatedAt: string | null;
+  deletedAt?: string | null;
+  version?: number;
+};
+```
+
+### Account
+
+Validates financial accounts.
+
+```typescript
+const account = {
+  id: string;
+  name: string;
+  type: 'CHECKING' | 'SAVINGS' | 'CREDIT_CARD' | 'EXTERNAL';
+  institution: string | null;
+  aggregationServiceId: string | null;
+  statementClosingDay: number | null;
+  paymentDueDate: string | null;
+  creditLimit: number | null;
+  apr: number | null;
+  closedAt: string | null;
+  createdAt: string;
+  updatedAt: string | null;
+  deletedAt?: string | null;
+  version?: number;
+};
+```
+
 ### Transaction
 
 Validates financial transactions with properties like amount, date, and state.
@@ -44,12 +81,28 @@ const transaction = {
   accountId: string;
   categoryId: string | null;
   statementId: string | null;
+  authorizedAt: string | null;
+  postedAt: string | null;
+  currency: string | null;
   amount: number;
   date: string;
   description: string;
-  transactionState: TransactionState;
+  aggregationServiceId: string | null;
+  transactionState:
+    | 'PLANNED'
+    | 'ON_DECK'
+    | 'SCHEDULED'
+    | 'PENDING'
+    | 'COMPLETED'
+    | 'CANCELLED'
+    | 'FAILED'
+    | 'DISPUTED'
+    | 'REFUNDED'
+    | 'DELETED';
   createdAt: string;
   updatedAt: string | null;
+  deletedAt?: string | null;
+  version?: number;
 };
 ```
 
@@ -72,6 +125,8 @@ const recurringTransaction = {
   recurringTransactionState: 'ACTIVE' | 'PAUSED' | 'COMPLETED' | 'CANCELLED';
   createdAt: string;
   updatedAt: string | null;
+  deletedAt?: string | null;
+  version?: number;
 };
 ```
 
@@ -88,6 +143,8 @@ const category = {
   parentId: string | null;
   createdAt: string;
   updatedAt: string | null;
+  deletedAt?: string | null;
+  version?: number;
 };
 ```
 
@@ -98,12 +155,14 @@ Validates events that track changes to recurring transactions.
 ```typescript
 const recurringTransactionEvent = {
   id: string;
-  transactionId: string;
+  transactionId: string | null;
   recurringTransactionId: string;
   expectedDate: string;
   eventState: 'MODIFIED' | 'DELETED';
   createdAt: string;
   updatedAt: string | null;
+  deletedAt?: string | null;
+  version?: number;
 };
 ```
 
@@ -124,16 +183,79 @@ const statement = {
   isLocked: boolean;
   createdAt: string;
   updatedAt: string | null;
+  deletedAt?: string | null;
+  version?: number;
 };
 ```
+
+### TransactionSplit
+
+Validates splits within a transaction.
+
+```typescript
+const transactionSplit = {
+  id: string;
+  transactionId: string;
+  amount: number;
+  categoryId: string | null;
+  description: string | null;
+  createdAt: string;
+  updatedAt: string | null;
+  deletedAt?: string | null;
+  version?: number;
+};
+```
+
+### LucaSchema
+
+Validates the full ledger export.
+
+```typescript
+const lucaSchema = {
+  schemaVersion: string;
+  categories: Category[];
+  accounts: Account[];
+  statements: Statement[];
+  recurringTransactions: RecurringTransaction[];
+  recurringTransactionEvents: RecurringTransactionEvent[];
+  transactions: Transaction[];
+  transactionSplits: TransactionSplit[];
+};
+```
+
+## Validator Utilities
+
+This module exports helper utilities to inspect schemas and validate data:
+
+```typescript
+import {
+  validate,
+  validateCollection,
+  getValidFields,
+  getRequiredFields,
+  stripInvalidFields,
+  schemas,
+  enums,
+  LucaSchemas
+} from '@luca-financial/luca-schema';
+```
+
+- `validate(schemaKey, data)` → `{ valid: boolean, errors: AjvError[] }`
+- `validateCollection(schemaKey, array)` → `{ valid: boolean, errors: [{ index, entity, errors }] }`
+- `getValidFields(schemaKey)` → `Set<string>` of all fields (includes common fields when applicable)
+- `getRequiredFields(schemaKey)` → `Set<string>` of required fields (includes common required fields)
+- `stripInvalidFields(schemaKey, data)` → new object with only schema-defined keys
+- `schemas` → map of schema JSON objects
+- `enums` → enum definitions (including `LucaSchemas` keys)
+- `LucaSchemas` → names for schema keys (e.g., `LucaSchemas.TRANSACTION`)
 
 ## Development
 
 ```bash
-pnpm build    # Build the library
-pnpm test     # Run tests
-pnpm lint     # Check code style
-pnpm type-check # Check TypeScript types
+pnpm build
+pnpm test
+pnpm lint
+pnpm type-check
 ```
 
 ## Contributing
