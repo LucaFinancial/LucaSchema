@@ -75,5 +75,6 @@
         "$ref": "./transactionSplit.json"
       }
     }
-  }
+  },
+  "unevaluatedProperties": false
 }

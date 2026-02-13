@@ -60,5 +60,6 @@
         "transactionId"
       ]
     }
-  ]
+  ],
+  "unevaluatedProperties": false
 }

@@ -66,5 +66,6 @@
       "description": "Timestamp when the account was closed, if applicable (UTC)."
     }
   },
+  "unevaluatedProperties": false,
   "required": ["name", "type"]
 }

@@ -74,6 +74,7 @@
       "description": "Current state of the recurring transaction series."
     }
   },
+  "unevaluatedProperties": false,
   "required": [
     "accountId",
     "categoryId",
