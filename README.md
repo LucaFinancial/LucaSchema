@@ -214,7 +214,7 @@ Validates the full ledger export.
 
 ```typescript
 const lucaSchema = {
-  schemaVersion: string;
+  schemaVersion: '3.0.0';
   categories: Category[];
   accounts: Account[];
   statements: Statement[];
@@ -233,8 +233,6 @@ This module exports helper utilities to inspect schemas and validate data:
 import {
   validate,
   validateCollection,
-  normalizeDateString,
-  isDateStringFixable,
   getDateFieldPaths,
   getDateFieldPathsByCollection,
   getValidFields,
@@ -246,10 +244,8 @@ import {
 } from '@luca-financial/luca-schema';
 ```
 
-- `validate(schemaKey, data)` → `{ valid: boolean, errors: AjvError[], metadata: { dateFormatIssues, hasFixableDateFormatIssues } }`
-- `validateCollection(schemaKey, array)` → `{ valid: boolean, errors: [{ index, entity, errors, metadata }], metadata: { hasFixableDateFormatIssues } }`
-- `normalizeDateString(value)` → normalized `YYYY-MM-DD` for unambiguous date strings (`YYYY-MM-DD` or `YYYY/MM/DD`), else `null`
-- `isDateStringFixable(value)` → `true` only for unambiguous slash date strings that can be safely normalized
+- `validate(schemaKey, data)` → `{ valid: boolean, errors: AjvError[] }`
+- `validateCollection(schemaKey, array)` → `{ valid: boolean, errors: [{ index, entity, errors }] }`
 - `getDateFieldPaths(schemaKey)` → `string[]` of `format: date` fields for a schema key
 - `getDateFieldPathsByCollection()` → `{ accounts, categories, statements, recurringTransactions, recurringTransactionEvents, transactions, transactionSplits }`
 - `getValidFields(schemaKey)` → `Set<string>` of all fields (includes common fields when applicable)
