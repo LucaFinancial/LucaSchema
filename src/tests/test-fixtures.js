@@ -64,7 +64,6 @@ const transactionTemplate = {
   amount: -20,
   description: 'Coffee',
   memo: null,
-  counterparty: null,
   categoryId: null,
   statementId: null,
   transactionState: 'COMPLETED',
@@ -99,7 +98,6 @@ const statementTemplate = {
 };
 
 const lucaSchemaDocTemplate = {
-  id: ids.lucaSchemaId,
   schemaVersion: '2.2.0'
 };
 

@@ -52,6 +52,11 @@
       "minLength": 1,
       "description": "Description of the transaction"
     },
+    "memo": {
+      "type": ["string", "null"],
+      "title": "Memo",
+      "description": "Optional memo for the transaction."
+    },
     "categoryId": {
       "type": ["string", "null"],
       "title": "Category ID",
@@ -78,5 +83,6 @@
       "description": "The current state of the transaction."
     }
   },
+  "unevaluatedProperties": false,
   "required": ["accountId", "date", "amount", "description", "transactionState"]
 }

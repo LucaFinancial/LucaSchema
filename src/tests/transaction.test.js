@@ -17,4 +17,9 @@ describe('transaction schema', () => {
     delete transaction.transactionState;
     expectInvalid(validate, 'transaction', transaction);
   });
+
+  test('unknown fields are invalid', () => {
+    const transaction = makeTransaction({ unexpectedField: 'x' });
+    expectInvalid(validate, 'transaction', transaction);
+  });
 });

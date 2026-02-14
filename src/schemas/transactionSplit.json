@@ -33,7 +33,13 @@
       "type": ["string", "null"],
       "title": "Description",
       "description": "Optional description for the split."
+    },
+    "memo": {
+      "type": ["string", "null"],
+      "title": "Memo",
+      "description": "Optional memo for this split line."
     }
   },
+  "unevaluatedProperties": false,
   "required": ["transactionId", "amount", "categoryId"]
 }

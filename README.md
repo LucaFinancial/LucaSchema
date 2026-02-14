@@ -84,9 +84,10 @@ const transaction = {
   authorizedAt: string | null;
   postedAt: string | null;
   currency: string | null;
-  amount: number;
+  amount: number; // integer minor units
   date: string;
   description: string;
+  memo: string | null;
   aggregationServiceId: string | null;
   transactionState:
     | 'PLANNED'
@@ -115,7 +116,7 @@ const recurringTransaction = {
   id: string;
   accountId: string;
   categoryId: string | null;
-  amount: number;
+  amount: number; // integer minor units
   description: string;
   frequency: 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
   interval: number;
@@ -176,10 +177,10 @@ const statement = {
   accountId: string;
   startDate: string;
   endDate: string;
-  startingBalance: number;
-  endingBalance: number;
-  totalCharges: number;
-  totalPayments: number;
+  startingBalance: number; // integer minor units
+  endingBalance: number; // integer minor units
+  totalCharges: number; // integer minor units
+  totalPayments: number; // integer minor units
   isLocked: boolean;
   createdAt: string;
   updatedAt: string | null;
@@ -196,9 +197,10 @@ Validates splits within a transaction.
 const transactionSplit = {
   id: string;
   transactionId: string;
-  amount: number;
+  amount: number; // integer minor units
   categoryId: string | null;
   description: string | null;
+  memo: string | null;
   createdAt: string;
   updatedAt: string | null;
   deletedAt?: string | null;
@@ -231,6 +233,10 @@ This module exports helper utilities to inspect schemas and validate data:
 import {
   validate,
   validateCollection,
+  normalizeDateString,
+  isDateStringFixable,
+  getDateFieldPaths,
+  getDateFieldPathsByCollection,
   getValidFields,
   getRequiredFields,
   stripInvalidFields,
@@ -240,14 +246,20 @@ import {
 } from '@luca-financial/luca-schema';
 ```
 
-- `validate(schemaKey, data)` → `{ valid: boolean, errors: AjvError[] }`
-- `validateCollection(schemaKey, array)` → `{ valid: boolean, errors: [{ index, entity, errors }] }`
+- `validate(schemaKey, data)` → `{ valid: boolean, errors: AjvError[], metadata: { dateFormatIssues, hasFixableDateFormatIssues } }`
+- `validateCollection(schemaKey, array)` → `{ valid: boolean, errors: [{ index, entity, errors, metadata }], metadata: { hasFixableDateFormatIssues } }`
+- `normalizeDateString(value)` → normalized `YYYY-MM-DD` for unambiguous date strings (`YYYY-MM-DD` or `YYYY/MM/DD`), else `null`
+- `isDateStringFixable(value)` → `true` only for unambiguous slash date strings that can be safely normalized
+- `getDateFieldPaths(schemaKey)` → `string[]` of `format: date` fields for a schema key
+- `getDateFieldPathsByCollection()` → `{ accounts, categories, statements, recurringTransactions, recurringTransactionEvents, transactions, transactionSplits }`
 - `getValidFields(schemaKey)` → `Set<string>` of all fields (includes common fields when applicable)
 - `getRequiredFields(schemaKey)` → `Set<string>` of required fields (includes common required fields)
 - `stripInvalidFields(schemaKey, data)` → new object with only schema-defined keys
 - `schemas` → map of schema JSON objects
 - `enums` → enum definitions (including `LucaSchemas` keys)
 - `LucaSchemas` → names for schema keys (e.g., `LucaSchemas.TRANSACTION`)
+
+All entity schemas and the top-level `lucaSchema` reject unknown properties.
 
 ## Development
 
