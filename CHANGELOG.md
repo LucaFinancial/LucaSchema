@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Pin `lucaSchema.properties.schemaVersion` to contract version `3.0.0`.
 - Remove schema-side date repair helpers and date-fix metadata from validator APIs.
 - Keep schema package focused on contract validation and migration utilities.
+- Refresh dependency/tooling versions after `pnpm upgrade` (including `ajv`, `@babel/core`, `@babel/preset-env`, `prettier`, and `typescript-eslint`).
+- Regenerate `pnpm-lock.yaml` to capture updated transitive dependency resolutions.
 
 ## [3.0.0] - 2026-02-13
 
