@@ -37,6 +37,7 @@ const schemas = {
 export const accountSchema = schemas.account;
 export const categorySchema = schemas.category;
 export const lucaSchema = schemas.lucaSchema;
+export const SCHEMA_VERSION = lucaSchemaJson.properties.schemaVersion.const;
 export const statementSchema = schemas.statement;
 export const recurringTransactionSchema = schemas.recurringTransaction;
 export const recurringTransactionEventSchema =

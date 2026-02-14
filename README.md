@@ -231,6 +231,7 @@ This module exports helper utilities to inspect schemas and validate data:
 
 ```typescript
 import {
+  SCHEMA_VERSION,
   validate,
   validateCollection,
   getDateFieldPaths,
@@ -244,6 +245,7 @@ import {
 } from '@luca-financial/luca-schema';
 ```
 
+- `SCHEMA_VERSION` → schema contract version from `lucaSchema.properties.schemaVersion.const`
 - `validate(schemaKey, data)` → `{ valid: boolean, errors: AjvError[] }`
 - `validateCollection(schemaKey, array)` → `{ valid: boolean, errors: [{ index, entity, errors }] }`
 - `getDateFieldPaths(schemaKey)` → `string[]` of `format: date` fields for a schema key

@@ -1,5 +1,5 @@
-import { describe, test } from '@jest/globals';
-import { validate } from '../index.js';
+import { describe, expect, test } from '@jest/globals';
+import { validate, SCHEMA_VERSION, lucaSchema } from '../index.js';
 import {
   makeLucaSchemaDoc,
   makeAccount,
@@ -13,6 +13,10 @@ import {
 } from './test-fixtures.js';
 
 describe('lucaSchema aggregate', () => {
+  test('exports SCHEMA_VERSION from lucaSchema contract', () => {
+    expect(SCHEMA_VERSION).toBe(lucaSchema.properties.schemaVersion.const);
+  });
+
   test('valid lucaSchema document', () => {
     const lucaSchemaDoc = makeLucaSchemaDoc();
     expectValid(validate, 'lucaSchema', lucaSchemaDoc);
