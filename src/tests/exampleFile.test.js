@@ -1,5 +1,5 @@
 import { describe, test, expect } from '@jest/globals';
-import { validate } from '../index.js';
+import { validate, SCHEMA_VERSION } from '../index.js';
 import exampleData from '../../examples/luca-schema-example.json' with { type: 'json' };
 
 describe('luca-schema-example.json', () => {
@@ -8,6 +8,10 @@ describe('luca-schema-example.json', () => {
 
     expect(result.valid).toBe(true);
     expect(result.errors).toEqual([]);
+  });
+
+  test('example file schemaVersion matches exported SCHEMA_VERSION', () => {
+    expect(exampleData.schemaVersion).toBe(SCHEMA_VERSION);
   });
 
   test('example file contains all entity types', () => {
