@@ -1,6 +1,5 @@
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
-import { isDateStringFixable, normalizeDateString } from './dateUtils.js';
 import accountSchemaJson from './schemas/account.json' with { type: 'json' };
 import categorySchemaJson from './schemas/category.json' with { type: 'json' };
 import commonSchemaJson from './schemas/common.json' with { type: 'json' };
@@ -91,72 +90,6 @@ function isPlainObject(value) {
   return proto === Object.prototype || proto === null;
 }
 
-function decodePointerToken(token) {
-  return token.replace(/~1/g, '/').replace(/~0/g, '~');
-}
-
-function getValueAtInstancePath(data, instancePath) {
-  if (!instancePath) return data;
-  if (typeof instancePath !== 'string' || !instancePath.startsWith('/')) {
-    return undefined;
-  }
-
-  const tokens = instancePath
-    .slice(1)
-    .split('/')
-    .filter(token => token.length > 0)
-    .map(decodePointerToken);
-
-  let current = data;
-  for (const token of tokens) {
-    if (current === null || current === undefined) return undefined;
-    if (Array.isArray(current)) {
-      const index = Number.parseInt(token, 10);
-      if (!Number.isInteger(index) || index < 0 || index >= current.length) {
-        return undefined;
-      }
-      current = current[index];
-      continue;
-    }
-    if (typeof current !== 'object') return undefined;
-    current = current[token];
-  }
-
-  return current;
-}
-
-function createDateFormatIssue(error, data) {
-  const instancePath =
-    typeof error?.instancePath === 'string' ? error.instancePath : '';
-  const value = getValueAtInstancePath(data, instancePath);
-  const normalizedValue = normalizeDateString(value);
-  const fixable = isDateStringFixable(value);
-
-  return {
-    instancePath,
-    schemaPath: typeof error?.schemaPath === 'string' ? error.schemaPath : '',
-    keyword: 'format',
-    format: 'date',
-    value,
-    fixable,
-    normalizedValue: fixable ? normalizedValue : null
-  };
-}
-
-function buildValidationMetadata(errors, data) {
-  const dateFormatIssues = [];
-  for (const error of errors) {
-    if (error?.keyword !== 'format') continue;
-    if (error?.params?.format !== 'date') continue;
-    dateFormatIssues.push(createDateFormatIssue(error, data));
-  }
-
-  return {
-    dateFormatIssues,
-    hasFixableDateFormatIssues: dateFormatIssues.some(issue => issue.fixable)
-  };
-}
-
 function collectDatePathsFromSchemaFragment(schemaFragment, prefix = '') {
   if (!schemaFragment || typeof schemaFragment !== 'object') return [];
 
@@ -193,8 +126,7 @@ export function validate(schemaKey, data) {
   const errors = ajv.errors ?? [];
   return {
     valid: isValid,
-    errors,
-    metadata: buildValidationMetadata(errors, data)
+    errors
   };
 }
 
@@ -317,20 +249,14 @@ export function validateCollection(schemaKey, arrayOfEntities) {
       errors.push({
         index,
         entity,
-        errors: entityErrors,
-        metadata: buildValidationMetadata(entityErrors, entity)
+        errors: entityErrors
       });
     }
   });
 
   return {
     valid: errors.length === 0,
-    errors,
-    metadata: {
-      hasFixableDateFormatIssues: errors.some(
-        entityError => entityError.metadata.hasFixableDateFormatIssues
-      )
-    }
+    errors
   };
 }
 

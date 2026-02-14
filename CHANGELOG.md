@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.1] - 2026-02-14
 
-### Fixed
+### Changed
 
-- Include `dateUtils.js` in the published ESM build output so package exports that re-export date helpers resolve correctly.
+- Pin `lucaSchema.properties.schemaVersion` to contract version `3.0.0`.
+- Remove schema-side date repair helpers and date-fix metadata from validator APIs.
+- Keep schema package focused on contract validation and migration utilities.
 
 ## [3.0.0] - 2026-02-13
 
