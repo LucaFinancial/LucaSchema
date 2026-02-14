@@ -1,4 +1,5 @@
 import { expect } from '@jest/globals';
+import packageJson from '../../package.json' with { type: 'json' };
 
 export const commonBase = {
   createdAt: '2024-01-01T00:00:00Z',
@@ -98,7 +99,7 @@ const statementTemplate = {
 };
 
 const lucaSchemaDocTemplate = {
-  schemaVersion: '2.2.0'
+  schemaVersion: packageJson.version
 };
 
 export const makeAccount = (overrides = {}) => ({
