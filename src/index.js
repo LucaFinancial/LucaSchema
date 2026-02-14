@@ -20,7 +20,6 @@ import {
   validate,
   validateCollection
 } from './lucaValidator.js';
-import { isDateStringFixable, normalizeDateString } from './dateUtils.js';
 
 const schemas = {
   account,
@@ -51,8 +50,6 @@ export {
   schemas,
   validate,
   validateCollection,
-  normalizeDateString,
-  isDateStringFixable,
   getDateFieldPaths,
   getDateFieldPathsByCollection,
   getValidFields,
