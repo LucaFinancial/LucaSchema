@@ -57,6 +57,7 @@
       "description": "Whether the statement is locked for editing"
     }
   },
+  "unevaluatedProperties": false,
   "required": [
     "accountId",
     "startDate",

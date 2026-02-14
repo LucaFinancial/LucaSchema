@@ -1,14 +1,39 @@
-import * as schemaIndex from './schemas/index.js';
+import {
+  account,
+  category,
+  common,
+  enums as enumsSchema,
+  lucaSchema as lucaSchemaJson,
+  recurringTransaction,
+  recurringTransactionEvent,
+  statement,
+  transaction,
+  transactionSplit
+} from './schemas/index.js';
 import { enums, LucaSchemas } from './enums.js';
 import {
+  getDateFieldPaths,
+  getDateFieldPathsByCollection,
   getRequiredFields,
   getValidFields,
   stripInvalidFields,
   validate,
   validateCollection
 } from './lucaValidator.js';
+import { isDateStringFixable, normalizeDateString } from './dateUtils.js';
 
-const schemas = { ...schemaIndex, enums: schemaIndex.enums };
+const schemas = {
+  account,
+  category,
+  common,
+  lucaSchema: lucaSchemaJson,
+  statement,
+  recurringTransaction,
+  recurringTransactionEvent,
+  transaction,
+  transactionSplit,
+  enums: enumsSchema
+};
 
 export const accountSchema = schemas.account;
 export const categorySchema = schemas.category;
@@ -26,6 +51,10 @@ export {
   schemas,
   validate,
   validateCollection,
+  normalizeDateString,
+  isDateStringFixable,
+  getDateFieldPaths,
+  getDateFieldPathsByCollection,
   getValidFields,
   getRequiredFields,
   stripInvalidFields

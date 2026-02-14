@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2026-02-13
+
+### Changed
+
+- Enforce strict unknown-field validation across schemas via `unevaluatedProperties: false`.
+- Add date normalization helpers and expose date-specific validation metadata from validator APIs.
+- Expand validator exports for date utilities and schema date-field path discovery.
+- Remove `counterparty` from transaction schema/examples and align fixtures/docs.
+- Update example and test data to match strict schema behavior.
+
+### Breaking
+
+- Payloads containing undeclared properties now fail validation.
+- `counterparty` is no longer accepted on transactions.
+
+### Notes
+
+- During this transition, test fixtures derive `schemaVersion` from package version to keep LucaLedger and LucaSchema on a synchronized `3.x` baseline. Contract-specific schema versioning and enforcement will be addressed in a follow-up cross-repo migration pass.
+
 ## [2.3.4] - 2026-02-06
 
 ### Changed

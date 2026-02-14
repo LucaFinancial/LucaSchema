@@ -1,4 +1,5 @@
 import { expect } from '@jest/globals';
+import packageJson from '../../package.json' with { type: 'json' };
 
 export const commonBase = {
   createdAt: '2024-01-01T00:00:00Z',
@@ -64,7 +65,6 @@ const transactionTemplate = {
   amount: -20,
   description: 'Coffee',
   memo: null,
-  counterparty: null,
   categoryId: null,
   statementId: null,
   transactionState: 'COMPLETED',
@@ -99,8 +99,7 @@ const statementTemplate = {
 };
 
 const lucaSchemaDocTemplate = {
-  id: ids.lucaSchemaId,
-  schemaVersion: '2.2.0'
+  schemaVersion: packageJson.version
 };
 
 export const makeAccount = (overrides = {}) => ({

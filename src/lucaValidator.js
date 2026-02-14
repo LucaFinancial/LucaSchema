@@ -1,5 +1,6 @@
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
+import { isDateStringFixable, normalizeDateString } from './dateUtils.js';
 import accountSchemaJson from './schemas/account.json' with { type: 'json' };
 import categorySchemaJson from './schemas/category.json' with { type: 'json' };
 import commonSchemaJson from './schemas/common.json' with { type: 'json' };
@@ -27,6 +28,7 @@ const supportSchemas = [commonSchemaJson, enumsSchemaJson];
 let sharedAjv;
 const validFieldsCache = new Map();
 const requiredFieldsCache = new Map();
+const dateFieldPathsCache = new Map();
 
 function getValidator() {
   if (sharedAjv) return sharedAjv;
@@ -89,11 +91,111 @@ function isPlainObject(value) {
   return proto === Object.prototype || proto === null;
 }
 
+function decodePointerToken(token) {
+  return token.replace(/~1/g, '/').replace(/~0/g, '~');
+}
+
+function getValueAtInstancePath(data, instancePath) {
+  if (!instancePath) return data;
+  if (typeof instancePath !== 'string' || !instancePath.startsWith('/')) {
+    return undefined;
+  }
+
+  const tokens = instancePath
+    .slice(1)
+    .split('/')
+    .filter(token => token.length > 0)
+    .map(decodePointerToken);
+
+  let current = data;
+  for (const token of tokens) {
+    if (current === null || current === undefined) return undefined;
+    if (Array.isArray(current)) {
+      const index = Number.parseInt(token, 10);
+      if (!Number.isInteger(index) || index < 0 || index >= current.length) {
+        return undefined;
+      }
+      current = current[index];
+      continue;
+    }
+    if (typeof current !== 'object') return undefined;
+    current = current[token];
+  }
+
+  return current;
+}
+
+function createDateFormatIssue(error, data) {
+  const instancePath =
+    typeof error?.instancePath === 'string' ? error.instancePath : '';
+  const value = getValueAtInstancePath(data, instancePath);
+  const normalizedValue = normalizeDateString(value);
+  const fixable = isDateStringFixable(value);
+
+  return {
+    instancePath,
+    schemaPath: typeof error?.schemaPath === 'string' ? error.schemaPath : '',
+    keyword: 'format',
+    format: 'date',
+    value,
+    fixable,
+    normalizedValue: fixable ? normalizedValue : null
+  };
+}
+
+function buildValidationMetadata(errors, data) {
+  const dateFormatIssues = [];
+  for (const error of errors) {
+    if (error?.keyword !== 'format') continue;
+    if (error?.params?.format !== 'date') continue;
+    dateFormatIssues.push(createDateFormatIssue(error, data));
+  }
+
+  return {
+    dateFormatIssues,
+    hasFixableDateFormatIssues: dateFormatIssues.some(issue => issue.fixable)
+  };
+}
+
+function collectDatePathsFromSchemaFragment(schemaFragment, prefix = '') {
+  if (!schemaFragment || typeof schemaFragment !== 'object') return [];
+
+  const paths = [];
+  const properties = isPlainObject(schemaFragment.properties)
+    ? schemaFragment.properties
+    : {};
+
+  for (const [fieldName, fieldSchema] of Object.entries(properties)) {
+    const path = prefix ? `${prefix}.${fieldName}` : fieldName;
+    if (!fieldSchema || typeof fieldSchema !== 'object') continue;
+
+    if (fieldSchema.format === 'date') {
+      paths.push(path);
+    }
+
+    paths.push(...collectDatePathsFromSchemaFragment(fieldSchema, path));
+
+    if (fieldSchema.items && typeof fieldSchema.items === 'object') {
+      const itemPath = `${path}[]`;
+      paths.push(
+        ...collectDatePathsFromSchemaFragment(fieldSchema.items, itemPath)
+      );
+    }
+  }
+
+  return paths;
+}
+
 export function validate(schemaKey, data) {
   const ajv = getValidator();
   const schema = getSchema(schemaKey);
   const isValid = ajv.validate(schema, data);
-  return { valid: isValid, errors: ajv.errors ?? [] };
+  const errors = ajv.errors ?? [];
+  return {
+    valid: isValid,
+    errors,
+    metadata: buildValidationMetadata(errors, data)
+  };
 }
 
 /**
@@ -128,6 +230,50 @@ export function getRequiredFields(schemaKey) {
   const fields = new Set(required);
   requiredFieldsCache.set(schemaKey, fields);
   return fields;
+}
+
+/**
+ * Returns cached date-format field paths for a schema key.
+ * Paths are dot-delimited and include [] for array item traversal.
+ * @param {string} schemaKey
+ * @returns {Array<string>}
+ */
+export function getDateFieldPaths(schemaKey) {
+  if (dateFieldPathsCache.has(schemaKey)) {
+    return dateFieldPathsCache.get(schemaKey);
+  }
+
+  const schema = getSchema(schemaKey);
+  const paths = collectDatePathsFromSchemaFragment({
+    properties: getSchemaProperties(schema)
+  });
+  const deduped = [...new Set(paths)];
+  dateFieldPathsCache.set(schemaKey, deduped);
+  return deduped;
+}
+
+/**
+ * Returns date-format field paths keyed by collection name.
+ * @returns {{
+ *   accounts: Array<string>,
+ *   categories: Array<string>,
+ *   statements: Array<string>,
+ *   recurringTransactions: Array<string>,
+ *   recurringTransactionEvents: Array<string>,
+ *   transactions: Array<string>,
+ *   transactionSplits: Array<string>
+ * }}
+ */
+export function getDateFieldPathsByCollection() {
+  return {
+    accounts: getDateFieldPaths('account'),
+    categories: getDateFieldPaths('category'),
+    statements: getDateFieldPaths('statement'),
+    recurringTransactions: getDateFieldPaths('recurringTransaction'),
+    recurringTransactionEvents: getDateFieldPaths('recurringTransactionEvent'),
+    transactions: getDateFieldPaths('transaction'),
+    transactionSplits: getDateFieldPaths('transactionSplit')
+  };
 }
 
 /**
@@ -167,15 +313,25 @@ export function validateCollection(schemaKey, arrayOfEntities) {
   arrayOfEntities.forEach((entity, index) => {
     const isValid = validateFn(entity);
     if (!isValid) {
+      const entityErrors = validateFn.errors ?? [];
       errors.push({
         index,
         entity,
-        errors: validateFn.errors ?? []
+        errors: entityErrors,
+        metadata: buildValidationMetadata(entityErrors, entity)
       });
     }
   });
 
-  return { valid: errors.length === 0, errors };
+  return {
+    valid: errors.length === 0,
+    errors,
+    metadata: {
+      hasFixableDateFormatIssues: errors.some(
+        entityError => entityError.metadata.hasFixableDateFormatIssues
+      )
+    }
+  };
 }
 
 export { schemas };

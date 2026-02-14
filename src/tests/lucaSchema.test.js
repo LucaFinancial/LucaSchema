@@ -36,4 +36,9 @@ describe('lucaSchema aggregate', () => {
     });
     expectInvalid(validate, 'lucaSchema', doc);
   });
+
+  test('unknown top-level fields are invalid', () => {
+    const doc = makeLucaSchemaDoc({ unexpectedField: true });
+    expectInvalid(validate, 'lucaSchema', doc);
+  });
 });
