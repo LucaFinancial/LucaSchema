@@ -8,6 +8,16 @@ describe('account schema', () => {
     expectValid(validate, 'account', account);
   });
 
+  test('cash account type is valid', () => {
+    const account = makeAccount({ type: 'CASH' });
+    expectValid(validate, 'account', account);
+  });
+
+  test('escrow account type is valid', () => {
+    const account = makeAccount({ type: 'ESCROW' });
+    expectValid(validate, 'account', account);
+  });
+
   test('missing type is invalid', () => {
     const account = makeAccount();
     delete account.type;

@@ -16,7 +16,14 @@
   "$defs": {
     "AccountType": {
       "type": "string",
-      "enum": ["CHECKING", "SAVINGS", "CREDIT_CARD", "EXTERNAL"],
+      "enum": [
+        "CHECKING",
+        "SAVINGS",
+        "CASH",
+        "CREDIT_CARD",
+        "ESCROW",
+        "EXTERNAL"
+      ],
       "description": "Allowed account types"
     },
     "TransactionState": {
