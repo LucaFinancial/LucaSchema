@@ -78,5 +78,21 @@
     "statementClosingDay": null,
     "createdAt": "2024-01-14T00:00:00Z",
     "updatedAt": null
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000011",
+    "name": "Security Deposit Escrow",
+    "type": "ESCROW",
+    "statementClosingDay": null,
+    "createdAt": "2024-01-15T00:00:00Z",
+    "updatedAt": null
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000012",
+    "name": "Cash Wallet",
+    "type": "CASH",
+    "statementClosingDay": null,
+    "createdAt": "2024-01-16T00:00:00Z",
+    "updatedAt": null
   }
 ]

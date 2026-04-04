@@ -168,6 +168,34 @@
       "updatedAt": null
     },
     {
+      "id": "50c75f50-3246-45d0-ac5c-cd317c1797d2",
+      "name": "Property Tax Escrow",
+      "type": "ESCROW",
+      "institution": "Main Street Bank",
+      "aggregationServiceId": null,
+      "statementClosingDay": null,
+      "paymentDueDate": null,
+      "creditLimit": null,
+      "apr": null,
+      "closedAt": null,
+      "createdAt": "2024-01-02T00:00:00Z",
+      "updatedAt": null
+    },
+    {
+      "id": "3dff9295-67cf-4827-b8ab-d28835cb6f55",
+      "name": "Cash Wallet",
+      "type": "CASH",
+      "institution": null,
+      "aggregationServiceId": null,
+      "statementClosingDay": null,
+      "paymentDueDate": null,
+      "creditLimit": null,
+      "apr": null,
+      "closedAt": null,
+      "createdAt": "2024-01-03T00:00:00Z",
+      "updatedAt": null
+    },
+    {
       "id": "b4067fbe-3a9e-4c8d-82bd-af651d03cad1",
       "name": "City Utilities Department",
       "type": "EXTERNAL",

@@ -56,7 +56,7 @@ Validates financial accounts.
 const account = {
   id: string;
   name: string;
-  type: 'CHECKING' | 'SAVINGS' | 'CREDIT_CARD' | 'EXTERNAL';
+  type: 'CHECKING' | 'SAVINGS' | 'CASH' | 'CREDIT_CARD' | 'ESCROW' | 'EXTERNAL';
   institution: string | null;
   aggregationServiceId: string | null;
   statementClosingDay: number | null;
