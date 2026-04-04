@@ -52,6 +52,8 @@ const common = {
 
 Validates financial accounts.
 
+Supported account types include `CHECKING`, `SAVINGS`, `CASH`, `CREDIT_CARD`, `ESCROW`, and `EXTERNAL`. Use `CASH` for physical cash balances and `ESCROW` for held-funds accounts such as deposits or tax escrows.
+
 ```typescript
 const account = {
   id: string;
