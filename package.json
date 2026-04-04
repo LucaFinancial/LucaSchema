@@ -1,13 +1,8 @@
 {
   "name": "@luca-financial/luca-schema",
-  "version": "3.1.0",
+  "version": "4.0.0",
   "description": "Schemas for the Luca Ledger application",
-  "author": "Johnathan Aspinwall",
-  "main": "dist/esm/index.js",
-  "module": "dist/esm/index.js",
-  "license": "MIT",
-  "type": "module",
-  "types": "./dist/index.d.ts",
+  "author": "jwaspin",
   "homepage": "https://lucaledger.app",
   "repository": {
     "type": "git",
@@ -16,103 +11,12 @@
   "bugs": {
     "url": "https://github.com/LucaFinancial/LucaSchema/issues"
   },
-  "keywords": [
-    "schema",
-    "validation",
-    "finance",
-    "transactions",
-    "typescript"
-  ],
+  "keywords": [],
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=24.0.0"
   },
-  "jest": {
-    "testEnvironment": "node",
-    "testMatch": [
-      "**/src/tests/**/*.test.[jt]s"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "node"
-    ],
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    },
-    "coverageDirectory": "coverage",
-    "coverageReporters": [
-      "text",
-      "lcov",
-      "html"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": 80
-      }
-    },
-    "passWithNoTests": false
-  },
-  "scripts": {
-    "build": "pnpm clean && pnpm generate:types && node scripts/build.js",
-    "clean": "rimraf dist coverage",
-    "lint": "prettier --check . && eslint .",
-    "lint:fix": "prettier --write . && eslint . --fix",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "type-check": "tsc --noEmit --allowJs --resolveJsonModule",
-    "precommit": "lint-staged",
-    "validate": "pnpm lint && pnpm test && pnpm build",
-    "prepublishOnly": "pnpm validate && pnpm build",
-    "generate:types": "node scripts/generate-types.js"
-  },
-  "lint-staged": {
-    "*.{js,ts}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md}": [
-      "prettier --write"
-    ]
-  },
-  "files": [
-    "dist/",
-    "LICENSE",
-    "README.md",
-    "CHANGELOG.md"
-  ],
-  "dependencies": {
-    "ajv": "^8.18.0",
-    "ajv-formats": "^3.0.1"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.28.6",
-    "@babel/core": "^7.29.0",
-    "@babel/plugin-syntax-import-attributes": "^7.28.6",
-    "@babel/preset-env": "^7.29.2",
-    "@babel/preset-typescript": "^7.28.5",
-    "@eslint/js": "^10.0.1",
-    "@types/jest": "^30.0.0",
-    "babel-jest": "^30.3.0",
-    "eslint": "^10.0.3",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-json": "^4.0.1",
-    "eslint-plugin-prettier": "^5.5.5",
-    "fs-extra": "^11.3.4",
-    "globals": "^17.4.0",
-    "husky": "^9.1.7",
-    "jest": "^30.3.0",
-    "json-schema-to-typescript": "^15.0.4",
-    "lint-staged": "^16.4.0",
-    "prettier": "^3.8.1",
-    "rimraf": "^6.1.3",
-    "ts-jest": "^29.4.6",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.57.1"
-  },
-  "packageManager": "pnpm@10.27.0"
+  "scripts": {},
+  "files": [],
+  "dependencies": {},
+  "devDependencies": {}
 }
