@@ -9,9 +9,9 @@ coverage/
 *.spec.ts
 
 # Development files
-.github/
-.husky/
-.git/
+.github
+.husky
+.git
 .gitignore
 .DS_Store
 .editorconfig
@@ -32,3 +32,6 @@ CHANGELOG.md
 node_modules/
 yarn.lock
 package-lock.json 
+
+.vscode
+.claude
