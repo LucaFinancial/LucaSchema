@@ -68,6 +68,14 @@
         "$ref": "./transaction.json"
       }
     },
+    "transactionLinks": {
+      "type": "array",
+      "description": "List of links between related transactions",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./transactionLink.json"
+      }
+    },
     "transactionSplits": {
       "type": "array",
       "description": "List of transaction splits",

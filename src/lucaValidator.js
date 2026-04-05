@@ -9,6 +9,7 @@ import statementSchemaJson from './schemas/statement.json' with { type: 'json' }
 import recurringTransactionSchemaJson from './schemas/recurringTransaction.json' with { type: 'json' };
 import recurringTransactionEventSchemaJson from './schemas/recurringTransactionEvent.json' with { type: 'json' };
 import transactionSchemaJson from './schemas/transaction.json' with { type: 'json' };
+import transactionLinkSchemaJson from './schemas/transactionLink.json' with { type: 'json' };
 import transactionSplitSchemaJson from './schemas/transactionSplit.json' with { type: 'json' };
 
 const schemas = {
@@ -19,6 +20,7 @@ const schemas = {
   recurringTransaction: recurringTransactionSchemaJson,
   recurringTransactionEvent: recurringTransactionEventSchemaJson,
   transaction: transactionSchemaJson,
+  transactionLink: transactionLinkSchemaJson,
   transactionSplit: transactionSplitSchemaJson
 };
 
@@ -193,6 +195,7 @@ export function getDateFieldPaths(schemaKey) {
  *   recurringTransactions: Array<string>,
  *   recurringTransactionEvents: Array<string>,
  *   transactions: Array<string>,
+ *   transactionLinks: Array<string>,
  *   transactionSplits: Array<string>
  * }}
  */
@@ -204,6 +207,7 @@ export function getDateFieldPathsByCollection() {
     recurringTransactions: getDateFieldPaths('recurringTransaction'),
     recurringTransactionEvents: getDateFieldPaths('recurringTransactionEvent'),
     transactions: getDateFieldPaths('transaction'),
+    transactionLinks: getDateFieldPaths('transactionLink'),
     transactionSplits: getDateFieldPaths('transactionSplit')
   };
 }

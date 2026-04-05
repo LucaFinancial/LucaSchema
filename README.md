@@ -210,6 +210,24 @@ const transactionSplit = {
 };
 ```
 
+### TransactionLink
+
+Validates links between related transactions, such as transfers recorded in separate accounts.
+
+```typescript
+const transactionLink = {
+  id: string;
+  sourceTransactionId: string;
+  destinationTransactionId: string;
+  createdAt: string;
+  updatedAt: string | null;
+  deletedAt?: string | null;
+  version?: number;
+};
+```
+
+Cross-transaction rules like matching dates, matching amounts, or opposite signs are not enforced by this schema and should be handled in application logic.
+
 ### LucaSchema
 
 Validates the full ledger export.
@@ -223,6 +241,7 @@ const lucaSchema = {
   recurringTransactions: RecurringTransaction[];
   recurringTransactionEvents: RecurringTransactionEvent[];
   transactions: Transaction[];
+  transactionLinks?: TransactionLink[];
   transactionSplits: TransactionSplit[];
 };
 ```
@@ -251,7 +270,7 @@ import {
 - `validate(schemaKey, data)` → `{ valid: boolean, errors: AjvError[] }`
 - `validateCollection(schemaKey, array)` → `{ valid: boolean, errors: [{ index, entity, errors }] }`
 - `getDateFieldPaths(schemaKey)` → `string[]` of `format: date` fields for a schema key
-- `getDateFieldPathsByCollection()` → `{ accounts, categories, statements, recurringTransactions, recurringTransactionEvents, transactions, transactionSplits }`
+- `getDateFieldPathsByCollection()` → `{ accounts, categories, statements, recurringTransactions, recurringTransactionEvents, transactions, transactionLinks, transactionSplits }`
 - `getValidFields(schemaKey)` → `Set<string>` of all fields (includes common fields when applicable)
 - `getRequiredFields(schemaKey)` → `Set<string>` of required fields (includes common required fields)
 - `stripInvalidFields(schemaKey, data)` → new object with only schema-defined keys

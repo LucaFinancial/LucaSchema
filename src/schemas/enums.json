@@ -11,6 +11,7 @@
     "RECURRING_TRANSACTION": "recurringTransaction",
     "RECURRING_TRANSACTION_EVENT": "recurringTransactionEvent",
     "TRANSACTION": "transaction",
+    "TRANSACTION_LINK": "transactionLink",
     "TRANSACTION_SPLIT": "transactionSplit"
   },
   "$defs": {

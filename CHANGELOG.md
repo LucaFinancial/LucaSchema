@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.0] - 2026-04-04
+
+### Added
+
+- Add a new `transactionLink` schema to represent links between related transactions across accounts.
+- Add optional `transactionLinks` support to the aggregate Luca Schema, schema exports, enums, and validator metadata.
+- Add bundled transaction-link example data and validation tests covering valid transaction-link usage.
+
+### Changed
+
+- Update README and example documentation to describe transaction links and how they fit into the aggregate schema.
+
 ## [3.1.0] - 2026-04-04
 
 ### Added

@@ -8,13 +8,16 @@ export const commonBase = {
 
 export const ids = {
   accountId: '00000000-0000-0000-0000-000000000001',
+  secondaryAccountId: '00000000-0000-0000-0000-000000000011',
   categoryId: '00000000-0000-0000-0000-000000000002',
   recurringTransactionId: '00000000-0000-0000-0000-000000000003',
   recurringTransactionEventId: '00000000-0000-0000-0000-000000000004',
   transactionId: '00000000-0000-0000-0000-000000000005',
-  transactionSplitId: '00000000-0000-0000-0000-000000000006',
-  lucaSchemaId: '00000000-0000-0000-0000-000000000007',
-  statementId: '00000000-0000-0000-0000-000000000008'
+  linkedTransactionId: '00000000-0000-0000-0000-000000000006',
+  transactionSplitId: '00000000-0000-0000-0000-000000000007',
+  lucaSchemaId: '00000000-0000-0000-0000-000000000008',
+  statementId: '00000000-0000-0000-0000-000000000009',
+  transactionLinkId: '00000000-0000-0000-0000-000000000010'
 };
 
 const accountTemplate = {
@@ -85,6 +88,13 @@ const transactionSplitTemplate = {
   memo: null
 };
 
+const transactionLinkTemplate = {
+  id: ids.transactionLinkId,
+  ...commonBase,
+  sourceTransactionId: ids.transactionId,
+  destinationTransactionId: ids.linkedTransactionId
+};
+
 const statementTemplate = {
   id: ids.statementId,
   ...commonBase,
@@ -132,6 +142,11 @@ export const makeTransactionSplit = (overrides = {}) => ({
   ...overrides
 });
 
+export const makeTransactionLink = (overrides = {}) => ({
+  ...structuredClone(transactionLinkTemplate),
+  ...overrides
+});
+
 export const makeStatement = (overrides = {}) => ({
   ...structuredClone(statementTemplate),
   ...overrides
@@ -150,6 +165,7 @@ export const makeLucaSchemaDoc = (overrides = {}) => ({
   ],
   statements: overrides.statements ?? [makeStatement()],
   transactions: overrides.transactions ?? [makeTransaction()],
+  transactionLinks: overrides.transactionLinks ?? [],
   transactionSplits: overrides.transactionSplits ?? [makeTransactionSplit()]
 });
 

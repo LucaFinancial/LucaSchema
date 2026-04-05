@@ -15,7 +15,7 @@ describe('luca-schema-example.json', () => {
   });
 
   test('example file contains all entity types', () => {
-    // Verify all required arrays are present and non-empty
+    // Verify the example includes all supported collections
     expect(exampleData.categories).toBeDefined();
     expect(exampleData.categories.length).toBeGreaterThan(0);
 
@@ -34,6 +34,9 @@ describe('luca-schema-example.json', () => {
     expect(exampleData.transactions).toBeDefined();
     expect(exampleData.transactions.length).toBeGreaterThan(0);
 
+    expect(exampleData.transactionLinks).toBeDefined();
+    expect(exampleData.transactionLinks.length).toBeGreaterThan(0);
+
     expect(exampleData.transactionSplits).toBeDefined();
     expect(exampleData.transactionSplits.length).toBeGreaterThan(0);
   });
@@ -43,6 +46,9 @@ describe('luca-schema-example.json', () => {
     const accountIds = new Set(exampleData.accounts.map(a => a.id));
     const categoryIds = new Set(exampleData.categories.map(c => c.id));
     const transactionIds = new Set(exampleData.transactions.map(t => t.id));
+    const transactionById = new Map(
+      exampleData.transactions.map(t => [t.id, t])
+    );
     const statementIds = new Set(exampleData.statements.map(s => s.id));
     const recurringTransactionIds = new Set(
       exampleData.recurringTransactions.map(r => r.id)
@@ -62,6 +68,16 @@ describe('luca-schema-example.json', () => {
       if (txn.statementId !== null) {
         expect(statementIds.has(txn.statementId)).toBe(true);
       }
+    });
+
+    // Verify transaction links reference valid transactions
+    exampleData.transactionLinks.forEach(link => {
+      expect(transactionIds.has(link.sourceTransactionId)).toBe(true);
+      expect(transactionIds.has(link.destinationTransactionId)).toBe(true);
+      expect(link.sourceTransactionId).not.toBe(link.destinationTransactionId);
+      expect(transactionById.get(link.sourceTransactionId)?.accountId).not.toBe(
+        transactionById.get(link.destinationTransactionId)?.accountId
+      );
     });
 
     // Verify transaction splits reference valid transactions and categories

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/transactionLink.json",
+  "title": "Transaction Link",
+  "description": "Links two related transactions, such as transfer legs recorded in separate accounts.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "./common.json"
+    }
+  ],
+  "properties": {
+    "sourceTransactionId": {
+      "type": "string",
+      "title": "Source Transaction ID",
+      "format": "uuid",
+      "description": "UUID of the source transaction in the link."
+    },
+    "destinationTransactionId": {
+      "type": "string",
+      "title": "Destination Transaction ID",
+      "format": "uuid",
+      "description": "UUID of the destination transaction in the link."
+    }
+  },
+  "unevaluatedProperties": false,
+  "required": ["sourceTransactionId", "destinationTransactionId"]
+}

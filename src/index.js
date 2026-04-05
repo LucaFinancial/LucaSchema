@@ -8,6 +8,7 @@ import {
   recurringTransactionEvent,
   statement,
   transaction,
+  transactionLink,
   transactionSplit
 } from './schemas/index.js';
 import { enums, LucaSchemas } from './enums.js';
@@ -30,6 +31,7 @@ const schemas = {
   recurringTransaction,
   recurringTransactionEvent,
   transaction,
+  transactionLink,
   transactionSplit,
   enums: enumsSchema
 };
@@ -43,6 +45,7 @@ export const recurringTransactionSchema = schemas.recurringTransaction;
 export const recurringTransactionEventSchema =
   schemas.recurringTransactionEvent;
 export const transactionSchema = schemas.transaction;
+export const transactionLinkSchema = schemas.transactionLink;
 export const transactionSplitSchema = schemas.transactionSplit;
 
 export {
