@@ -31,6 +31,9 @@ describe('luca-schema-example.json', () => {
     expect(exampleData.recurringTransactionEvents).toBeDefined();
     expect(exampleData.recurringTransactionEvents.length).toBeGreaterThan(0);
 
+    expect(exampleData.recurringTransactionLinks).toBeDefined();
+    expect(exampleData.recurringTransactionLinks.length).toBeGreaterThan(0);
+
     expect(exampleData.transactions).toBeDefined();
     expect(exampleData.transactions.length).toBeGreaterThan(0);
 
@@ -53,6 +56,9 @@ describe('luca-schema-example.json', () => {
     const recurringTransactionIds = new Set(
       exampleData.recurringTransactions.map(r => r.id)
     );
+    const recurringTransactionById = new Map(
+      exampleData.recurringTransactions.map(r => [r.id, r])
+    );
 
     // Verify statements reference valid accounts
     exampleData.statements.forEach(stmt => {
@@ -68,6 +74,26 @@ describe('luca-schema-example.json', () => {
       if (txn.statementId !== null) {
         expect(statementIds.has(txn.statementId)).toBe(true);
       }
+    });
+
+    // Verify recurring transaction links reference valid recurring transactions
+    exampleData.recurringTransactionLinks.forEach(link => {
+      expect(
+        recurringTransactionIds.has(link.sourceRecurringTransactionId)
+      ).toBe(true);
+      expect(
+        recurringTransactionIds.has(link.destinationRecurringTransactionId)
+      ).toBe(true);
+      expect(link.sourceRecurringTransactionId).not.toBe(
+        link.destinationRecurringTransactionId
+      );
+      expect(
+        recurringTransactionById.get(link.sourceRecurringTransactionId)
+          ?.accountId
+      ).not.toBe(
+        recurringTransactionById.get(link.destinationRecurringTransactionId)
+          ?.accountId
+      );
     });
 
     // Verify transaction links reference valid transactions

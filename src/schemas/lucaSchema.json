@@ -60,6 +60,14 @@
         "$ref": "./recurringTransactionEvent.json"
       }
     },
+    "recurringTransactionLinks": {
+      "type": "array",
+      "description": "List of links between related recurring transactions",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./recurringTransactionLink.json"
+      }
+    },
     "transactions": {
       "type": "array",
       "description": "List of transactions",
