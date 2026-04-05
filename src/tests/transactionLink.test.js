@@ -18,6 +18,17 @@ describe('transactionLink schema', () => {
     expectInvalid(validate, 'transactionLink', transactionLink);
   });
 
+  test('missing isSameSign is invalid', () => {
+    const transactionLink = makeTransactionLink();
+    delete transactionLink.isSameSign;
+    expectInvalid(validate, 'transactionLink', transactionLink);
+  });
+
+  test('non-boolean isSameSign is invalid', () => {
+    const transactionLink = makeTransactionLink({ isSameSign: 'false' });
+    expectInvalid(validate, 'transactionLink', transactionLink);
+  });
+
   test('unknown fields are invalid', () => {
     const transactionLink = makeTransactionLink({ unexpectedField: 'x' });
     expectInvalid(validate, 'transactionLink', transactionLink);

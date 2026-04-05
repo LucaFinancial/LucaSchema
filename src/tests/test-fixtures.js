@@ -66,7 +66,8 @@ const recurringTransactionLinkTemplate = {
   id: ids.recurringTransactionLinkId,
   ...commonBase,
   sourceRecurringTransactionId: ids.recurringTransactionId,
-  destinationRecurringTransactionId: ids.linkedRecurringTransactionId
+  destinationRecurringTransactionId: ids.linkedRecurringTransactionId,
+  isSameSign: false
 };
 
 const transactionTemplate = {
@@ -101,7 +102,8 @@ const transactionLinkTemplate = {
   id: ids.transactionLinkId,
   ...commonBase,
   sourceTransactionId: ids.transactionId,
-  destinationTransactionId: ids.linkedTransactionId
+  destinationTransactionId: ids.linkedTransactionId,
+  isSameSign: false
 };
 
 const statementTemplate = {

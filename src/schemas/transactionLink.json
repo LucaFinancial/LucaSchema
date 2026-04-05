@@ -21,8 +21,13 @@
       "title": "Destination Transaction ID",
       "format": "uuid",
       "description": "UUID of the destination transaction in the link."
+    },
+    "isSameSign": {
+      "type": "boolean",
+      "title": "Is Same Sign",
+      "description": "Whether the linked transactions are expected to have matching signs. When false, the linked transactions are expected to have opposite signs."
     }
   },
   "unevaluatedProperties": false,
-  "required": ["sourceTransactionId", "destinationTransactionId"]
+  "required": ["sourceTransactionId", "destinationTransactionId", "isSameSign"]
 }

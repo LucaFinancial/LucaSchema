@@ -406,6 +406,7 @@
       "id": "54b10a24-6511-48c2-bf3c-1cc7a794e2ab",
       "sourceRecurringTransactionId": "be4ac69f-89d0-444d-bf22-d4d8ec1b34a8",
       "destinationRecurringTransactionId": "37017f0d-8b46-47eb-929a-28e98ba9f84a",
+      "isSameSign": false,
       "createdAt": "2024-01-01T00:05:00Z",
       "updatedAt": null
     }
@@ -795,6 +796,7 @@
       "id": "d6ae6cc3-5949-4bb2-8187-d1be36df94a1",
       "sourceTransactionId": "75b5faeb-acde-4c4c-8401-0bf2c4f1e9d1",
       "destinationTransactionId": "08bfed71-ab12-4898-ac9c-f2980eefa945",
+      "isSameSign": false,
       "createdAt": "2024-02-01T00:05:00Z",
       "updatedAt": null
     }

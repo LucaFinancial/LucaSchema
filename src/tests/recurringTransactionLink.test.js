@@ -22,6 +22,27 @@ describe('recurringTransactionLink schema', () => {
     );
   });
 
+  test('missing isSameSign is invalid', () => {
+    const recurringTransactionLink = makeRecurringTransactionLink();
+    delete recurringTransactionLink.isSameSign;
+    expectInvalid(
+      validate,
+      'recurringTransactionLink',
+      recurringTransactionLink
+    );
+  });
+
+  test('non-boolean isSameSign is invalid', () => {
+    const recurringTransactionLink = makeRecurringTransactionLink({
+      isSameSign: 'false'
+    });
+    expectInvalid(
+      validate,
+      'recurringTransactionLink',
+      recurringTransactionLink
+    );
+  });
+
   test('unknown fields are invalid', () => {
     const recurringTransactionLink = makeRecurringTransactionLink({
       unexpectedField: 'x'
