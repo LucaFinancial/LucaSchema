@@ -118,5 +118,29 @@
     "transactionState": "COMPLETED",
     "createdAt": "2024-02-20T00:00:00Z",
     "updatedAt": "2024-03-01T00:00:00Z"
+  },
+  {
+    "id": "10000000-0000-0000-0000-000000000011",
+    "accountId": "00000000-0000-0000-0000-000000000001",
+    "categoryId": null,
+    "statementId": null,
+    "amount": -25000,
+    "date": "2024-03-05",
+    "description": "Transfer to High-Yield Savings",
+    "transactionState": "COMPLETED",
+    "createdAt": "2024-03-05T10:00:00Z",
+    "updatedAt": "2024-03-05T10:00:00Z"
+  },
+  {
+    "id": "10000000-0000-0000-0000-000000000012",
+    "accountId": "00000000-0000-0000-0000-000000000002",
+    "categoryId": null,
+    "statementId": null,
+    "amount": 25000,
+    "date": "2024-03-05",
+    "description": "Transfer from Everyday Checking",
+    "transactionState": "COMPLETED",
+    "createdAt": "2024-03-05T10:05:00Z",
+    "updatedAt": "2024-03-05T10:05:00Z"
   }
 ]

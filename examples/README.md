@@ -19,6 +19,7 @@ This file is a complete, valid Luca Schema document. It is intended to:
 - **Recurring transactions**: Multiple frequencies and states.
 - **Recurring transaction events**: Modified and deleted occurrences.
 - **Transactions**: A mix of states and categories, some linked to statements.
+- **Transaction links**: Related transaction pairs used to model transfers across accounts.
 - **Transaction splits**: One split transaction showing sums that match the parent.
 
 ### Data characteristics

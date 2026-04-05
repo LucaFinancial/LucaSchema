@@ -99,6 +99,39 @@
       "transactionState": "SCHEDULED",
       "createdAt": "2024-01-10T00:00:00Z",
       "updatedAt": "2024-01-15T00:00:00Z"
+    },
+    {
+      "id": "10000000-0000-0000-0000-000000000004",
+      "accountId": "00000000-0000-0000-0000-000000000001",
+      "categoryId": null,
+      "statementId": null,
+      "amount": -5000,
+      "date": "2024-01-12",
+      "description": "ATM cash withdrawal",
+      "transactionState": "COMPLETED",
+      "createdAt": "2024-01-12T09:00:00Z",
+      "updatedAt": "2024-01-12T09:00:00Z"
+    },
+    {
+      "id": "10000000-0000-0000-0000-000000000005",
+      "accountId": "00000000-0000-0000-0000-000000000005",
+      "categoryId": null,
+      "statementId": null,
+      "amount": 5000,
+      "date": "2024-01-12",
+      "description": "Cash from Main Street Bank",
+      "transactionState": "COMPLETED",
+      "createdAt": "2024-01-12T09:05:00Z",
+      "updatedAt": "2024-01-12T09:05:00Z"
+    }
+  ],
+  "transactionLinks": [
+    {
+      "id": "12000000-0000-0000-0000-000000000001",
+      "sourceTransactionId": "10000000-0000-0000-0000-000000000004",
+      "destinationTransactionId": "10000000-0000-0000-0000-000000000005",
+      "createdAt": "2024-01-12T09:05:00Z",
+      "updatedAt": null
     }
   ],
   "transactionSplits": []

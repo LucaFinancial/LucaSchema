@@ -6,6 +6,7 @@ import statement from './statement.json' with { type: 'json' };
 import recurringTransaction from './recurringTransaction.json' with { type: 'json' };
 import recurringTransactionEvent from './recurringTransactionEvent.json' with { type: 'json' };
 import transaction from './transaction.json' with { type: 'json' };
+import transactionLink from './transactionLink.json' with { type: 'json' };
 import transactionSplit from './transactionSplit.json' with { type: 'json' };
 import enums from './enums.json' with { type: 'json' };
 
@@ -18,6 +19,7 @@ export {
   recurringTransaction,
   recurringTransactionEvent,
   transaction,
+  transactionLink,
   transactionSplit,
   enums
 };
@@ -31,6 +33,7 @@ export default {
   recurringTransaction,
   recurringTransactionEvent,
   transaction,
+  transactionLink,
   transactionSplit,
   enums
 };

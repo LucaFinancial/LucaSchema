@@ -661,6 +661,24 @@
       "updatedAt": null
     },
     {
+      "id": "75b5faeb-acde-4c4c-8401-0bf2c4f1e9d1",
+      "accountId": "cf9df9b9-9fc0-424b-a137-47e9ba144c73",
+      "date": "2024-02-01",
+      "authorizedAt": null,
+      "postedAt": "2024-02-01T00:00:00Z",
+      "currency": "USD",
+      "amount": -100000,
+      "description": "Transfer to High Yield Savings",
+      "memo": "Monthly savings transfer",
+      "categoryId": null,
+      "statementId": null,
+      "aggregationServiceId": "plaid_txn_016b",
+      "transactionState": "COMPLETED",
+      "deletedAt": null,
+      "createdAt": "2024-02-01T00:00:00Z",
+      "updatedAt": null
+    },
+    {
       "id": "e2984e2a-baa9-4240-ae84-9794cfe96620",
       "accountId": "c5742bfc-835e-4baa-8e1c-71afba58297f",
       "date": "2024-03-01",
@@ -731,6 +749,15 @@
       "deletedAt": null,
       "createdAt": "2024-03-08T00:00:00Z",
       "updatedAt": "2024-03-12T10:00:00Z"
+    }
+  ],
+  "transactionLinks": [
+    {
+      "id": "d6ae6cc3-5949-4bb2-8187-d1be36df94a1",
+      "sourceTransactionId": "75b5faeb-acde-4c4c-8401-0bf2c4f1e9d1",
+      "destinationTransactionId": "08bfed71-ab12-4898-ac9c-f2980eefa945",
+      "createdAt": "2024-02-01T00:05:00Z",
+      "updatedAt": null
     }
   ],
   "transactionSplits": [
