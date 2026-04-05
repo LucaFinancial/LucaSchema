@@ -21,11 +21,17 @@
       "title": "Destination Recurring Transaction ID",
       "format": "uuid",
       "description": "UUID of the destination recurring transaction in the link."
+    },
+    "isSameSign": {
+      "type": "boolean",
+      "title": "Is Same Sign",
+      "description": "Whether the linked recurring transactions are expected to have matching signs. When false, the linked recurring transactions are expected to have opposite signs."
     }
   },
   "unevaluatedProperties": false,
   "required": [
     "sourceRecurringTransactionId",
-    "destinationRecurringTransactionId"
+    "destinationRecurringTransactionId",
+    "isSameSign"
   ]
 }

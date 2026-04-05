@@ -219,6 +219,7 @@ const recurringTransactionLink = {
   id: string;
   sourceRecurringTransactionId: string;
   destinationRecurringTransactionId: string;
+  isSameSign: boolean;
   createdAt: string;
   updatedAt: string | null;
   deletedAt?: string | null;
@@ -235,6 +236,7 @@ const transactionLink = {
   id: string;
   sourceTransactionId: string;
   destinationTransactionId: string;
+  isSameSign: boolean;
   createdAt: string;
   updatedAt: string | null;
   deletedAt?: string | null;
@@ -242,7 +244,7 @@ const transactionLink = {
 };
 ```
 
-Cross-transaction rules like matching dates, matching amounts, or opposite signs are not enforced by this schema and should be handled in application logic.
+`isSameSign` indicates whether linked amounts should share the same sign (`true`) or use opposite signs (`false`) while still matching by absolute value. Cross-transaction rules like matching dates or verifying absolute-value equality are not enforced by this schema and should be handled in application logic.
 
 ### LucaSchema
 

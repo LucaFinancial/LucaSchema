@@ -3,6 +3,7 @@
     "id": "12000000-0000-0000-0000-000000000001",
     "sourceTransactionId": "10000000-0000-0000-0000-000000000011",
     "destinationTransactionId": "10000000-0000-0000-0000-000000000012",
+    "isSameSign": false,
     "createdAt": "2024-03-05T10:05:00Z",
     "updatedAt": null
   }
