@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LucaFinancial/LucaSchema/main/src/schemas/recurringTransactionLink.json",
+  "title": "Recurring Transaction Link",
+  "description": "Links two related recurring transactions, such as mirrored transfer schedules recorded in separate accounts.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "./common.json"
+    }
+  ],
+  "properties": {
+    "sourceRecurringTransactionId": {
+      "type": "string",
+      "title": "Source Recurring Transaction ID",
+      "format": "uuid",
+      "description": "UUID of the source recurring transaction in the link."
+    },
+    "destinationRecurringTransactionId": {
+      "type": "string",
+      "title": "Destination Recurring Transaction ID",
+      "format": "uuid",
+      "description": "UUID of the destination recurring transaction in the link."
+    }
+  },
+  "unevaluatedProperties": false,
+  "required": [
+    "sourceRecurringTransactionId",
+    "destinationRecurringTransactionId"
+  ]
+}

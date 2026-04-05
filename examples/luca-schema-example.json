@@ -340,6 +340,36 @@
       "recurringTransactionState": "CANCELLED",
       "createdAt": "2024-01-01T00:00:00Z",
       "updatedAt": "2024-02-15T00:00:00Z"
+    },
+    {
+      "id": "be4ac69f-89d0-444d-bf22-d4d8ec1b34a8",
+      "accountId": "cf9df9b9-9fc0-424b-a137-47e9ba144c73",
+      "categoryId": null,
+      "amount": -50000,
+      "description": "Monthly transfer to savings",
+      "frequency": "MONTH",
+      "interval": 1,
+      "occurrences": null,
+      "startOn": "2024-01-15",
+      "endOn": null,
+      "recurringTransactionState": "ACTIVE",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": null
+    },
+    {
+      "id": "37017f0d-8b46-47eb-929a-28e98ba9f84a",
+      "accountId": "a75990ab-7ebf-48a9-86bd-35b744c781c2",
+      "categoryId": null,
+      "amount": 50000,
+      "description": "Monthly transfer from checking",
+      "frequency": "MONTH",
+      "interval": 1,
+      "occurrences": null,
+      "startOn": "2024-01-15",
+      "endOn": null,
+      "recurringTransactionState": "ACTIVE",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": null
     }
   ],
   "recurringTransactionEvents": [
@@ -368,6 +398,15 @@
       "expectedDate": "2024-03-10",
       "eventState": "MODIFIED",
       "createdAt": "2024-03-08T00:00:00Z",
+      "updatedAt": null
+    }
+  ],
+  "recurringTransactionLinks": [
+    {
+      "id": "54b10a24-6511-48c2-bf3c-1cc7a794e2ab",
+      "sourceRecurringTransactionId": "be4ac69f-89d0-444d-bf22-d4d8ec1b34a8",
+      "destinationRecurringTransactionId": "37017f0d-8b46-47eb-929a-28e98ba9f84a",
+      "createdAt": "2024-01-01T00:05:00Z",
       "updatedAt": null
     }
   ],

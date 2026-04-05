@@ -10,6 +10,7 @@
     "STATEMENT": "statement",
     "RECURRING_TRANSACTION": "recurringTransaction",
     "RECURRING_TRANSACTION_EVENT": "recurringTransactionEvent",
+    "RECURRING_TRANSACTION_LINK": "recurringTransactionLink",
     "TRANSACTION": "transaction",
     "TRANSACTION_LINK": "transactionLink",
     "TRANSACTION_SPLIT": "transactionSplit"

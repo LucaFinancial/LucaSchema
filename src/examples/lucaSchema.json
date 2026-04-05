@@ -60,9 +60,49 @@
       "updatedAt": null
     }
   ],
-  "recurringTransactions": [],
+  "recurringTransactions": [
+    {
+      "id": "40000000-0000-0000-0000-000000000011",
+      "accountId": "00000000-0000-0000-0000-000000000001",
+      "categoryId": null,
+      "amount": -5000,
+      "description": "Monthly escrow contribution out",
+      "frequency": "MONTH",
+      "interval": 1,
+      "occurrences": null,
+      "startOn": "2024-01-15",
+      "endOn": null,
+      "recurringTransactionState": "ACTIVE",
+      "createdAt": "2024-01-10T00:00:00Z",
+      "updatedAt": null
+    },
+    {
+      "id": "40000000-0000-0000-0000-000000000012",
+      "accountId": "00000000-0000-0000-0000-000000000004",
+      "categoryId": null,
+      "amount": 5000,
+      "description": "Monthly escrow contribution in",
+      "frequency": "MONTH",
+      "interval": 1,
+      "occurrences": null,
+      "startOn": "2024-01-15",
+      "endOn": null,
+      "recurringTransactionState": "ACTIVE",
+      "createdAt": "2024-01-10T00:00:00Z",
+      "updatedAt": null
+    }
+  ],
   "statements": [],
   "recurringTransactionEvents": [],
+  "recurringTransactionLinks": [
+    {
+      "id": "42000000-0000-0000-0000-000000000001",
+      "sourceRecurringTransactionId": "40000000-0000-0000-0000-000000000011",
+      "destinationRecurringTransactionId": "40000000-0000-0000-0000-000000000012",
+      "createdAt": "2024-01-10T00:05:00Z",
+      "updatedAt": null
+    }
+  ],
   "transactions": [
     {
       "id": "10000000-0000-0000-0000-000000000001",

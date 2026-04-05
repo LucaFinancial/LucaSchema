@@ -210,6 +210,22 @@ const transactionSplit = {
 };
 ```
 
+### RecurringTransactionLink
+
+Validates links between related recurring transactions, such as scheduled transfer legs recorded in separate accounts.
+
+```typescript
+const recurringTransactionLink = {
+  id: string;
+  sourceRecurringTransactionId: string;
+  destinationRecurringTransactionId: string;
+  createdAt: string;
+  updatedAt: string | null;
+  deletedAt?: string | null;
+  version?: number;
+};
+```
+
 ### TransactionLink
 
 Validates links between related transactions, such as transfers recorded in separate accounts.
@@ -240,6 +256,7 @@ const lucaSchema = {
   statements: Statement[];
   recurringTransactions: RecurringTransaction[];
   recurringTransactionEvents: RecurringTransactionEvent[];
+  recurringTransactionLinks?: RecurringTransactionLink[];
   transactions: Transaction[];
   transactionLinks?: TransactionLink[];
   transactionSplits: TransactionSplit[];
@@ -270,7 +287,7 @@ import {
 - `validate(schemaKey, data)` → `{ valid: boolean, errors: AjvError[] }`
 - `validateCollection(schemaKey, array)` → `{ valid: boolean, errors: [{ index, entity, errors }] }`
 - `getDateFieldPaths(schemaKey)` → `string[]` of `format: date` fields for a schema key
-- `getDateFieldPathsByCollection()` → `{ accounts, categories, statements, recurringTransactions, recurringTransactionEvents, transactions, transactionLinks, transactionSplits }`
+- `getDateFieldPathsByCollection()` → `{ accounts, categories, statements, recurringTransactions, recurringTransactionEvents, recurringTransactionLinks, transactions, transactionLinks, transactionSplits }`
 - `getValidFields(schemaKey)` → `Set<string>` of all fields (includes common fields when applicable)
 - `getRequiredFields(schemaKey)` → `Set<string>` of required fields (includes common required fields)
 - `stripInvalidFields(schemaKey, data)` → new object with only schema-defined keys

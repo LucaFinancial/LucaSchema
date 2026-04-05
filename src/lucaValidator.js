@@ -8,6 +8,7 @@ import lucaSchemaJson from './schemas/lucaSchema.json' with { type: 'json' };
 import statementSchemaJson from './schemas/statement.json' with { type: 'json' };
 import recurringTransactionSchemaJson from './schemas/recurringTransaction.json' with { type: 'json' };
 import recurringTransactionEventSchemaJson from './schemas/recurringTransactionEvent.json' with { type: 'json' };
+import recurringTransactionLinkSchemaJson from './schemas/recurringTransactionLink.json' with { type: 'json' };
 import transactionSchemaJson from './schemas/transaction.json' with { type: 'json' };
 import transactionLinkSchemaJson from './schemas/transactionLink.json' with { type: 'json' };
 import transactionSplitSchemaJson from './schemas/transactionSplit.json' with { type: 'json' };
@@ -19,6 +20,7 @@ const schemas = {
   statement: statementSchemaJson,
   recurringTransaction: recurringTransactionSchemaJson,
   recurringTransactionEvent: recurringTransactionEventSchemaJson,
+  recurringTransactionLink: recurringTransactionLinkSchemaJson,
   transaction: transactionSchemaJson,
   transactionLink: transactionLinkSchemaJson,
   transactionSplit: transactionSplitSchemaJson
@@ -194,6 +196,7 @@ export function getDateFieldPaths(schemaKey) {
  *   statements: Array<string>,
  *   recurringTransactions: Array<string>,
  *   recurringTransactionEvents: Array<string>,
+ *   recurringTransactionLinks: Array<string>,
  *   transactions: Array<string>,
  *   transactionLinks: Array<string>,
  *   transactionSplits: Array<string>
@@ -206,6 +209,7 @@ export function getDateFieldPathsByCollection() {
     statements: getDateFieldPaths('statement'),
     recurringTransactions: getDateFieldPaths('recurringTransaction'),
     recurringTransactionEvents: getDateFieldPaths('recurringTransactionEvent'),
+    recurringTransactionLinks: getDateFieldPaths('recurringTransactionLink'),
     transactions: getDateFieldPaths('transaction'),
     transactionLinks: getDateFieldPaths('transactionLink'),
     transactionSplits: getDateFieldPaths('transactionSplit')

@@ -12,6 +12,8 @@ export const ids = {
   categoryId: '00000000-0000-0000-0000-000000000002',
   recurringTransactionId: '00000000-0000-0000-0000-000000000003',
   recurringTransactionEventId: '00000000-0000-0000-0000-000000000004',
+  linkedRecurringTransactionId: '00000000-0000-0000-0000-000000000012',
+  recurringTransactionLinkId: '00000000-0000-0000-0000-000000000013',
   transactionId: '00000000-0000-0000-0000-000000000005',
   linkedTransactionId: '00000000-0000-0000-0000-000000000006',
   transactionSplitId: '00000000-0000-0000-0000-000000000007',
@@ -58,6 +60,13 @@ const recurringTransactionEventTemplate = {
   recurringTransactionId: ids.recurringTransactionId,
   expectedDate: '2024-02-01',
   eventState: 'DELETED'
+};
+
+const recurringTransactionLinkTemplate = {
+  id: ids.recurringTransactionLinkId,
+  ...commonBase,
+  sourceRecurringTransactionId: ids.recurringTransactionId,
+  destinationRecurringTransactionId: ids.linkedRecurringTransactionId
 };
 
 const transactionTemplate = {
@@ -132,6 +141,11 @@ export const makeRecurringTransactionEvent = (overrides = {}) => ({
   ...overrides
 });
 
+export const makeRecurringTransactionLink = (overrides = {}) => ({
+  ...structuredClone(recurringTransactionLinkTemplate),
+  ...overrides
+});
+
 export const makeTransaction = (overrides = {}) => ({
   ...structuredClone(transactionTemplate),
   ...overrides
@@ -163,6 +177,7 @@ export const makeLucaSchemaDoc = (overrides = {}) => ({
   recurringTransactionEvents: overrides.recurringTransactionEvents ?? [
     makeRecurringTransactionEvent()
   ],
+  recurringTransactionLinks: overrides.recurringTransactionLinks ?? [],
   statements: overrides.statements ?? [makeStatement()],
   transactions: overrides.transactions ?? [makeTransaction()],
   transactionLinks: overrides.transactionLinks ?? [],

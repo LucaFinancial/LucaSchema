@@ -1,0 +1,9 @@
+[
+  {
+    "id": "42000000-0000-0000-0000-000000000001",
+    "sourceRecurringTransactionId": "40000000-0000-0000-0000-000000000011",
+    "destinationRecurringTransactionId": "40000000-0000-0000-0000-000000000012",
+    "createdAt": "2024-03-01T09:00:00Z",
+    "updatedAt": null
+  }
+]

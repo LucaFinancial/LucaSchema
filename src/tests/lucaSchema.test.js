@@ -6,6 +6,7 @@ import {
   makeCategory,
   makeRecurringTransaction,
   makeRecurringTransactionEvent,
+  makeRecurringTransactionLink,
   makeTransaction,
   makeTransactionLink,
   makeTransactionSplit,
@@ -46,6 +47,36 @@ describe('lucaSchema aggregate', () => {
     expectValid(validate, 'lucaSchema', lucaSchemaDoc);
   });
 
+  test('valid lucaSchema document with recurring transaction links', () => {
+    const linkedRecurringTransaction = makeRecurringTransaction({
+      id: ids.linkedRecurringTransactionId,
+      accountId: ids.secondaryAccountId,
+      categoryId: null,
+      amount: 100,
+      description: 'Monthly savings transfer in'
+    });
+    const lucaSchemaDoc = makeLucaSchemaDoc({
+      accounts: [
+        makeAccount(),
+        makeAccount({
+          id: ids.secondaryAccountId,
+          name: 'Savings',
+          type: 'SAVINGS'
+        })
+      ],
+      recurringTransactions: [
+        makeRecurringTransaction({
+          categoryId: null,
+          amount: -100,
+          description: 'Monthly savings transfer out'
+        }),
+        linkedRecurringTransaction
+      ],
+      recurringTransactionLinks: [makeRecurringTransactionLink()]
+    });
+    expectValid(validate, 'lucaSchema', lucaSchemaDoc);
+  });
+
   test('missing accounts is invalid', () => {
     const lucaSchemaDoc = makeLucaSchemaDoc();
     delete lucaSchemaDoc.accounts;
@@ -69,6 +100,17 @@ describe('lucaSchema aggregate', () => {
     const doc = makeLucaSchemaDoc({
       transactionLinks: [
         makeTransactionLink({ destinationTransactionId: undefined })
+      ]
+    });
+    expectInvalid(validate, 'lucaSchema', doc);
+  });
+
+  test('propagates invalid nested recurringTransactionLink entity', () => {
+    const doc = makeLucaSchemaDoc({
+      recurringTransactionLinks: [
+        makeRecurringTransactionLink({
+          destinationRecurringTransactionId: undefined
+        })
       ]
     });
     expectInvalid(validate, 'lucaSchema', doc);

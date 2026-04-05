@@ -5,6 +5,7 @@ import lucaSchema from './lucaSchema.json' with { type: 'json' };
 import statement from './statement.json' with { type: 'json' };
 import recurringTransaction from './recurringTransaction.json' with { type: 'json' };
 import recurringTransactionEvent from './recurringTransactionEvent.json' with { type: 'json' };
+import recurringTransactionLink from './recurringTransactionLink.json' with { type: 'json' };
 import transaction from './transaction.json' with { type: 'json' };
 import transactionLink from './transactionLink.json' with { type: 'json' };
 import transactionSplit from './transactionSplit.json' with { type: 'json' };
@@ -18,6 +19,7 @@ export {
   statement,
   recurringTransaction,
   recurringTransactionEvent,
+  recurringTransactionLink,
   transaction,
   transactionLink,
   transactionSplit,
@@ -32,6 +34,7 @@ export default {
   statement,
   recurringTransaction,
   recurringTransactionEvent,
+  recurringTransactionLink,
   transaction,
   transactionLink,
   transactionSplit,

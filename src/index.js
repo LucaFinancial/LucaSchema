@@ -6,6 +6,7 @@ import {
   lucaSchema as lucaSchemaJson,
   recurringTransaction,
   recurringTransactionEvent,
+  recurringTransactionLink,
   statement,
   transaction,
   transactionLink,
@@ -30,6 +31,7 @@ const schemas = {
   statement,
   recurringTransaction,
   recurringTransactionEvent,
+  recurringTransactionLink,
   transaction,
   transactionLink,
   transactionSplit,
@@ -44,6 +46,7 @@ export const statementSchema = schemas.statement;
 export const recurringTransactionSchema = schemas.recurringTransaction;
 export const recurringTransactionEventSchema =
   schemas.recurringTransactionEvent;
+export const recurringTransactionLinkSchema = schemas.recurringTransactionLink;
 export const transactionSchema = schemas.transaction;
 export const transactionLinkSchema = schemas.transactionLink;
 export const transactionSplitSchema = schemas.transactionSplit;
