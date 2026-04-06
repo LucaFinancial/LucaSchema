@@ -17,7 +17,7 @@
   "properties": {
     "schemaVersion": {
       "type": "string",
-      "const": "3.0.0",
+      "const": "3.3.2",
       "description": "Schema contract version of the luca ledger"
     },
     "categories": {

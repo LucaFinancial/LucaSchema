@@ -252,7 +252,7 @@ Validates the full ledger export.
 
 ```typescript
 const lucaSchema = {
-  schemaVersion: '3.0.0';
+  schemaVersion: '3.3.2';
   categories: Category[];
   accounts: Account[];
   statements: Statement[];
