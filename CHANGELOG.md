@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.3.3] - 2026-05-11
+
+### Changed
+
+- Bump the published package version to `3.3.3` while leaving the Luca Schema contract version at `3.3.2`.
+- Refresh runtime and development dependencies, including the Ajv, Babel, ESLint, Jest, Prettier, ts-jest, and typescript-eslint stacks.
+- Regenerate `pnpm-lock.yaml` to capture the updated dependency graph for the 3.3.3 release.
+
 ## [3.3.2] - 2026-04-05
 
 ### Changed
